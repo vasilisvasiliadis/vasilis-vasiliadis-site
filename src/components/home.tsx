@@ -173,6 +173,9 @@ const coverPose = [
   "rotate-[3deg]",
 ];
 
+/** Η στήλη τιμής εμφανίζεται μόνο όταν υπάρχει τουλάχιστον μία τιμή (αλλιώς 4 φορές «Τιμή σύντομα»). */
+const priced = products.some((p) => p.price !== null);
+
 export function Package() {
   return (
     <section className="border-t border-rule bg-[#f3f5f8] py-20 lg:py-28" aria-labelledby="package-title">
@@ -207,7 +210,7 @@ export function Package() {
             <tr className="border-b-2 border-ink font-display text-lg">
               <th scope="col" className="py-3 pr-4 font-bold text-ink">Τι παίρνεις</th>
               <th scope="col" className="hidden py-3 pr-4 font-bold text-ink md:table-cell">Τι κάνει</th>
-              <th scope="col" className="py-3 text-right font-bold text-ink">Τιμή</th>
+              {priced && <th scope="col" className="py-3 text-right font-bold text-ink">Τιμή</th>}
             </tr>
           </thead>
           <tbody>
@@ -220,7 +223,9 @@ export function Package() {
                   <span className="block text-sm text-pencil">{p.kind}</span>
                 </th>
                 <td className="hidden py-4 pr-4 text-pencil md:table-cell">{p.line}</td>
-                <td className="py-4 text-right font-display text-xl whitespace-nowrap text-ink">{formatPrice(p.price)}</td>
+                {priced && (
+                  <td className="py-4 text-right font-display text-xl whitespace-nowrap text-ink">{formatPrice(p.price)}</td>
+                )}
               </tr>
             ))}
           </tbody>
