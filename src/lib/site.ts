@@ -172,7 +172,7 @@ export const products: Product[] = [
     cover: "/images/covers/book.webp",
     coverW: 900,
     coverH: 1277,
-    price: 14.9,
+    price: 19.9,
     checkoutUrl: null,
   },
   {
@@ -183,7 +183,7 @@ export const products: Product[] = [
     cover: "/images/covers/workbook.webp",
     coverW: 1200,
     coverH: 848,
-    price: 12.9,
+    price: 14.9,
     checkoutUrl: null,
   },
   {
@@ -194,7 +194,7 @@ export const products: Product[] = [
     cover: "/images/covers/excel.webp",
     coverW: 900,
     coverH: 1277,
-    price: 9.9,
+    price: 24.9,
     checkoutUrl: null,
   },
   {
@@ -205,7 +205,7 @@ export const products: Product[] = [
     cover: "/images/covers/prompts.webp",
     coverW: 900,
     coverH: 1277,
-    price: 4.9,
+    price: 9.9,
     checkoutUrl: null,
   },
 ];
@@ -217,26 +217,24 @@ export function formatPrice(price: number | null) {
 
 /**
  * Το ολοκληρωμένο πακέτο (βιβλίο, Workbook, Excel, Prompts).
- * Οι τιμές ΑΝΕΒΑΙΝΟΥΝ: γνωριμίας → ενδιάμεση → κανονική (δεν ανακοινώνεται μείωση από προηγούμενη τιμή).
- * Στο Polar: μία τιμή (κανονική) και ένας κωδικός έκπτωσης ανά φάση, που μπαίνει στον σύνδεσμο πληρωμής.
- * launchDate = η μέρα που ανοίγουν οι πωλήσεις (ISO, π.χ. "2026-12-01T09:00:00+02:00"). null = δεν έχει ανοίξει.
+ * Οι τιμές ΑΝΕΒΑΙΝΟΥΝ: γνωριμίας (έως την ημερομηνία `until`) → κανονική. Δεν ανακοινώνεται μείωση.
+ * Στο Polar: μία τιμή (κανονική) και ένας κωδικός έκπτωσης για την τιμή γνωριμίας, που μπαίνει στον σύνδεσμο.
+ * Μπορείς να προσθέσεις κι άλλες φάσεις (π.χ. ενδιάμεση)· κάθε φάση ισχύει μέχρι το `until` της.
+ * Μελλοντική προσφορά κάτω από την κανονική (π.χ. 34,90): ανακοίνωσέ την ως μείωση από την κανονική τιμή
+ * μόνο αφού η κανονική έχει εφαρμοστεί ≥30 ημέρες (κανόνας Omnibus, να επιβεβαιωθεί με νομικό).
+ * Η πώληση ανοίγει όταν μπει `checkoutUrl`. Μέχρι τότε: λίστα αναμονής.
  */
-export type PricePhase = { name: string; price: number; days: number };
+export type PricePhase = { name: string; price: number; /** ISO ημερομηνία λήξης */ until: string };
 
 export const bundle: {
   name: string;
   regularPrice: number;
   phases: PricePhase[];
-  launchDate: string | null;
   checkoutUrl: string | null;
 } = {
   name: "Ολόκληρο το Πακέτο BILL",
-  regularPrice: 39.9,
-  phases: [
-    { name: "Τιμή γνωριμίας", price: 29.9, days: 7 },
-    { name: "Ενδιάμεση τιμή", price: 34.9, days: 14 },
-  ],
-  launchDate: null,
+  regularPrice: 49.9,
+  phases: [{ name: "Τιμή γνωριμίας", price: 29.9, until: "2026-12-31T23:59:59+02:00" }],
   checkoutUrl: null,
 };
 
@@ -247,26 +245,24 @@ export type BundleOffer = {
   state: "waitlist" | "open";
   phase: string;
   price: number;
-  /** Ημερομηνία λήξης της τρέχουσας φάσης (μόνο όταν είναι ανοιχτό) */
+  /** Έως πότε ισχύει η τρέχουσα τιμή (null = ισχύει χωρίς λήξη) */
   until: Date | null;
   /** Η τιμή που ακολουθεί (null όταν είναι ήδη η κανονική) */
   nextPrice: number | null;
 };
 
-/** Ποια τιμή ισχύει τώρα. Πριν την έναρξη: η τιμή γνωριμίας για τη λίστα αναμονής. */
+/** Ποια τιμή ισχύει τώρα. Χωρίς σύνδεσμο πληρωμής η κατάσταση είναι «λίστα αναμονής». */
 export function bundleOffer(now: Date = new Date()): BundleOffer {
-  const { phases, regularPrice, launchDate } = bundle;
-  const start = launchDate ? new Date(launchDate) : null;
-  if (!start || now < start) {
-    return { state: "waitlist", phase: phases[0].name, price: phases[0].price, until: null, nextPrice: phases[1]?.price ?? regularPrice };
-  }
-  let t = start.getTime();
-  for (let i = 0; i < phases.length; i++) {
-    const end = t + phases[i].days * 86_400_000;
-    if (now.getTime() < end) {
-      return { state: "open", phase: phases[i].name, price: phases[i].price, until: new Date(end), nextPrice: phases[i + 1]?.price ?? regularPrice };
-    }
-    t = end;
-  }
-  return { state: "open", phase: "Κανονική τιμή", price: regularPrice, until: null, nextPrice: null };
+  const { phases, regularPrice, checkoutUrl } = bundle;
+  const state = checkoutUrl ? "open" : "waitlist";
+  const sorted = [...phases].sort((a, b) => +new Date(a.until) - +new Date(b.until));
+  const i = sorted.findIndex((p) => now < new Date(p.until));
+  if (i === -1) return { state, phase: "Κανονική τιμή", price: regularPrice, until: null, nextPrice: null };
+  return {
+    state,
+    phase: sorted[i].name,
+    price: sorted[i].price,
+    until: new Date(sorted[i].until),
+    nextPrice: sorted[i + 1]?.price ?? regularPrice,
+  };
 }

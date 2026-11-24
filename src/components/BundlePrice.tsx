@@ -15,17 +15,11 @@ export function BundlePrice() {
     <div className="mt-6">
       <p className="font-display text-4xl font-black text-ink">{formatPrice(offer.price)}</p>
       <p className="mt-1 font-display text-xl font-bold text-ink">{offer.phase}</p>
-      {offer.state === "waitlist" ? (
+      {offer.until && next && (
         <p className="mt-2 max-w-prose text-pencil">
-          Ισχύει για όσους γραφτούν στη λίστα αναμονής. Μετά το λανσάρισμα η τιμή ανεβαίνει σε {next}.
+          Ισχύει έως τις {dateFmt.format(offer.until)}. Από τότε {next}.
+          {offer.state === "waitlist" && " Γράψου στη λίστα αναμονής και σε ειδοποιώ μόλις ανοίξει."}
         </p>
-      ) : (
-        offer.until &&
-        next && (
-          <p className="mt-2 max-w-prose text-pencil">
-            Ισχύει έως τις {dateFmt.format(offer.until)}. Από τότε {next}.
-          </p>
-        )
       )}
       <p className="mt-2 text-sm text-pencil">Τα τέσσερα προϊόντα χωριστά: {formatPrice(productsTotal)}.</p>
     </div>
