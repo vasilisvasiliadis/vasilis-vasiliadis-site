@@ -201,3 +201,10 @@ export function formatPrice(price: number | null) {
   if (price === null) return "Τιμή σύντομα";
   return new Intl.NumberFormat("el-GR", { style: "currency", currency: "EUR" }).format(price);
 }
+
+/** Το ολοκληρωμένο πακέτο (βιβλίο, Workbook, Excel, Prompts). */
+export const bundle: { name: string; price: number | null; checkoutUrl: string | null } = {
+  name: "Ολόκληρο το Πακέτο BILL",
+  price: null,
+  checkoutUrl: null,
+};
