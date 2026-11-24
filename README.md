@@ -16,7 +16,7 @@ npm run deploy    # build + ανέβασμα στο Cloudflare
 ## Δομή
 - `src/lib/site.ts`: στοιχεία επιχείρησης, μενού, πυλώνες, προϊόντα, τιμές, σύνδεσμοι πληρωμής
 - `src/lib/billscore.ts`: οι 20 ερωτήσεις και η λογική του Bill Score (ίδια με το Excel)
-- `worker/index.ts`: redirect thebillmethod.gr, `POST /api/billscore` → MailerLite
+- `worker/index.ts`: redirect thebillmethod.gr (αρχική → /billscore), `POST /api/billscore` → MailerLite
 - `wrangler.jsonc`: ρυθμίσεις Cloudflare
 
 ## Ανέβασμα στο Cloudflare (μία φορά)

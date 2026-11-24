@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { ComingSoon } from "@/components/ComingSoon";
+import { ServicePage } from "@/components/ServicePage";
+import { services } from "@/lib/services";
 
-export const metadata: Metadata = { title: "Education", description: "Σεμινάρια, workshops και e-courses. Μαθαίνεις κάνοντας." };
+const s = services.education;
+
+export const metadata: Metadata = { title: "Education", description: s.intro };
 
 export default function Page() {
-  return <ComingSoon eyebrow="Συνεργασία" title="Education" text="Σεμινάρια, workshops και e-courses. Μαθαίνεις κάνοντας." />;
+  return <ServicePage s={s} />;
 }

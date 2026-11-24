@@ -19,12 +19,6 @@ export function Footer() {
             <p className="mt-6 max-w-sm font-display text-2xl leading-tight font-bold">
               Αλλού ακούς θεωρίες. Εδώ εφαρμόζεις και μετράς.
             </p>
-            <p className="mt-4 text-sm text-white/60">
-              Η μέθοδος έχει και δικό της σπίτι:{" "}
-              <a href="https://thebillmethod.gr" className="underline underline-offset-4 hover:text-white">
-                thebillmethod.gr
-              </a>
-            </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {footerNav.map((col) => (

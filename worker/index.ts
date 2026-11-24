@@ -1,6 +1,6 @@
 /**
  * Cloudflare Worker μπροστά από τις στατικές σελίδες (φάκελος out/).
- * 1. thebillmethod.gr → vasilisvasiliadis.gr (αρχική → /bill-method, τα υπόλοιπα 1:1)
+ * 1. thebillmethod.gr → vasilisvasiliadis.gr (αρχική → /billscore, όπως γράφει το βιβλίο· τα υπόλοιπα 1:1)
  * 2. POST /api/billscore → ξαναϋπολογίζει το σκορ και γράφει τον συνδρομητή στο MailerLite
  * 3. Όλα τα άλλα → στατικά αρχεία
  */
@@ -106,7 +106,7 @@ export default {
     const url = new URL(request.url);
 
     if (/^(www\.)?thebillmethod\.gr$/.test(url.hostname)) {
-      const target = url.pathname === "/" ? "/bill-method" : url.pathname;
+      const target = url.pathname === "/" ? "/billscore" : url.pathname;
       return Response.redirect(`https://${env.MAIN_HOST}${target}${url.search}`, 301);
     }
     if (url.hostname === `www.${env.MAIN_HOST}`) {

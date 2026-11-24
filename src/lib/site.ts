@@ -11,8 +11,7 @@ export const site = {
 export const business = {
   name: "Βασιλειάδης Βασίλης",
   address: "Νέα Πέλλα",
-  /** TODO: ταχυδρομικός κώδικας */
-  postalCode: null as string | null,
+  postalCode: "58005" as string | null,
   region: "Πέλλα",
   afm: "116534449",
   doy: "Γιαννιτσών",
@@ -21,6 +20,9 @@ export const business = {
 
 /** Merchant of Record για τις αγορές. null μέχρι να επιλεγεί πάροχος. */
 export const merchantOfRecord: { name: string | null; url: string | null } = { name: null, url: null };
+
+/** Σύνδεσμος κράτησης ραντεβού (Google Calendar / Cal.com). null μέχρι να οριστεί. */
+export const bookingUrl: string | null = null;
 
 export const legalUpdated = "24 Νοεμβρίου 2026";
 

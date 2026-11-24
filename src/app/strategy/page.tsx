@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { ComingSoon } from "@/components/ComingSoon";
+import { ServicePage } from "@/components/ServicePage";
+import { services } from "@/lib/services";
 
-export const metadata: Metadata = { title: "Strategy", description: "Στρατηγική με βάση το ταμείο, την τιμολόγηση και την ομάδα. Αποφάσεις που μετριούνται." };
+const s = services.strategy;
+
+export const metadata: Metadata = { title: "Strategy", description: s.intro };
 
 export default function Page() {
-  return <ComingSoon eyebrow="Συνεργασία" title="Strategy" text="Στρατηγική με βάση το ταμείο, την τιμολόγηση και την ομάδα. Αποφάσεις που μετριούνται." />;
+  return <ServicePage s={s} />;
 }
