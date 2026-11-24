@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { BuyButton } from "@/components/BuyButton";
 import { ButtonLink, Container, Dot } from "@/components/ui";
 import { productDetails } from "@/lib/content";
-import { formatPrice, products } from "@/lib/site";
+import { formatPrice, products, site } from "@/lib/site";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -16,7 +16,20 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const p = products.find((x) => x.slug === slug);
-  return p ? { title: p.name, description: p.line } : {};
+  if (!p) return {};
+  return {
+    title: p.name,
+    description: p.line,
+    alternates: { canonical: `/paketo-bill/${p.slug}` },
+    openGraph: {
+      type: "website",
+      locale: "el_GR",
+      siteName: site.name,
+      title: `${p.name} · ${site.name}`,
+      description: p.line,
+      images: [{ url: p.cover, width: p.coverW, height: p.coverH, alt: p.name }],
+    },
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -45,7 +58,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 text-pencil">{d.format}</p>
             {p.price !== null && <p className="mt-8 font-display text-3xl font-black text-ink">{formatPrice(p.price)}</p>}
             <div className="mt-8">
-              <BuyButton checkoutUrl={p.checkoutUrl} price={p.price} />
+              <BuyButton checkoutUrl={p.checkoutUrl} price={p.price} interest={p.slug} />
             </div>
           </div>
           <Image

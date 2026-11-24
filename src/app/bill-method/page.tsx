@@ -8,6 +8,7 @@ import { chapters } from "@/lib/content";
 import { pillars, pillarStyle } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/bill-method" },
   title: "Η μέθοδος Bill",
   description:
     "The Bill Method™: τέσσερις πυλώνες με αυτή τη σειρά. Χτίσε, Βελτίωσε, Οδήγησε, Ανέβα. 12 κεφάλαια, 12 εργαλεία, κύκλοι 90 ημερών.",

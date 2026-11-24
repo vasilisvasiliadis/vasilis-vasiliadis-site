@@ -30,6 +30,9 @@ export const socials = [
 /** Σύνδεσμος κράτησης ραντεβού (Google Calendar / Cal.com). null μέχρι να οριστεί. */
 export const bookingUrl: string | null = null;
 
+/** Token του Cloudflare Web Analytics (χωρίς cookies). null = χωρίς μέτρηση. */
+export const cfAnalyticsToken: string | null = null;
+
 /** Σύνδεσμος προς τις κριτικές Google της Count On Me. null μέχρι να δοθεί. */
 export const countOnMeReviewsUrl: string | null = null;
 
@@ -70,7 +73,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: "Γνωριμία",
     items: [
       { label: "Ποιος είμαι", href: "/poios-eimai" },
-      { label: "Άρθρα", href: "/arthra" },
       { label: "Επικοινωνία", href: "/epikoinonia" },
     ],
   },

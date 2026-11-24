@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { cases } from "@/lib/content";
 import { business, bookingUrl } from "@/lib/site";
+import { CaseLedger } from "./CaseLedger";
+import { WaitlistForm } from "./WaitlistForm";
 import type { Service } from "@/lib/services";
 import { PageHero } from "./PageHero";
 import { ButtonLink, Container, Dot, buttonBase } from "./ui";
@@ -25,6 +28,7 @@ export function ContactActions({ subject }: { subject: string }) {
 }
 
 export function ServicePage({ s }: { s: Service }) {
+  const example = s.caseSlug ? cases.find((c) => c.slug === s.caseSlug) : undefined;
   return (
     <>
       <PageHero kicker={s.kicker} title={s.title}>
@@ -57,11 +61,40 @@ export function ServicePage({ s }: { s: Service }) {
                     <li key={i}>{i}</li>
                   ))}
                 </ul>
+                {o.waitlist && (
+                  <div className="mt-6">
+                    <WaitlistForm interest={o.waitlist} />
+                  </div>
+                )}
               </article>
             ))}
           </div>
         </Container>
       </section>
+
+      {example && (
+        <section className="border-t border-rule py-16 lg:py-24" aria-labelledby="example-title">
+          <Container className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+            <div>
+              <h2 id="example-title" className="text-5xl font-black">
+                Ένα παράδειγμα
+              </h2>
+              <p className="mt-4 font-display text-2xl font-bold text-ink">{example.who}</p>
+              <p className="text-pencil">{example.kind}</p>
+              <p className="mt-6 font-display text-3xl leading-tight font-black text-ink">{example.lesson}</p>
+              <p className="mt-6 text-sm text-pencil">Ενδεικτικό παράδειγμα, όχι συγκεκριμένος πελάτης. Δεν αποτελεί υπόσχεση αποτελέσματος.</p>
+            </div>
+            <div>
+              <CaseLedger rows={example.rows.filter(([l]) => l !== "Πυλώνες").slice(0, 3)} />
+              <p className="mt-6">
+                <Link href={`/apotelesmata#${example.slug}`} className="text-ink underline underline-offset-4">
+                  Δες όλο το παράδειγμα
+                </Link>
+              </p>
+            </div>
+          </Container>
+        </section>
+      )}
 
       <section className="grid-paper border-t border-rule py-16 lg:py-24" aria-labelledby="steps-title">
         <Container>

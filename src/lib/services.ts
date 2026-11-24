@@ -2,7 +2,7 @@
  * Περιεχόμενο σελίδων συνεργασίας. Μορφές και διάρκειες είναι πρόταση,
  * οι τιμές «κατόπιν συζήτησης» μέχρι να οριστούν.
  */
-export type Offer = { name: string; format: string; includes: string[]; price: string };
+export type Offer = { name: string; format: string; includes: string[]; price: string; /** Κλειδί λίστας αναμονής όταν η προσφορά δεν έχει ανοίξει */ waitlist?: string };
 
 export type Service = {
   slug: "mentoring" | "strategy" | "education";
@@ -13,6 +13,8 @@ export type Service = {
   offers: Offer[];
   steps: { verb: string; text: string }[];
   subject: string;
+  /** Παράδειγμα από τα Αποτελέσματα που δείχνει αυτή την υπηρεσία στην πράξη */
+  caseSlug?: string;
 };
 
 export const services: Record<Service["slug"], Service> = {
@@ -56,6 +58,7 @@ export const services: Record<Service["slug"], Service> = {
       { verb: "Ξεκινάμε", text: "Πρώτη συνάντηση: πυλώνας, 3 στόχοι, ημερομηνίες." },
     ],
     subject: "Mentoring",
+    caseSlug: "kommotirio",
   },
   strategy: {
     slug: "strategy",
@@ -99,6 +102,7 @@ export const services: Record<Service["slug"], Service> = {
       { verb: "Σχέδιο", text: "Τρεις προτεραιότητες, με σειρά: μπετά πρώτα." },
     ],
     subject: "Strategy",
+    caseSlug: "logistiko-grafeio",
   },
   education: {
     slug: "education",
@@ -138,6 +142,7 @@ export const services: Record<Service["slug"], Service> = {
         format: "Online, με τον δικό σου ρυθμό",
         includes: ["Η μέθοδος Bill σε βίντεο, με τα εργαλεία του πακέτου", "Ετοιμάζεται"],
         price: "Σύντομα",
+        waitlist: "e-course",
       },
     ],
     steps: [

@@ -3,6 +3,7 @@ import { LegalPage, Section } from "@/components/LegalPage";
 import { business } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cookies" },
   title: "Πολιτική cookies",
   description: "Ο ιστότοπος δεν χρησιμοποιεί cookies διαφήμισης ή παρακολούθησης.",
 };

@@ -5,6 +5,7 @@ import { Container } from "@/components/ui";
 import { bookingUrl, business } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/epikoinonia" },
   title: "Επικοινωνία",
   description: "Για mentoring, στρατηγική, σεμινάρια ή ομιλίες.",
 };

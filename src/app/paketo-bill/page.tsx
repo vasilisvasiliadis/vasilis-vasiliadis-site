@@ -5,11 +5,20 @@ import { BuyButton } from "@/components/BuyButton";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container } from "@/components/ui";
 import { productDetails } from "@/lib/content";
-import { bundle, formatPrice, products } from "@/lib/site";
+import { bundle, formatPrice, products, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/paketo-bill" },
   title: "Πακέτο BILL",
   description: "Βιβλίο, Workbook, Excel και AI Prompts της μεθόδου Bill. Ένα σύστημα, τέσσερα εργαλεία.",
+  openGraph: {
+    type: "website",
+    locale: "el_GR",
+    siteName: site.name,
+    title: `Πακέτο BILL · ${site.name}`,
+    description: "Βιβλίο, Workbook, Excel και AI Prompts της μεθόδου Bill. Ένα σύστημα, τέσσερα εργαλεία.",
+    images: [{ url: products[0].cover, width: products[0].coverW, height: products[0].coverH, alt: "Η μέθοδος Bill" }],
+  },
 };
 
 export default function PackagePage() {
@@ -61,7 +70,7 @@ export default function PackagePage() {
             </p>
             {bundle.price !== null && <p className="mt-6 font-display text-3xl font-black text-ink">{formatPrice(bundle.price)}</p>}
             <div className="mt-6 flex flex-col gap-4">
-              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" />
+              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" interest="paketo-bill" />
               {!bundle.checkoutUrl && (
                 <div>
                   <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>

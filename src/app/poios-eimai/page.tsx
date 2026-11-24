@@ -5,6 +5,7 @@ import { ButtonLink, Container, Struck } from "@/components/ui";
 import { socials } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/poios-eimai" },
   title: "Ποιος είμαι",
   description:
     "Ο Βασίλης «Bill» Βασιλειάδης: λογιστής-φοροτεχνικός Α΄ τάξης, mentor, ιδρυτής της Count On Me και της Billow, τραγουδοποιός, πατέρας τριών αγοριών.",
@@ -110,10 +111,10 @@ export default function AboutPage() {
 
           <aside className="lg:pt-2">
             <Image
-              src="/images/photos/fullbody.webp"
-              alt="Ο Βασίλης Βασιλειάδης όρθιος"
-              width={382}
-              height={512}
+              src="/images/photos/coffee.webp"
+              alt="Ο Βασίλης Βασιλειάδης με ένα φλιτζάνι καφέ"
+              width={512}
+              height={286}
               sizes="320px"
               className="w-full max-w-xs"
             />

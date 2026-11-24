@@ -5,7 +5,7 @@ import { Container } from "./ui";
 export function LegalPage({ title, children }: { title: string; children: ReactNode }) {
   return (
     <article className="py-14 lg:py-20">
-      <Container className="max-w-3xl">
+      <Container className="max-w-2xl">
         <h1 className="text-5xl font-black sm:text-6xl">{title}</h1>
         <p className="mt-3 text-pencil">Τελευταία ενημέρωση: {legalUpdated}</p>
         <div className="legal mt-10">{children}</div>

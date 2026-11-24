@@ -6,6 +6,7 @@ import { Container } from "@/components/ui";
 import { talks } from "@/lib/services";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/omilies" },
   title: "Ομιλίες",
   description:
     "Ομιλίες για συνέδρια, επιμελητήρια, συλλόγους και εταιρικές ομάδες: επιχειρηματικότητα, ταμείο, τιμολόγηση, ομάδα και AI για μικρές επιχειρήσεις.",
