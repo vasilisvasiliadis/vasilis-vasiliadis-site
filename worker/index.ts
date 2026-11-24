@@ -103,7 +103,7 @@ async function handleBillScore(request: Request, env: Env): Promise<Response> {
 
 /** Λίστα αναμονής για προϊόντα και υπηρεσίες που δεν έχουν ανοίξει ακόμα. */
 const fairPriceOptions = ["lt20", "20-30", "30-40", "40-50", "gt50"];
-const waitlistInterests = ["paketo-bill", "vivlio", "workbook", "excel", "prompts", "e-course"];
+const waitlistInterests = ["paketo-bill", "vivlio", "vivlio-workbook", "pliris", "workbook", "excel", "prompts", "e-course"];
 
 async function handleWaitlist(request: Request, env: Env): Promise<Response> {
   const origin = request.headers.get("origin");

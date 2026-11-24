@@ -172,7 +172,7 @@ export const products: Product[] = [
     cover: "/images/covers/book.webp",
     coverW: 900,
     coverH: 1277,
-    price: 19.9,
+    price: null,
     checkoutUrl: null,
   },
   {
@@ -183,7 +183,7 @@ export const products: Product[] = [
     cover: "/images/covers/workbook.webp",
     coverW: 1200,
     coverH: 848,
-    price: 14.9,
+    price: null,
     checkoutUrl: null,
   },
   {
@@ -194,7 +194,7 @@ export const products: Product[] = [
     cover: "/images/covers/excel.webp",
     coverW: 900,
     coverH: 1277,
-    price: 24.9,
+    price: null,
     checkoutUrl: null,
   },
   {
@@ -205,7 +205,7 @@ export const products: Product[] = [
     cover: "/images/covers/prompts.webp",
     coverW: 900,
     coverH: 1277,
-    price: 9.9,
+    price: null,
     checkoutUrl: null,
   },
 ];
@@ -216,53 +216,71 @@ export function formatPrice(price: number | null) {
 }
 
 /**
- * Το ολοκληρωμένο πακέτο (βιβλίο, Workbook, Excel, Prompts).
- * Οι τιμές ΑΝΕΒΑΙΝΟΥΝ: γνωριμίας (έως την ημερομηνία `until`) → κανονική. Δεν ανακοινώνεται μείωση.
- * Στο Polar: μία τιμή (κανονική) και ένας κωδικός έκπτωσης για την τιμή γνωριμίας, που μπαίνει στον σύνδεσμο.
- * Μπορείς να προσθέσεις κι άλλες φάσεις (π.χ. ενδιάμεση)· κάθε φάση ισχύει μέχρι το `until` της.
- * Μελλοντική προσφορά κάτω από την κανονική (π.χ. 34,90): ανακοίνωσέ την ως μείωση από την κανονική τιμή
- * μόνο αφού η κανονική έχει εφαρμοστεί ≥30 ημέρες (κανόνας Omnibus, να επιβεβαιωθεί με νομικό).
+ * Τρία επίπεδα (σκάλα): Βιβλίο → Βιβλίο + Workbook → Πλήρες (με Excel και τα AI Prompts ως δώρο).
+ * Τα Prompts ΔΕΝ πωλούνται χωριστά, δίνονται μόνο στο Πλήρες.
+ * Οι τιμές ΑΝΕΒΑΙΝΟΥΝ: λανσαρίσματος (έως `launchEnds`) → κανονική. Δεν ανακοινώνεται μείωση.
+ * Στο Polar: ένα προϊόν ανά επίπεδο στην κανονική τιμή και ένας κωδικός έκπτωσης για την τιμή λανσαρίσματος.
  * Η πώληση ανοίγει όταν μπει `checkoutUrl`. Μέχρι τότε: λίστα αναμονής.
+ * Ο αριθμός «κανονική» δεν πρέπει να παρουσιάζεται ως «αντί για» αν δεν έχει εφαρμοστεί (κανόνας Omnibus, να επιβεβαιωθεί με νομικό).
  */
-export type PricePhase = { name: string; price: number; /** ISO ημερομηνία λήξης */ until: string };
-
-export const bundle: {
+export type Tier = {
+  slug: "vivlio" | "vivlio-workbook" | "pliris";
   name: string;
+  includes: string[];
+  /** Δώρο που δίνεται μόνο σε αυτό το επίπεδο */
+  gift?: string;
+  launchPrice: number;
   regularPrice: number;
-  phases: PricePhase[];
   checkoutUrl: string | null;
-} = {
-  name: "Ολόκληρο το Πακέτο BILL",
-  regularPrice: 49.9,
-  phases: [{ name: "Τιμή γνωριμίας", price: 29.9, until: "2026-12-31T23:59:59+02:00" }],
-  checkoutUrl: null,
 };
 
-/** Το άθροισμα των τεσσάρων προϊόντων όταν πωλούνται χωριστά. */
-export const productsTotal = products.reduce((sum, p) => sum + (p.price ?? 0), 0);
+/** Λήξη των τιμών λανσαρίσματος (ISO, ώρα Ελλάδας). */
+export const launchEnds = "2026-12-31T23:59:59+02:00";
 
-export type BundleOffer = {
-  state: "waitlist" | "open";
-  phase: string;
+export const tiers: Tier[] = [
+  {
+    slug: "vivlio",
+    name: "Βιβλίο",
+    includes: ["Η μέθοδος Bill, βιβλίο PDF 146 σελίδων"],
+    launchPrice: 14.9,
+    regularPrice: 19.9,
+    checkoutUrl: null,
+  },
+  {
+    slug: "vivlio-workbook",
+    name: "Βιβλίο + Workbook",
+    includes: ["Η μέθοδος Bill, βιβλίο PDF 146 σελίδων", "Workbook, 36 σελίδες Α4 για εκτύπωση"],
+    launchPrice: 24.9,
+    regularPrice: 34.9,
+    checkoutUrl: null,
+  },
+  {
+    slug: "pliris",
+    name: "Πλήρες πακέτο",
+    includes: [
+      "Η μέθοδος Bill, βιβλίο PDF 146 σελίδων",
+      "Workbook, 36 σελίδες Α4 για εκτύπωση",
+      "Excel της μεθόδου, 17 καρτέλες με τις πράξεις έτοιμες",
+    ],
+    gift: "AI Prompts, ένα prompt για κάθε κεφάλαιο (μόνο σε αυτό το πακέτο)",
+    launchPrice: 34.9,
+    regularPrice: 49.9,
+    checkoutUrl: null,
+  },
+];
+
+export type TierOffer = {
   price: number;
-  /** Έως πότε ισχύει η τρέχουσα τιμή (null = ισχύει χωρίς λήξη) */
+  phase: "launch" | "regular";
+  /** Έως πότε ισχύει η τιμή λανσαρίσματος (null όταν ισχύει ήδη η κανονική) */
   until: Date | null;
-  /** Η τιμή που ακολουθεί (null όταν είναι ήδη η κανονική) */
+  /** Η τιμή που ακολουθεί (null όταν ισχύει ήδη η κανονική) */
   nextPrice: number | null;
 };
 
-/** Ποια τιμή ισχύει τώρα. Χωρίς σύνδεσμο πληρωμής η κατάσταση είναι «λίστα αναμονής». */
-export function bundleOffer(now: Date = new Date()): BundleOffer {
-  const { phases, regularPrice, checkoutUrl } = bundle;
-  const state = checkoutUrl ? "open" : "waitlist";
-  const sorted = [...phases].sort((a, b) => +new Date(a.until) - +new Date(b.until));
-  const i = sorted.findIndex((p) => now < new Date(p.until));
-  if (i === -1) return { state, phase: "Κανονική τιμή", price: regularPrice, until: null, nextPrice: null };
-  return {
-    state,
-    phase: sorted[i].name,
-    price: sorted[i].price,
-    until: new Date(sorted[i].until),
-    nextPrice: sorted[i + 1]?.price ?? regularPrice,
-  };
+/** Ποια τιμή ισχύει τώρα για ένα επίπεδο. */
+export function tierOffer(t: Tier, now: Date = new Date()): TierOffer {
+  const end = new Date(launchEnds);
+  if (now < end) return { price: t.launchPrice, phase: "launch", until: end, nextPrice: t.regularPrice };
+  return { price: t.regularPrice, phase: "regular", until: null, nextPrice: null };
 }
