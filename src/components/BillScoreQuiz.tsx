@@ -163,99 +163,71 @@ export function BillScoreQuiz() {
           <span className="font-display text-[9rem] leading-[0.8] font-black sm:text-[12rem]">{r.total}</span>
           <span className="font-display text-4xl font-bold text-pencil">/100</span>
         </h1>
-        <p className="mt-6 max-w-prose text-2xl leading-snug text-ink">
-          <span className="font-display font-black">Βαθμός {r.grade}.</span> {gradeMeaning[r.grade]}
+        <p className={`mt-6 border-l-[6px] ${s.border} pl-5 font-display text-4xl font-black text-ink`}>
+          Ξεκινάς από: <span className={s.text}>{start.verb}</span>
         </p>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          <section aria-labelledby="pillars-h">
-            <h2 id="pillars-h" className="text-3xl font-black">
-              Ανά πυλώνα
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <section aria-labelledby="locked-h">
+            <h2 id="locked-h" className="text-3xl font-black">
+              Η εξήγηση έρχεται στο email σου
             </h2>
-            <ul className="mt-5 space-y-5">
-              {pillarOrder.map((k) => {
-                const v = r.byPillar[k];
-                const ps = pillarStyle[k];
-                return (
-                  <li key={k}>
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-display text-xl font-bold text-ink">{pillarOf[k].verb}</span>
-                      <span className={`font-display text-xl tabular-nums ${v < 15 ? "font-black text-dot" : "text-pencil"}`}>
-                        {v}/25
-                      </span>
-                    </div>
-                    <div className="relative mt-1 h-3 bg-grid/60">
-                      <div className={`h-full ${ps.bg}`} style={{ width: `${(v / 25) * 100}%` }} />
-                      <span aria-hidden="true" className="absolute top-[-4px] bottom-[-4px] left-[60%] w-px bg-ink" />
-                    </div>
-                  </li>
-                );
-              })}
+            <ul className="mt-3 list-disc space-y-1 pl-5">
+              <li>Τι σημαίνει ο βαθμός σου</li>
+              <li>Πού είσαι σε κάθε έναν από τους 4 πυλώνες</li>
+              <li>Γιατί ξεκινάς από εκεί και ποιο είναι το πρώτο σου βήμα</li>
             </ul>
-            <p className="mt-3 text-sm text-pencil">Η μαύρη γραμμή είναι το 15. Κάτω από αυτό, ο πυλώνας θέλει δουλειά.</p>
+            <div aria-hidden="true" className="mt-6 space-y-4 select-none blur-[5px]">
+              {pillarOrder.map((k, i) => (
+                <div key={k}>
+                  <div className="flex justify-between font-display text-xl font-bold text-ink">
+                    <span>{pillarOf[k].verb}</span>
+                    <span>??/25</span>
+                  </div>
+                  <div className="mt-1 h-3 bg-grid/60">
+                    <div className={`h-full ${pillarStyle[k].bg}`} style={{ width: `${[64, 36, 48, 28][i]}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
 
-          <section aria-labelledby="start-h" className={`border-l-[6px] ${s.border} pl-6`}>
-            <h2 id="start-h" className="text-3xl font-black">
-              Ξεκινάς από: <span className={s.text}>{start.verb}</span>
-            </h2>
-            <p className="mt-3">{r.reason}</p>
-            <p className="mt-6 font-display text-xl font-bold text-ink">Το πρώτο βήμα</p>
-            <p>{firstStep[r.start]}</p>
-            {path === "starting" && (
-              <p className="mt-4 text-pencil">
-                Θα βγεις χαμηλά στην Ελευθερία. Φυσικό. Μην αγχωθείς. Το Θεμέλιο μετράει τώρα.
+          <div>
+            <EmailResult path={path} answers={answers as Answer[]} win={win} />
+            <section aria-labelledby="win-h" className="mt-10 max-w-xl rotate-[-1deg] bg-[#fff6b8] p-6 shadow-[0_14px_24px_-16px_rgba(0,0,0,0.35)]">
+              <h2 id="win-h" className="text-3xl font-black">
+                Η πρώτη μου νίκη
+              </h2>
+              <p className="mt-1 text-sm text-graphite">
+                Προαιρετικό. Ένα πράγμα από τον πυλώνα σου που κλείνεις σήμερα. Αν το γράψεις πριν πατήσεις «Στείλε μου το
+                σκορ», θα σου έρθει μαζί.
               </p>
-            )}
-          </section>
+              <label htmlFor="win" className="sr-only">
+                Η πρώτη μου νίκη
+              </label>
+              <textarea
+                id="win"
+                rows={2}
+                value={win}
+                onChange={(e) => setWin(e.target.value)}
+                className="mt-3 w-full resize-none border-b-2 border-graphite/40 bg-transparent font-display text-2xl text-ink outline-none focus:border-dot"
+                placeholder="π.χ. Γράφω τους 5 αριθμούς μου"
+              />
+            </section>
+          </div>
         </div>
 
-        <section aria-labelledby="win-h" className="mt-14 max-w-xl bg-[#fff6b8] p-6 shadow-[0_14px_24px_-16px_rgba(0,0,0,0.35)] rotate-[-1deg]">
-          <h2 id="win-h" className="text-3xl font-black">
-            Η πρώτη μου νίκη
-          </h2>
-          <p className="mt-1 text-sm text-graphite">
-            Ένα πράγμα από τον πυλώνα σου που κλείνεις σήμερα. Γράψ’ το και κόλλησέ το εκεί που το βλέπεις κάθε πρωί.
-          </p>
-          <label htmlFor="win" className="sr-only">
-            Η πρώτη μου νίκη
-          </label>
-          <textarea
-            id="win"
-            rows={2}
-            value={win}
-            onChange={(e) => setWin(e.target.value)}
-            className="mt-3 w-full resize-none border-b-2 border-graphite/40 bg-transparent font-display text-2xl text-ink outline-none focus:border-dot"
-            placeholder="π.χ. Γράφω τους 5 αριθμούς μου"
-          />
-          <label htmlFor="win-date" className="mt-3 block text-sm text-graphite">
-            Ως (ημερομηνία)
-          </label>
-          <input
-            id="win-date"
-            type="date"
-            value={winDate}
-            onChange={(e) => setWinDate(e.target.value)}
-            className="mt-1 border-b-2 border-graphite/40 bg-transparent font-display text-xl text-ink outline-none focus:border-dot"
-          />
-        </section>
-
-        <EmailResult path={path} answers={answers as Answer[]} win={win} />
-
-        <p className="mt-12 max-w-prose text-pencil">
+        <p className="mt-14 max-w-prose text-pencil">
           Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.
         </p>
 
         <div className="no-print mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <Link href="/paketo-bill" className={`${buttonBase} bg-dot text-white hover:bg-dot-dark`}>
+          <Link href="/paketo-bill" className={`${buttonBase} bg-ink text-white hover:bg-graphite`}>
             Δες τα εργαλεία της μεθόδου
           </Link>
-          <Link href="/mentoring" className={`${buttonBase} bg-ink text-white hover:bg-graphite`}>
+          <Link href="/mentoring" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
             Δούλεψέ το μαζί μου
           </Link>
-          <button type="button" onClick={() => window.print()} className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
-            Εκτύπωσε το σκορ
-          </button>
           <button type="button" onClick={restart} className="px-2 py-3 text-pencil underline underline-offset-4 hover:text-ink">
             Ξεκίνα από την αρχή
           </button>
@@ -339,7 +311,7 @@ function EmailResult({ path, answers, win }: { path: Path; answers: Answer[]; wi
 
   if (state === "sent") {
     return (
-      <section className="mt-14 max-w-xl border-l-[6px] border-dot pl-6" aria-live="polite">
+      <section className="max-w-xl border-l-[6px] border-dot pl-6" aria-live="polite">
         <h2 className="text-3xl font-black">Το σκορ στάλθηκε</h2>
         <p className="mt-2">Θα το βρεις στο {email} σε λίγα λεπτά. Αν δεν φανεί, κοίτα και στα Προωθήσεις ή στα Ανεπιθύμητα.</p>
       </section>
@@ -347,12 +319,12 @@ function EmailResult({ path, answers, win }: { path: Path; answers: Answer[]; wi
   }
 
   return (
-    <section aria-labelledby="email-h" className="no-print mt-14 max-w-xl">
+    <section aria-labelledby="email-h" className="no-print max-w-xl">
       <h2 id="email-h" className="text-3xl font-black">
-        Στείλε μου το σκορ
+        Πού να σου τη στείλω;
       </h2>
       <p className="mt-2">
-        Σου έρχεται στο email το σκορ, οι 4 πυλώνες και το πρώτο σου βήμα, για να το έχεις όταν ξαναμετρήσεις σε 90 μέρες.
+        Σου έρχεται αμέσως, μαζί με το σκορ, για να το έχεις όταν ξαναμετρήσεις σε 90 μέρες.
       </p>
       <form onSubmit={submit} className="mt-5" noValidate>
         <label htmlFor="score-email" className="block font-display text-lg font-bold text-ink">

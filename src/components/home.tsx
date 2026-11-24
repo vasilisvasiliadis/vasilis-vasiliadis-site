@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { cases as allCases } from "@/lib/content";
 import { formatPrice, pillars, pillarStyle, products } from "@/lib/site";
 import { HeroQuestion } from "./HeroQuestion";
 import { ButtonLink, Container, Dot, Struck, Underline } from "./ui";
@@ -30,7 +31,7 @@ export function Hero() {
           />
           <figcaption className="mt-3 text-[0.95rem] leading-snug text-pencil">
             <span className="font-display text-lg font-bold text-ink">Βασίλης «Bill» Βασιλειάδης.</span> Λογιστής-φοροτεχνικός
-            Α΄ τάξης, mentor, ομιλητής. Οι φίλοι με φωνάζουν Bill. Από εκεί και η μέθοδος.
+            Α΄ τάξης, mentor, ομιλητής. Οι φίλοι μου με λένε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
           </figcaption>
         </figure>
       </Container>
@@ -41,10 +42,10 @@ export function Hero() {
 /* ───────── Το πρόβλημα ───────── */
 
 const pains = [
-  "Αν λείψεις μία εβδομάδα, η δουλειά σταματάει.",
-  "Το ταμείο σε εκπλήσσει, κάθε μήνα.",
-  "Δεν ξέρεις πόσα πρέπει να βγάζεις τη μέρα για να βγει ο μήνας.",
-  "Δουλεύεις περισσότερες ώρες και κερδίζεις τα ίδια.",
+  "Αν λείψεις μία εβδομάδα, η δουλειά σταματάει. Οι διακοπές σου γίνονται τηλεφωνήματα.",
+  "Το ταμείο σε εκπλήσσει αρνητικά, κάθε μήνα. Η Παρασκευή των πληρωμών σού κόβει τον ύπνο.",
+  "Δεν ξέρεις ακριβώς πόσα πρέπει να βγάζεις τη μέρα για να βγει ο μήνας.",
+  "Δουλεύεις 12 ώρες, κερδίζεις τα ίδια και βλέπεις τα παιδιά σου μόνο όταν κοιμούνται.",
 ];
 
 export function Problem() {
@@ -52,7 +53,7 @@ export function Problem() {
     <section className="py-20 lg:py-28">
       <Container className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <h2 className="text-5xl font-black sm:text-6xl">
-          Δεν έχεις πρόβλημα πελατών. Έχεις πρόβλημα <Underline>νούμερων</Underline>.
+          Δεν έχεις πρόβλημα πελατών. Έχεις πρόβλημα <Underline>αριθμών</Underline>.
         </h2>
         <div>
           <ul className="space-y-4 text-xl leading-snug text-ink">
@@ -65,7 +66,7 @@ export function Problem() {
           </ul>
           <p className="mt-8 max-w-prose text-pencil">
             Οι περισσότερες μικρές επιχειρήσεις δεν κλείνουν από έλλειψη δουλειάς. Κλείνουν επειδή ο ιδιοκτήτης κοιτάει τα
-            λάθος νούμερα, ή κανένα.
+            λάθος αριθμούς, ή κανέναν.
           </p>
         </div>
       </Container>
@@ -134,8 +135,8 @@ export function Pillars() {
 
 const cycle = [
   { verb: "Μέτρα", text: "Το Bill Score σού δείχνει πού είσαι σήμερα, από 0 έως 100." },
-  { verb: "Διάλεξε", text: "Ο πρώτος πυλώνας κάτω από 15 στα 25. Από εκεί ξεκινάς." },
-  { verb: "Κάνε", text: "Ένα εργαλείο, σε χαρτί. Πρώτη νίκη: μία μικρή κίνηση σε post-it." },
+  { verb: "Ξεκίνα", text: "Από τον πρώτο πυλώνα που είναι κάτω από 15 στα 25." },
+  { verb: "Κάνε πράξη", text: "Ένα εργαλείο, σε χαρτί. Πρώτη νίκη: μία μικρή κίνηση σε post-it." },
   { verb: "Ξαναμέτρα", text: "Σε 30 μέρες τον πυλώνα σου. Σε 90 μέρες όλο το Score." },
 ];
 
@@ -325,30 +326,17 @@ export function Story() {
 
 /* ───────── Αποτελέσματα: σελίδα βιβλίου εσόδων ───────── */
 
-const cases = [
-  {
-    who: "Ο γραφίστας",
-    what: "Ελεύθερος επαγγελματίας, χωρίς υπαλλήλους.",
-    lesson: "Δεν χρειαζόταν περισσότερους πελάτες. Χρειαζόταν διαφορετικούς όρους.",
-    color: "text-improve",
-    rows: [
-      ["Bill Score", "36", "47"],
-      ["Ρευστότητα", "−420 €", "+2.100 €"],
-      ["Ώρες την εβδομάδα", "55", "42"],
-    ],
-  },
-  {
-    who: "Το τεχνικό γραφείο",
-    what: "Επιχείρηση 4 ατόμων.",
-    lesson: "Έγραψε τη διαδικασία της προσφοράς μία φορά. Μετά βγήκε χωρίς αυτόν.",
-    color: "text-lead",
-    rows: [
-      ["Bill Score", "42", "56"],
-      ["Ρευστότητα", "−3.800 €", "+4.500 €"],
-      ["Ώρες την εβδομάδα", "60", "48"],
-    ],
-  },
-];
+const homeCases = ["kommotirio", "logistiko-grafeio"].map((slug, i) => {
+  const c = allCases.find((x) => x.slug === slug)!;
+  const keep = ["Bill Score", "Ρευστότητα"];
+  return {
+    who: c.who,
+    what: c.kind,
+    lesson: c.lesson,
+    color: i === 0 ? "text-improve" : "text-lead",
+    rows: c.rows.filter(([l]) => keep.includes(l) || l.startsWith("Ώρες")).map(([l, b, a]) => [l, b.replace(/ \(.\)/, ""), a.replace(/ \(.\)/, "")]),
+  };
+});
 
 export function Results() {
   return (
@@ -358,11 +346,11 @@ export function Results() {
           Πριν και μετά τις 90 μέρες
         </h2>
         <p className="mt-4 max-w-prose text-pencil">
-          Τρία νούμερα μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
+          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
           δουλειάς.
         </p>
         <div className="mt-12 grid gap-14 lg:grid-cols-2 lg:gap-16">
-          {cases.map((c) => (
+          {homeCases.map((c) => (
             <article key={c.who}>
               <h3 className="text-4xl font-black">{c.who}</h3>
               <p className="text-pencil">{c.what}</p>
@@ -386,10 +374,10 @@ export function Results() {
           ))}
         </div>
         <p className="mt-12 max-w-2xl text-sm text-pencil">
-          Ενδεικτικές μελέτες περίπτωσης από το βιβλίο, βασισμένες σε πραγματικά μοτίβα. Δεν είναι συγκεκριμένοι άνθρωποι και
-          δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.{" "}
+          Ενδεικτικά παραδείγματα, βασισμένα σε πραγματικά μοτίβα μικρών επιχειρήσεων. Δεν είναι συγκεκριμένοι πελάτες και δεν
+          αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.{" "}
           <Link href="/apotelesmata" className="text-ink underline underline-offset-4">
-            Δες και τα 5 case studies
+            Δες και τα 6 παραδείγματα
           </Link>
           .
         </p>

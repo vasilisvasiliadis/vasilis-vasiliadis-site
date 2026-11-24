@@ -11,8 +11,11 @@ export function BuyButton({ checkoutUrl, price, label = "Αγόρασε" }: { ch
     );
   }
   return (
-    <a href={checkoutUrl} className={`${buttonBase} bg-dot text-white hover:bg-dot-dark`}>
-      {label}: {formatPrice(price)}
-    </a>
+    <div>
+      <a href={checkoutUrl} className={`${buttonBase} bg-dot text-white hover:bg-dot-dark`}>
+        {label}: {formatPrice(price)}
+      </a>
+      <p className="mt-2 text-sm text-pencil">Ψηφιακό προϊόν: παραδίδεται αμέσως και δεν επιστρέφεται.</p>
+    </div>
   );
 }

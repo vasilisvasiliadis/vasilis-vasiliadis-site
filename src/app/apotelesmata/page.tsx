@@ -7,22 +7,22 @@ import { cases } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Αποτελέσματα",
   description:
-    "5 case studies πριν και μετά τις 90 μέρες: Bill Score, ρευστότητα και ώρες δουλειάς σε γραφίστα, τεχνικό γραφείο, ηλεκτρολόγο, studio Pilates και e-shop.",
+    "6 παραδείγματα πριν και μετά τις 90 μέρες: κομμωτήριο, σύμβουλος υπηρεσιών, σύμβουλος ενέργειας, e-shop τεχνολογίας, λογιστικό γραφείο, λογοθεραπεία.",
 };
 
-const colors = ["text-build", "text-improve", "text-lead", "text-levelup", "text-dot"];
+const colors = ["text-build", "text-improve", "text-lead", "text-levelup", "text-dot", "text-improve"];
 
 export default function ResultsPage() {
   return (
     <>
       <PageHero kicker="Πριν και μετά τις 90 μέρες" title="Αποτελέσματα">
         <p>
-          Τρία νούμερα μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
+          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
           δουλειάς την εβδομάδα.
         </p>
         <p className="mt-3 text-base text-pencil">
-          Ενδεικτικές μελέτες περίπτωσης από το βιβλίο, βασισμένες σε πραγματικά μοτίβα. Δεν είναι συγκεκριμένοι άνθρωποι, τα
-          νούμερα είναι στρογγυλεμένα και δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
+          Ενδεικτικά παραδείγματα, βασισμένα σε πραγματικά μοτίβα μικρών επιχειρήσεων. Δεν είναι συγκεκριμένοι πελάτες, οι αριθμοί
+          είναι στρογγυλεμένοι και δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
         </p>
       </PageHero>
 
@@ -72,7 +72,7 @@ export default function ResultsPage() {
 
       <section className="grid-paper py-16">
         <Container>
-          <h2 className="max-w-3xl text-5xl font-black">Τα δικά σου τρία νούμερα</h2>
+          <h2 className="max-w-3xl text-5xl font-black">Οι δικοί σου τρεις αριθμοί</h2>
           <p className="mt-4 max-w-prose text-lg">Ξεκίνα από το Bill Score. Σε 90 μέρες ξαναμετράς και βλέπεις τη διαφορά.</p>
           <ButtonLink href="/billscore" className="mt-8">
             Κάνε το Bill Score

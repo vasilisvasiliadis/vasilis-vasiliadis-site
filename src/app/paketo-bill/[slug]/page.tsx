@@ -77,11 +77,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <h2 className="text-4xl font-black">Για ποιον</h2>
             <p className="mt-4 text-lg">{d.forWhom}</p>
             <p className="mt-6 text-sm text-pencil">
-              Για προσωπική χρήση του αγοραστή. Γενική πληροφόρηση, όχι φορολογική ή νομική συμβουλή.{" "}
+              Ψηφιακό προϊόν: παραδίδεται αμέσως μετά την πληρωμή και δεν επιστρέφεται.{" "}
               <Link href="/epistrofes" className="underline underline-offset-4">
                 Πολιτική επιστροφών
               </Link>
-              .
+              . Για προσωπική χρήση του αγοραστή. Γενική πληροφόρηση, όχι φορολογική ή νομική συμβουλή.
             </p>
           </div>
         </Container>
