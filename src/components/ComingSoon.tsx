@@ -22,7 +22,7 @@ export function ComingSoon({
           <Dot className="ml-1" />
         </h1>
         <p className="mt-6 max-w-prose text-xl">{text}</p>
-        <p className="mt-3 text-pencil">Η σελίδα ετοιμάζεται. Μέχρι τότε, ξεκίνα από το Bill Score.</p>
+        {note && <p className="mt-3 text-pencil">{note}</p>}
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
           <ButtonLink href="/" variant="line">
