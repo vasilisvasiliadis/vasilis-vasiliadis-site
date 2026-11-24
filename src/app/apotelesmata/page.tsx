@@ -125,8 +125,9 @@ export default function ResultsPage() {
             </div>
 
             <div className="lg:col-start-2 lg:row-start-3">
-              <h3 className="font-display text-2xl font-bold">Οι 3 στόχοι του κύκλου</h3>
-              <ol className="mt-3 space-y-4">
+              <details className="group">
+                <summary className="cursor-pointer font-display text-2xl font-bold text-ink">Οι 3 στόχοι του κύκλου</summary>
+                <ol className="mt-3 space-y-4">
                 {c.goals.map((g, k) => (
                   <li key={g.tool} className="grid grid-cols-[2rem_1fr]">
                     <span className="font-display text-xl font-black text-dot">{k + 1}</span>
@@ -136,7 +137,8 @@ export default function ResultsPage() {
                     </div>
                   </li>
                 ))}
-              </ol>
+                </ol>
+              </details>
             </div>
           </Container>
         </article>
