@@ -1,13 +1,26 @@
 import { formatPrice } from "@/lib/site";
+import { WaitlistForm } from "./WaitlistForm";
 import { buttonBase } from "./ui";
 
-/** Κουμπί αγοράς προς τη σελίδα πληρωμής του Merchant of Record. */
-export function BuyButton({ checkoutUrl, price, label = "Αγόρασε" }: { checkoutUrl: string | null; price: number | null; label?: string }) {
+/** Κουμπί αγοράς προς τη σελίδα πληρωμής του Merchant of Record. Χωρίς σύνδεσμο: λίστα αναμονής. */
+export function BuyButton({
+  checkoutUrl,
+  price,
+  label = "Αγόρασε",
+  interest,
+}: {
+  checkoutUrl: string | null;
+  price: number | null;
+  label?: string;
+  /** Για τη λίστα αναμονής όσο δεν υπάρχει σύνδεσμος πληρωμής */
+  interest: string;
+}) {
   if (!checkoutUrl) {
     return (
-      <p className="font-display text-xl font-bold text-pencil">
-        Διαθέσιμο σύντομα. Μέχρι τότε, ξεκίνα δωρεάν από το Bill Score.
-      </p>
+      <div>
+        <p className="mb-4 font-display text-xl font-bold text-ink">Διαθέσιμο σύντομα. Άφησε το email σου και θα σε ειδοποιήσω.</p>
+        <WaitlistForm interest={interest} />
+      </div>
     );
   }
   return (

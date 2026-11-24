@@ -101,6 +101,54 @@ async function handleBillScore(request: Request, env: Env): Promise<Response> {
   return json({ ok: true });
 }
 
+/** Λίστα αναμονής για προϊόντα και υπηρεσίες που δεν έχουν ανοίξει ακόμα. */
+const waitlistInterests = ["paketo-bill", "vivlio", "workbook", "excel", "prompts", "e-course"];
+
+async function handleWaitlist(request: Request, env: Env): Promise<Response> {
+  const origin = request.headers.get("origin");
+  if (origin && new URL(origin).hostname !== new URL(request.url).hostname) {
+    return json({ ok: false, error: "origin" }, 403);
+  }
+  let body: { email?: unknown; interest?: unknown; website?: unknown };
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false, error: "body" }, 400);
+  }
+  if (typeof body.website === "string" && body.website !== "") return json({ ok: true }); // bot
+
+  const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+  const interest = typeof body.interest === "string" ? body.interest : "";
+  if (!emailRe.test(email)) return json({ ok: false, error: "email" }, 400);
+  if (!waitlistInterests.includes(interest)) return json({ ok: false, error: "interest" }, 400);
+
+  const send = (payload: unknown) =>
+    fetch("https://connect.mailerlite.com/api/subscribers", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.MAILERLITE_API_KEY}`,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+  try {
+    // Το πεδίο «lista_anamonis» πρέπει να υπάρχει στο MailerLite (κείμενο). Αν δεν υπάρχει,
+    // ξαναδοκιμάζουμε χωρίς πεδία ώστε ο συνδρομητής να μην χαθεί.
+    let res = await send({ email, fields: { lista_anamonis: interest }, groups: [env.MAILERLITE_GROUP_ID] });
+    if (res.status === 422) res = await send({ email, groups: [env.MAILERLITE_GROUP_ID] });
+    if (!res.ok) {
+      console.error("mailerlite waitlist", res.status, await res.text());
+      return json({ ok: false, error: "provider" }, 502);
+    }
+  } catch (err) {
+    console.error("mailerlite unreachable", err);
+    return json({ ok: false, error: "provider" }, 502);
+  }
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -116,6 +164,11 @@ export default {
     if (url.pathname === "/api/billscore") {
       if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
       return handleBillScore(request, env);
+    }
+
+    if (url.pathname === "/api/waitlist") {
+      if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
+      return handleWaitlist(request, env);
     }
 
     const res = await env.ASSETS.fetch(request);

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fira_Sans_Extra_Condensed, Literata } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { site, socials } from "@/lib/site";
+import { cfAnalyticsToken, site, socials } from "@/lib/site";
 import "./globals.css";
 
 const firaXC = Fira_Sans_Extra_Condensed({
@@ -66,6 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        {cfAnalyticsToken && (
+          <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: cfAnalyticsToken })} />
+        )}
       </body>
     </html>
   );

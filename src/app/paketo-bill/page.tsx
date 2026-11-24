@@ -70,7 +70,7 @@ export default function PackagePage() {
             </p>
             {bundle.price !== null && <p className="mt-6 font-display text-3xl font-black text-ink">{formatPrice(bundle.price)}</p>}
             <div className="mt-6 flex flex-col gap-4">
-              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" />
+              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" interest="paketo-bill" />
               {!bundle.checkoutUrl && (
                 <div>
                   <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>

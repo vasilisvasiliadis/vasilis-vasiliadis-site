@@ -2,7 +2,7 @@
  * Περιεχόμενο σελίδων συνεργασίας. Μορφές και διάρκειες είναι πρόταση,
  * οι τιμές «κατόπιν συζήτησης» μέχρι να οριστούν.
  */
-export type Offer = { name: string; format: string; includes: string[]; price: string };
+export type Offer = { name: string; format: string; includes: string[]; price: string; /** Κλειδί λίστας αναμονής όταν η προσφορά δεν έχει ανοίξει */ waitlist?: string };
 
 export type Service = {
   slug: "mentoring" | "strategy" | "education";
@@ -142,6 +142,7 @@ export const services: Record<Service["slug"], Service> = {
         format: "Online, με τον δικό σου ρυθμό",
         includes: ["Η μέθοδος Bill σε βίντεο, με τα εργαλεία του πακέτου", "Ετοιμάζεται"],
         price: "Σύντομα",
+        waitlist: "e-course",
       },
     ],
     steps: [

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cases } from "@/lib/content";
 import { business, bookingUrl } from "@/lib/site";
 import { CaseLedger } from "./CaseLedger";
+import { WaitlistForm } from "./WaitlistForm";
 import type { Service } from "@/lib/services";
 import { PageHero } from "./PageHero";
 import { ButtonLink, Container, Dot, buttonBase } from "./ui";
@@ -60,6 +61,11 @@ export function ServicePage({ s }: { s: Service }) {
                     <li key={i}>{i}</li>
                   ))}
                 </ul>
+                {o.waitlist && (
+                  <div className="mt-6">
+                    <WaitlistForm interest={o.waitlist} />
+                  </div>
+                )}
               </article>
             ))}
           </div>

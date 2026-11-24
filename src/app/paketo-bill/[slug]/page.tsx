@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 text-pencil">{d.format}</p>
             {p.price !== null && <p className="mt-8 font-display text-3xl font-black text-ink">{formatPrice(p.price)}</p>}
             <div className="mt-8">
-              <BuyButton checkoutUrl={p.checkoutUrl} price={p.price} />
+              <BuyButton checkoutUrl={p.checkoutUrl} price={p.price} interest={p.slug} />
             </div>
           </div>
           <Image
