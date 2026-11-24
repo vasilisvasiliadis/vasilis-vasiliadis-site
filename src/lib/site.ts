@@ -18,8 +18,11 @@ export const business = {
   email: "info@vasilisvasiliadis.gr",
 };
 
-/** Merchant of Record για τις αγορές. null μέχρι να επιλεγεί πάροχος. */
-export const merchantOfRecord: { name: string | null; url: string | null } = { name: null, url: null };
+/**
+ * Merchant of Record για τις αγορές: Polar. Το όνομα είναι η εμπορική επωνυμία.
+ * TODO: αντικατάσταση με την ακριβή νομική επωνυμία όπως εμφανίζεται στα παραστατικά.
+ */
+export const merchantOfRecord: { name: string | null; url: string | null } = { name: "Polar", url: "https://polar.sh" };
 
 /** Λογαριασμοί social (τα ίδια βίντεο ανεβαίνουν και στους δύο). */
 export const socials = [
