@@ -251,7 +251,7 @@ export const tiers: Tier[] = [
     name: "Βιβλίο + Workbook",
     includes: ["Η μέθοδος Bill, βιβλίο PDF 146 σελίδων", "Workbook, 36 σελίδες Α4 για εκτύπωση"],
     launchPrice: 24.9,
-    regularPrice: 34.9,
+    regularPrice: 29.9,
     checkoutUrl: null,
   },
   {
