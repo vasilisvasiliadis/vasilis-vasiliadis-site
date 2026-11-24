@@ -5,6 +5,7 @@ import { LegalPage, Section } from "@/components/LegalPage";
 import { business, merchantOfRecord } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/aporrito" },
   title: "Πολιτική απορρήτου",
   description: "Ποια προσωπικά δεδομένα συλλέγουμε, γιατί, πόσο τα κρατάμε και ποια δικαιώματα έχεις (GDPR).",
 };

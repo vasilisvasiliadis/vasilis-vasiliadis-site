@@ -5,6 +5,7 @@ import { LegalPage, Section } from "@/components/LegalPage";
 import { business, merchantOfRecord } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/oroi" },
   title: "Όροι χρήσης",
   description: "Οι όροι χρήσης του ιστότοπου vasilisvasiliadis.gr και των ψηφιακών προϊόντων της μεθόδου Bill.",
 };

@@ -5,6 +5,7 @@ import { ButtonLink, Container, Struck } from "@/components/ui";
 import { socials } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/poios-eimai" },
   title: "Ποιος είμαι",
   description:
     "Ο Βασίλης «Bill» Βασιλειάδης: λογιστής-φοροτεχνικός Α΄ τάξης, mentor, ιδρυτής της Count On Me και της Billow, τραγουδοποιός, πατέρας τριών αγοριών.",

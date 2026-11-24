@@ -16,7 +16,7 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const p = products.find((x) => x.slug === slug);
-  return p ? { title: p.name, description: p.line } : {};
+  return p ? { title: p.name, description: p.line, alternates: { canonical: `/paketo-bill/${p.slug}` } } : {};
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {

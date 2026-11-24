@@ -8,6 +8,7 @@ import { productDetails } from "@/lib/content";
 import { bundle, formatPrice, products } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/paketo-bill" },
   title: "Πακέτο BILL",
   description: "Βιβλίο, Workbook, Excel και AI Prompts της μεθόδου Bill. Ένα σύστημα, τέσσερα εργαλεία.",
 };

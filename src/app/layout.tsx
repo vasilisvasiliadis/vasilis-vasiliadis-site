@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     description: site.description,
     images: [{ url: "/images/photos/portrait.webp", width: 800, height: 800, alt: site.name }],
   },
-  alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = {

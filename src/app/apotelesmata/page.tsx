@@ -6,6 +6,7 @@ import { cases } from "@/lib/content";
 import { countOnMeReviewsUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/apotelesmata" },
   title: "Αποτελέσματα",
   description:
     "10 ενδεικτικά παραδείγματα από την ελληνική μικρή επιχείρηση: κομμωτήριο, mini market, λογιστικό γραφείο, υδραυλικός, ηλεκτρολόγος, συνεργείο, σύμβουλοι, e-shop, λογοθεραπεία.",

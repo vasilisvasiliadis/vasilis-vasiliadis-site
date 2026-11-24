@@ -3,6 +3,7 @@ import { LegalPage, Section } from "@/components/LegalPage";
 import { business, merchantOfRecord } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/epistrofes" },
   title: "Πολιτική επιστροφών",
   description: "Τα ψηφιακά προϊόντα της μεθόδου Bill παραδίδονται αμέσως και δεν επιστρέφονται.",
 };
