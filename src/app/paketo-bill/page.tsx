@@ -5,6 +5,7 @@ import { BuyButton } from "@/components/BuyButton";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container } from "@/components/ui";
 import { productDetails } from "@/lib/content";
+import { BundlePrice } from "@/components/BundlePrice";
 import { bundle, formatPrice, products, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -68,9 +69,9 @@ export default function PackagePage() {
               Βιβλίο, Workbook, Excel και AI Prompts μαζί. Διαβάζεις, γράφεις με μολύβι, βάζεις τα νούμερα στο Excel και
               ελέγχεις τη σκέψη σου με την AI.
             </p>
-            {bundle.price !== null && <p className="mt-6 font-display text-3xl font-black text-ink">{formatPrice(bundle.price)}</p>}
+            <BundlePrice />
             <div className="mt-6 flex flex-col gap-4">
-              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" interest="paketo-bill" />
+              <BuyButton checkoutUrl={bundle.checkoutUrl} price={null} label="Αγόρασε το πακέτο" interest="paketo-bill" />
               {!bundle.checkoutUrl && (
                 <div>
                   <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>

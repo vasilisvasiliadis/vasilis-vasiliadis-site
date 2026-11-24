@@ -102,6 +102,7 @@ async function handleBillScore(request: Request, env: Env): Promise<Response> {
 }
 
 /** Λίστα αναμονής για προϊόντα και υπηρεσίες που δεν έχουν ανοίξει ακόμα. */
+const fairPriceOptions = ["lt20", "20-30", "30-40", "40-50", "gt50"];
 const waitlistInterests = ["paketo-bill", "vivlio", "workbook", "excel", "prompts", "e-course"];
 
 async function handleWaitlist(request: Request, env: Env): Promise<Response> {
@@ -109,7 +110,7 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
   if (origin && new URL(origin).hostname !== new URL(request.url).hostname) {
     return json({ ok: false, error: "origin" }, 403);
   }
-  let body: { email?: unknown; interest?: unknown; website?: unknown };
+  let body: { email?: unknown; interest?: unknown; fairPrice?: unknown; website?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -121,6 +122,7 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
   const interest = typeof body.interest === "string" ? body.interest : "";
   if (!emailRe.test(email)) return json({ ok: false, error: "email" }, 400);
   if (!waitlistInterests.includes(interest)) return json({ ok: false, error: "interest" }, 400);
+  const fairPrice = typeof body.fairPrice === "string" && fairPriceOptions.includes(body.fairPrice) ? body.fairPrice : "";
 
   const send = (payload: unknown) =>
     fetch("https://connect.mailerlite.com/api/subscribers", {
@@ -134,10 +136,12 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
     });
 
   try {
-    // Το πεδίο «lista_anamonis» πρέπει να υπάρχει στο MailerLite (κείμενο). Αν δεν υπάρχει,
-    // ξαναδοκιμάζουμε χωρίς πεδία ώστε ο συνδρομητής να μην χαθεί.
-    let res = await send({ email, fields: { lista_anamonis: interest }, groups: [env.MAILERLITE_GROUP_ID] });
-    if (res.status === 422) res = await send({ email, groups: [env.MAILERLITE_GROUP_ID] });
+    // Πεδία MailerLite (κείμενο): «lista_anamonis» και «dikaia_timi». Αν κάποιο δεν υπάρχει (422),
+    // ξαναδοκιμάζουμε με λιγότερα πεδία ώστε ο συνδρομητής να μην χαθεί.
+    const base = { email, groups: [env.MAILERLITE_GROUP_ID] };
+    let res = await send({ ...base, fields: { lista_anamonis: interest, ...(fairPrice ? { dikaia_timi: fairPrice } : {}) } });
+    if (res.status === 422 && fairPrice) res = await send({ ...base, fields: { lista_anamonis: interest } });
+    if (res.status === 422) res = await send(base);
     if (!res.ok) {
       console.error("mailerlite waitlist", res.status, await res.text());
       return json({ ok: false, error: "provider" }, 502);

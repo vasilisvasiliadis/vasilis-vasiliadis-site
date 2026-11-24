@@ -19,14 +19,14 @@ export function BuyButton({
     return (
       <div>
         <p className="mb-4 font-display text-xl font-bold text-ink">Διαθέσιμο σύντομα. Άφησε το email σου και θα σε ειδοποιήσω.</p>
-        <WaitlistForm interest={interest} />
+        <WaitlistForm interest={interest} askPrice={interest === "paketo-bill"} />
       </div>
     );
   }
   return (
     <div>
       <a href={checkoutUrl} className={`${buttonBase} bg-dot text-white hover:bg-dot-dark`}>
-        {label}: {formatPrice(price)}
+        {price === null ? label : `${label}: ${formatPrice(price)}`}
       </a>
       <p className="mt-2 text-sm text-pencil">Ψηφιακό προϊόν: παραδίδεται αμέσως και δεν επιστρέφεται.</p>
     </div>

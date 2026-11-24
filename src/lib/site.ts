@@ -172,7 +172,7 @@ export const products: Product[] = [
     cover: "/images/covers/book.webp",
     coverW: 900,
     coverH: 1277,
-    price: null,
+    price: 14.9,
     checkoutUrl: null,
   },
   {
@@ -183,7 +183,7 @@ export const products: Product[] = [
     cover: "/images/covers/workbook.webp",
     coverW: 1200,
     coverH: 848,
-    price: null,
+    price: 12.9,
     checkoutUrl: null,
   },
   {
@@ -194,7 +194,7 @@ export const products: Product[] = [
     cover: "/images/covers/excel.webp",
     coverW: 900,
     coverH: 1277,
-    price: null,
+    price: 9.9,
     checkoutUrl: null,
   },
   {
@@ -205,7 +205,7 @@ export const products: Product[] = [
     cover: "/images/covers/prompts.webp",
     coverW: 900,
     coverH: 1277,
-    price: null,
+    price: 4.9,
     checkoutUrl: null,
   },
 ];
@@ -215,9 +215,58 @@ export function formatPrice(price: number | null) {
   return new Intl.NumberFormat("el-GR", { style: "currency", currency: "EUR" }).format(price);
 }
 
-/** Το ολοκληρωμένο πακέτο (βιβλίο, Workbook, Excel, Prompts). */
-export const bundle: { name: string; price: number | null; checkoutUrl: string | null } = {
+/**
+ * Το ολοκληρωμένο πακέτο (βιβλίο, Workbook, Excel, Prompts).
+ * Οι τιμές ΑΝΕΒΑΙΝΟΥΝ: γνωριμίας → ενδιάμεση → κανονική (δεν ανακοινώνεται μείωση από προηγούμενη τιμή).
+ * Στο Polar: μία τιμή (κανονική) και ένας κωδικός έκπτωσης ανά φάση, που μπαίνει στον σύνδεσμο πληρωμής.
+ * launchDate = η μέρα που ανοίγουν οι πωλήσεις (ISO, π.χ. "2026-12-01T09:00:00+02:00"). null = δεν έχει ανοίξει.
+ */
+export type PricePhase = { name: string; price: number; days: number };
+
+export const bundle: {
+  name: string;
+  regularPrice: number;
+  phases: PricePhase[];
+  launchDate: string | null;
+  checkoutUrl: string | null;
+} = {
   name: "Ολόκληρο το Πακέτο BILL",
-  price: null,
+  regularPrice: 39.9,
+  phases: [
+    { name: "Τιμή γνωριμίας", price: 29.9, days: 7 },
+    { name: "Ενδιάμεση τιμή", price: 34.9, days: 14 },
+  ],
+  launchDate: null,
   checkoutUrl: null,
 };
+
+/** Το άθροισμα των τεσσάρων προϊόντων όταν πωλούνται χωριστά. */
+export const productsTotal = products.reduce((sum, p) => sum + (p.price ?? 0), 0);
+
+export type BundleOffer = {
+  state: "waitlist" | "open";
+  phase: string;
+  price: number;
+  /** Ημερομηνία λήξης της τρέχουσας φάσης (μόνο όταν είναι ανοιχτό) */
+  until: Date | null;
+  /** Η τιμή που ακολουθεί (null όταν είναι ήδη η κανονική) */
+  nextPrice: number | null;
+};
+
+/** Ποια τιμή ισχύει τώρα. Πριν την έναρξη: η τιμή γνωριμίας για τη λίστα αναμονής. */
+export function bundleOffer(now: Date = new Date()): BundleOffer {
+  const { phases, regularPrice, launchDate } = bundle;
+  const start = launchDate ? new Date(launchDate) : null;
+  if (!start || now < start) {
+    return { state: "waitlist", phase: phases[0].name, price: phases[0].price, until: null, nextPrice: phases[1]?.price ?? regularPrice };
+  }
+  let t = start.getTime();
+  for (let i = 0; i < phases.length; i++) {
+    const end = t + phases[i].days * 86_400_000;
+    if (now.getTime() < end) {
+      return { state: "open", phase: phases[i].name, price: phases[i].price, until: new Date(end), nextPrice: phases[i + 1]?.price ?? regularPrice };
+    }
+    t = end;
+  }
+  return { state: "open", phase: "Κανονική τιμή", price: regularPrice, until: null, nextPrice: null };
+}
