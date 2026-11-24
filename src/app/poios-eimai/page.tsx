@@ -111,10 +111,10 @@ export default function AboutPage() {
 
           <aside className="lg:pt-2">
             <Image
-              src="/images/photos/fullbody.webp"
-              alt="Ο Βασίλης Βασιλειάδης όρθιος"
-              width={382}
-              height={512}
+              src="/images/photos/coffee.webp"
+              alt="Ο Βασίλης Βασιλειάδης με ένα φλιτζάνι καφέ"
+              width={512}
+              height={286}
               sizes="320px"
               className="w-full max-w-xs"
             />

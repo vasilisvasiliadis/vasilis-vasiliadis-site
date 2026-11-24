@@ -13,6 +13,8 @@ export type Service = {
   offers: Offer[];
   steps: { verb: string; text: string }[];
   subject: string;
+  /** Παράδειγμα από τα Αποτελέσματα που δείχνει αυτή την υπηρεσία στην πράξη */
+  caseSlug?: string;
 };
 
 export const services: Record<Service["slug"], Service> = {
@@ -56,6 +58,7 @@ export const services: Record<Service["slug"], Service> = {
       { verb: "Ξεκινάμε", text: "Πρώτη συνάντηση: πυλώνας, 3 στόχοι, ημερομηνίες." },
     ],
     subject: "Mentoring",
+    caseSlug: "kommotirio",
   },
   strategy: {
     slug: "strategy",
@@ -99,6 +102,7 @@ export const services: Record<Service["slug"], Service> = {
       { verb: "Σχέδιο", text: "Τρεις προτεραιότητες, με σειρά: μπετά πρώτα." },
     ],
     subject: "Strategy",
+    caseSlug: "logistiko-grafeio",
   },
   education: {
     slug: "education",
