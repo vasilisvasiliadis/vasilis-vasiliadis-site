@@ -243,7 +243,7 @@ export const tiers: Tier[] = [
     name: "Βιβλίο",
     includes: ["Η μέθοδος Bill, βιβλίο PDF 146 σελίδων"],
     launchPrice: 14.9,
-    regularPrice: 19.9,
+    regularPrice: 14.9,
     checkoutUrl: null,
   },
   {
@@ -264,7 +264,7 @@ export const tiers: Tier[] = [
     ],
     gift: "AI Prompts, ένα prompt για κάθε κεφάλαιο (μόνο σε αυτό το πακέτο)",
     launchPrice: 34.9,
-    regularPrice: 49.9,
+    regularPrice: 44.9,
     checkoutUrl: null,
   },
 ];
@@ -281,6 +281,6 @@ export type TierOffer = {
 /** Ποια τιμή ισχύει τώρα για ένα επίπεδο. */
 export function tierOffer(t: Tier, now: Date = new Date()): TierOffer {
   const end = new Date(launchEnds);
-  if (now < end) return { price: t.launchPrice, phase: "launch", until: end, nextPrice: t.regularPrice };
+  if (now < end && t.launchPrice !== t.regularPrice) return { price: t.launchPrice, phase: "launch", until: end, nextPrice: t.regularPrice };
   return { price: t.regularPrice, phase: "regular", until: null, nextPrice: null };
 }
