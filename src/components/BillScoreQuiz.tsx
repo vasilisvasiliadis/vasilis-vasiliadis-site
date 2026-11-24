@@ -240,9 +240,10 @@ export function BillScoreQuiz() {
           />
         </section>
 
+        <EmailResult path={path} answers={answers as Answer[]} win={win} />
+
         <p className="mt-12 max-w-prose text-pencil">
-          Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score. Οι απαντήσεις σου μένουν σε
-          αυτή τη συσκευή.
+          Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.
         </p>
 
         <div className="no-print mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -299,6 +300,108 @@ export function BillScoreQuiz() {
         )}
       </div>
     </Shell>
+  );
+}
+
+function EmailResult({ path, answers, win }: { path: Path; answers: Answer[]; win: string }) {
+  const [email, setEmail] = useState("");
+  const [updates, setUpdates] = useState(false);
+  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
+
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setState("sending");
+    setError("");
+    const website = (new FormData(e.currentTarget).get("website") as string) ?? "";
+    try {
+      const res = await fetch("/api/billscore", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email, path, answers, win, updates, website }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (res.ok && data.ok) {
+        setState("sent");
+        return;
+      }
+      setError(
+        data.error === "email"
+          ? "Το email δεν φαίνεται σωστό. Έλεγξέ το και πάτησε ξανά «Στείλε μου το σκορ»."
+          : "Το σκορ δεν στάλθηκε. Δοκίμασε ξανά σε λίγο. Το αποτέλεσμα μένει εδώ, μπορείς και να το εκτυπώσεις.",
+      );
+      setState("error");
+    } catch {
+      setError("Δεν υπάρχει σύνδεση. Έλεγξε το internet και πάτησε ξανά «Στείλε μου το σκορ».");
+      setState("error");
+    }
+  }
+
+  if (state === "sent") {
+    return (
+      <section className="mt-14 max-w-xl border-l-[6px] border-dot pl-6" aria-live="polite">
+        <h2 className="text-3xl font-black">Το σκορ στάλθηκε</h2>
+        <p className="mt-2">Θα το βρεις στο {email} σε λίγα λεπτά. Αν δεν φανεί, κοίτα και στα Προωθήσεις ή στα Ανεπιθύμητα.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section aria-labelledby="email-h" className="no-print mt-14 max-w-xl">
+      <h2 id="email-h" className="text-3xl font-black">
+        Στείλε μου το σκορ
+      </h2>
+      <p className="mt-2">
+        Σου έρχεται στο email το σκορ, οι 4 πυλώνες και το πρώτο σου βήμα, για να το έχεις όταν ξαναμετρήσεις σε 90 μέρες.
+      </p>
+      <form onSubmit={submit} className="mt-5" noValidate>
+        <label htmlFor="score-email" className="block font-display text-lg font-bold text-ink">
+          Email
+        </label>
+        <div className="mt-1 flex flex-col gap-3 sm:flex-row">
+          <input
+            id="score-email"
+            type="email"
+            required
+            autoComplete="email"
+            inputMode="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="min-h-12 flex-1 border-2 border-ink bg-white px-4 text-lg text-ink outline-none focus:border-dot"
+          />
+          <button
+            type="submit"
+            disabled={state === "sending"}
+            className={`${buttonBase} bg-dot text-white hover:bg-dot-dark disabled:opacity-60`}
+          >
+            {state === "sending" ? "Στέλνεται…" : "Στείλε μου το σκορ"}
+          </button>
+        </div>
+        {/* honeypot για bots */}
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+        <label className="mt-4 flex items-start gap-3 text-[0.95rem]">
+          <input
+            type="checkbox"
+            checked={updates}
+            onChange={(e) => setUpdates(e.target.checked)}
+            className="mt-1 size-5 shrink-0 accent-dot"
+          />
+          <span>Θέλω να μου στέλνετε και πρακτικά εργαλεία της μεθόδου. Μπορώ να διαγραφώ με ένα κλικ.</span>
+        </label>
+        {state === "error" && (
+          <p role="alert" className="mt-4 font-bold text-dot">
+            {error}
+          </p>
+        )}
+        <p className="mt-4 text-sm text-pencil">
+          Το email και το σκορ σου αποθηκεύονται στο MailerLite για να σου σταλεί το αποτέλεσμα. Δες την{" "}
+          <Link href="/aporrito" className="underline underline-offset-4">
+            πολιτική απορρήτου
+          </Link>
+          .
+        </p>
+      </form>
+    </section>
   );
 }
 

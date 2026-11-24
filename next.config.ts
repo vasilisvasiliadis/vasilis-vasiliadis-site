@@ -1,24 +1,12 @@
 import type { NextConfig } from "next";
 
+/**
+ * Στατικό export (φάκελος out/) για Cloudflare Workers.
+ * Τα redirects του thebillmethod.gr γίνονται στο worker/index.ts.
+ */
 const nextConfig: NextConfig = {
-  images: { formats: ["image/avif", "image/webp"] },
-  async redirects() {
-    return [
-      // thebillmethod.gr → vasilisvasiliadis.gr (αρχική → σελίδα μεθόδου, υπόλοιπα 1:1)
-      {
-        source: "/",
-        has: [{ type: "host", value: "(www\\.)?thebillmethod\\.gr" }],
-        destination: "https://vasilisvasiliadis.gr/bill-method",
-        permanent: true,
-      },
-      {
-        source: "/:path+",
-        has: [{ type: "host", value: "(www\\.)?thebillmethod\\.gr" }],
-        destination: "https://vasilisvasiliadis.gr/:path+",
-        permanent: true,
-      },
-    ];
-  },
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

@@ -7,6 +7,23 @@ export const site = {
     "Mentoring, στρατηγική και εκπαίδευση για επιχειρηματίες. The Bill Method™: πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.",
 };
 
+/** Στοιχεία επιχείρησης (υποχρεωτικά για ηλεκτρονικό εμπόριο, π.δ. 131/2003). */
+export const business = {
+  name: "Βασιλειάδης Βασίλης",
+  address: "Νέα Πέλλα",
+  /** TODO: ταχυδρομικός κώδικας */
+  postalCode: null as string | null,
+  region: "Πέλλα",
+  afm: "116534449",
+  doy: "Γιαννιτσών",
+  email: "info@vasilisvasiliadis.gr",
+};
+
+/** Merchant of Record για τις αγορές. null μέχρι να επιλεγεί πάροχος. */
+export const merchantOfRecord: { name: string | null; url: string | null } = { name: null, url: null };
+
+export const legalUpdated = "24 Νοεμβρίου 2026";
+
 export type NavItem = { label: string; href: string };
 
 export const mainNav: NavItem[] = [
@@ -129,6 +146,8 @@ export type Product = {
   coverH: number;
   /** null = η τιμή δεν έχει οριστεί ακόμα */
   price: number | null;
+  /** Σύνδεσμος πληρωμής του Merchant of Record. null = όχι ακόμα */
+  checkoutUrl: string | null;
 };
 
 export const products: Product[] = [
@@ -141,6 +160,7 @@ export const products: Product[] = [
     coverW: 900,
     coverH: 1277,
     price: null,
+    checkoutUrl: null,
   },
   {
     slug: "workbook",
@@ -151,6 +171,7 @@ export const products: Product[] = [
     coverW: 1200,
     coverH: 848,
     price: null,
+    checkoutUrl: null,
   },
   {
     slug: "excel",
@@ -161,6 +182,7 @@ export const products: Product[] = [
     coverW: 900,
     coverH: 1277,
     price: null,
+    checkoutUrl: null,
   },
   {
     slug: "prompts",
@@ -171,6 +193,7 @@ export const products: Product[] = [
     coverW: 900,
     coverH: 1277,
     price: null,
+    checkoutUrl: null,
   },
 ];
 
