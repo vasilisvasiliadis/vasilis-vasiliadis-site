@@ -118,6 +118,13 @@ export default {
       return handleBillScore(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    const res = await env.ASSETS.fetch(request);
+    // Η κρυφή διεύθυνση δοκιμής (*.workers.dev) δεν εμφανίζεται στις μηχανές αναζήτησης
+    if (url.hostname.endsWith(".workers.dev")) {
+      const out = new Response(res.body, res);
+      out.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return out;
+    }
+    return res;
   },
 };
