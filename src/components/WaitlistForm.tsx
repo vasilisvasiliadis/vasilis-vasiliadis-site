@@ -5,10 +5,28 @@ import { useId, useState } from "react";
 import { buttonBase } from "./ui";
 
 /** Λίστα αναμονής: email + ρητή συγκατάθεση. Στέλνει στο /api/waitlist (Worker → MailerLite). */
-export function WaitlistForm({ interest, label = "Ειδοποίησέ με" }: { interest: string; label?: string }) {
+const priceOptions = [
+  { value: "lt20", label: "Έως 20 €" },
+  { value: "20-30", label: "20–30 €" },
+  { value: "30-40", label: "30–40 €" },
+  { value: "40-50", label: "40–50 €" },
+  { value: "gt50", label: "Πάνω από 50 €" },
+];
+
+export function WaitlistForm({
+  interest,
+  label = "Ειδοποίησέ με",
+  askPrice = false,
+}: {
+  interest: string;
+  label?: string;
+  /** Προαιρετική ερώτηση: ποια τιμή θεωρεί δίκαιη για το πακέτο */
+  askPrice?: boolean;
+}) {
   const id = useId();
   const [email, setEmail] = useState("");
   const [agree, setAgree] = useState(false);
+  const [fairPrice, setFairPrice] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -26,7 +44,7 @@ export function WaitlistForm({ interest, label = "Ειδοποίησέ με" }: 
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, interest, website }),
+        body: JSON.stringify({ email, interest, website, fairPrice }),
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (res.ok && data.ok) {
@@ -73,6 +91,26 @@ export function WaitlistForm({ interest, label = "Ειδοποίησέ με" }: 
           {state === "sending" ? "Στέλνεται…" : label}
         </button>
       </div>
+      {askPrice && (
+        <div className="mt-3">
+          <label htmlFor={`${id}-price`} className="block text-[0.95rem] font-bold text-ink">
+            Προαιρετικά: πόσο θα ήταν δίκαιο για όλο το πακέτο;
+          </label>
+          <select
+            id={`${id}-price`}
+            value={fairPrice}
+            onChange={(e) => setFairPrice(e.target.value)}
+            className="mt-1 min-h-12 w-full border-2 border-ink bg-white px-3 text-lg text-ink outline-none focus:border-dot"
+          >
+            <option value="">Δεν απαντώ</option>
+            {priceOptions.map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
       {/* honeypot για bots */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <label className="mt-3 flex items-start gap-3 text-[0.95rem]">

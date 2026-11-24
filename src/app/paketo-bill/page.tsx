@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BuyButton } from "@/components/BuyButton";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container } from "@/components/ui";
 import { productDetails } from "@/lib/content";
-import { bundle, formatPrice, products, site } from "@/lib/site";
+import { TierCards } from "@/components/TierCards";
+import { WaitlistForm } from "@/components/WaitlistForm";
+import { products, site, tiers } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/paketo-bill" },
@@ -21,7 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
+const availability: Record<string, string> = {
+  vivlio: "Σε όλα τα επίπεδα",
+  workbook: "Από το 2ο επίπεδο",
+  excel: "Στο πλήρες πακέτο",
+  prompts: "Δώρο στο πλήρες πακέτο",
+};
+
 export default function PackagePage() {
+  const open = tiers.some((t) => t.checkoutUrl);
   return (
     <>
       <PageHero kicker="Το Πακέτο BILL" title="Ένα σύστημα, τέσσερα εργαλεία">
@@ -50,7 +59,7 @@ export default function PackagePage() {
                     <h2 className="text-4xl font-black group-hover:text-dot">{p.name}</h2>
                     <p className="mt-2 max-w-prose">{p.line}</p>
                   </div>
-                  <p className="font-display text-2xl whitespace-nowrap text-ink">{formatPrice(p.price)}</p>
+                  <p className="font-display text-xl text-ink sm:text-right">{availability[p.slug]}</p>
                 </Link>
               </li>
             ))}
@@ -58,41 +67,42 @@ export default function PackagePage() {
         </Container>
       </section>
 
-      <section className="grid-paper border-t border-rule py-16 lg:py-24" aria-labelledby="bundle-title">
-        <Container className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div>
-            <h2 id="bundle-title" className="text-5xl font-black sm:text-6xl">
-              {bundle.name}
-            </h2>
-            <p className="mt-4 max-w-prose text-lg">
-              Βιβλίο, Workbook, Excel και AI Prompts μαζί. Διαβάζεις, γράφεις με μολύβι, βάζεις τα νούμερα στο Excel και
-              ελέγχεις τη σκέψη σου με την AI.
-            </p>
-            {bundle.price !== null && <p className="mt-6 font-display text-3xl font-black text-ink">{formatPrice(bundle.price)}</p>}
-            <div className="mt-6 flex flex-col gap-4">
-              <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" interest="paketo-bill" />
-              {!bundle.checkoutUrl && (
-                <div>
-                  <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {products.map((p, i) => (
-              <Image
-                key={p.slug}
-                src={p.cover}
-                alt=""
-                width={p.coverW}
-                height={p.coverH}
-                sizes="200px"
-                className={`w-full border border-rule bg-white ${i % 2 ? "rotate-[2deg]" : "rotate-[-2deg]"}`}
-              />
-            ))}
+      <section id="epipeda" className="grid-paper scroll-mt-20 border-t border-rule py-16 lg:py-24" aria-labelledby="tiers-title">
+        <Container>
+          <h2 id="tiers-title" className="text-5xl font-black sm:text-6xl">
+            Διάλεξε πόσο μακριά θα πας
+          </h2>
+          <p className="mt-4 max-w-prose text-lg">
+            Ξεκίνα από το βιβλίο, πρόσθεσε το Workbook για να γράφεις, ή πάρε το πλήρες πακέτο με το Excel και τα AI Prompts
+            δώρο.
+          </p>
+          <div className="mt-10">
+            <TierCards />
           </div>
         </Container>
       </section>
+
+      {!open && (
+        <section id="lista" className="scroll-mt-20 border-t border-rule py-16 lg:py-24" aria-labelledby="lista-title">
+          <Container className="grid items-start gap-10 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              <h2 id="lista-title" className="text-5xl font-black">
+                Άνοιγμα σύντομα
+              </h2>
+              <p className="mt-4 max-w-prose text-lg">
+                Άφησε το email σου και θα σε ειδοποιήσω μία φορά, μόλις ανοίξουν οι πωλήσεις. Μέχρι τότε, ξεκίνα δωρεάν από το Bill
+                Score.
+              </p>
+              <div className="mt-6">
+                <ButtonLink href="/billscore" variant="line">
+                  Κάνε το Bill Score
+                </ButtonLink>
+              </div>
+            </div>
+            <WaitlistForm interest="paketo-bill" askPrice />
+          </Container>
+        </section>
+      )}
     </>
   );
 }

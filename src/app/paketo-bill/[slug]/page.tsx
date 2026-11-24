@@ -2,16 +2,22 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BuyButton } from "@/components/BuyButton";
 import { ButtonLink, Container, Dot } from "@/components/ui";
 import { productDetails } from "@/lib/content";
-import { formatPrice, products, site } from "@/lib/site";
+import { products, site } from "@/lib/site";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export const dynamicParams = false;
+
+const availability: Record<string, string> = {
+  vivlio: "Περιλαμβάνεται σε όλα τα επίπεδα",
+  workbook: "Περιλαμβάνεται από το 2ο επίπεδο",
+  excel: "Περιλαμβάνεται στο πλήρες πακέτο",
+  prompts: "Δώρο μόνο στο πλήρες πακέτο",
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -56,9 +62,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </h1>
             <p className="mt-6 max-w-2xl text-xl text-ink">{p.line}</p>
             <p className="mt-3 text-pencil">{d.format}</p>
-            {p.price !== null && <p className="mt-8 font-display text-3xl font-black text-ink">{formatPrice(p.price)}</p>}
-            <div className="mt-8">
-              <BuyButton checkoutUrl={p.checkoutUrl} price={p.price} interest={p.slug} />
+            <p className="mt-8 font-display text-2xl font-bold text-ink">{availability[p.slug]}</p>
+            <div className="mt-4">
+              <ButtonLink href="/paketo-bill#epipeda">Δες τα επίπεδα και τις τιμές</ButtonLink>
             </div>
           </div>
           <Image
