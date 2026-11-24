@@ -52,7 +52,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: "The Bill Method™",
     items: [
       { label: "Η μέθοδος", href: "/bill-method" },
-      { label: "Bill Score (δωρεάν)", href: "/billscore" },
+      { label: "Bill Score (δωρεάν)", href: "/billscore" },
       { label: "Πακέτο BILL", href: "/paketo-bill" },
       { label: "Αποτελέσματα", href: "/apotelesmata" },
     ],
@@ -188,7 +188,7 @@ export const products: Product[] = [
     slug: "excel",
     name: "Excel της μεθόδου",
     kind: "Εργαλεία",
-    line: "Τα εργαλεία, με τις πράξεις έτοιμες. Από το Bill Score ως το σχέδιο 90 ημερών.",
+    line: "Τα εργαλεία, με τις πράξεις έτοιμες. Από το Bill Score ως το σχέδιο 90 ημερών.",
     cover: "/images/covers/excel.webp",
     coverW: 900,
     coverH: 1277,

@@ -10,7 +10,7 @@ const options: { label: string; path: Path; hint: string }[] = [
   { label: "Όχι", path: "starting", hint: "Ξεκινάω τώρα" },
 ];
 
-/** Η ερώτηση-φίλτρο του Bill Score, απευθείας στην αρχική. */
+/** Η ερώτηση-φίλτρο του Bill Score, απευθείας στην αρχική. */
 export function HeroQuestion() {
   const router = useRouter();
   const [picked, setPicked] = useState<Path | null>(null);
@@ -24,7 +24,7 @@ export function HeroQuestion() {
 
   return (
     <fieldset className="mt-10 max-w-xl">
-      <legend className="font-display text-lg font-medium text-pencil">Bill Score: η ερώτηση-φίλτρο</legend>
+      <legend className="font-display text-lg font-medium text-pencil">Bill Score: η ερώτηση-φίλτρο</legend>
       <p className="mt-1 text-2xl leading-snug text-ink sm:text-[1.75rem]">Έχεις ήδη πελάτες που σε πληρώνουν;</p>
       <div className="mt-5 flex gap-10">
         {options.map((o) => (

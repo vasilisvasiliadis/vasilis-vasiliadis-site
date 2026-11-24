@@ -7,7 +7,7 @@ import { socials } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Ποιος είμαι",
   description:
-    "Ο Βασίλης «Bill» Βασιλειάδης: λογιστής-φοροτεχνικός Α΄ τάξης, mentor, ιδρυτής της Count On Me και της Billow, τραγουδοποιός, πατέρας τριών αγοριών.",
+    "Ο Βασίλης «Bill» Βασιλειάδης: λογιστής-φοροτεχνικός Α΄ τάξης, mentor, ιδρυτής της Count On Me και της Billow, τραγουδοποιός, πατέρας τριών αγοριών.",
 };
 
 const jobs = ["Σερβιτόρος", "Διανομέας", "Πωλητής", "Μεσίτης"];
@@ -98,7 +98,7 @@ export default function AboutPage() {
 
             <Chapter title="Γιατί σου τα λέω">
               <p>
-                Για να ξέρεις ποιον έχεις απέναντί σου. Ξέρω πώς είναι να δουλεύεις 12 και 14 ώρες, να κοιτάς τα παιδιά σου να
+                Για να ξέρεις ποιον έχεις απέναντί σου. Ξέρω πώς είναι να δουλεύεις 12 και 14 ώρες, να κοιτάς τα παιδιά σου να
                 κοιμούνται και να νιώθεις τον κόμπο για την ώρα των πληρωμών, κάθε μήνα.
               </p>
               <p>
@@ -118,7 +118,7 @@ export default function AboutPage() {
               className="w-full max-w-xs"
             />
             <h2 className="mt-8 text-3xl font-black">Σήμερα</h2>
-            <p className="mt-2 text-pencil">Λογιστής-φοροτεχνικός Α΄ τάξης. Και πάνω από όλα, πατέρας τριών αγοριών.</p>
+            <p className="mt-2 text-pencil">Λογιστής-φοροτεχνικός Α΄ τάξης. Και πάνω από όλα, πατέρας τριών αγοριών.</p>
             <ul className="mt-5 space-y-4">
               {ventures.map((v) => (
                 <li key={v.name}>
@@ -148,7 +148,7 @@ export default function AboutPage() {
         <Container>
           <h2 className="max-w-3xl text-5xl font-black">Ξεκίνα από ένα νούμερο</h2>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
+            <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
             <ButtonLink href="/mentoring" variant="line">
               Δούλεψε μαζί μου
             </ButtonLink>

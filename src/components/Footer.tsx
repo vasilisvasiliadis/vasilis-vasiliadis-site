@@ -14,7 +14,7 @@ export function Footer() {
               alt="Βασιλειάδης: Mentoring, Strategy, Education"
               width={1200}
               height={231}
-              className="h-9 w-auto"
+              className="h-12 w-auto"
             />
             <p className="mt-6 max-w-sm font-display text-2xl leading-tight font-bold">
               Αλλού ακούς θεωρίες. Εδώ εφαρμόζεις και μετράς.

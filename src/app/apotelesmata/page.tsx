@@ -16,15 +16,15 @@ const colors = ["text-build", "text-improve", "text-lead", "text-levelup"];
 export default function ResultsPage() {
   return (
     <>
-      <PageHero kicker="Πριν και μετά τις 90 μέρες" title="Αποτελέσματα">
+      <PageHero kicker="Πριν και μετά τις 90 μέρες" title="Αποτελέσματα">
         <p>
-          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
+          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
           δουλειάς την εβδομάδα.
         </p>
         <p className="mt-3 text-base text-pencil">
           Τα παραδείγματα βασίζονται σε πελάτες του λογιστικού μας γραφείου, της Count On Me, με τους οποίους δουλέψαμε αυτές τις
           αλλαγές. Ονόματα και στοιχεία έχουν αλλάξει για λόγους απορρήτου. Οι αριθμοί είναι στρογγυλεμένοι και ενδεικτικοί, και το
-          Bill Score είναι εκτίμηση εκ των υστέρων. Δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
+          Bill Score είναι εκτίμηση εκ των υστέρων. Δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
         </p>
         {countOnMeReviewsUrl && (
           <p className="mt-3 text-base">
@@ -82,9 +82,9 @@ export default function ResultsPage() {
       <section className="grid-paper py-16">
         <Container>
           <h2 className="max-w-3xl text-5xl font-black">Οι δικοί σου τρεις αριθμοί</h2>
-          <p className="mt-4 max-w-prose text-lg">Ξεκίνα από το Bill Score. Σε 90 μέρες ξαναμετράς και βλέπεις τη διαφορά.</p>
+          <p className="mt-4 max-w-prose text-lg">Ξεκίνα από το Bill Score. Σε 90 μέρες ξαναμετράς και βλέπεις τη διαφορά.</p>
           <ButtonLink href="/billscore" className="mt-8">
-            Κάνε το Bill Score
+            Κάνε το Bill Score
           </ButtonLink>
         </Container>
       </section>

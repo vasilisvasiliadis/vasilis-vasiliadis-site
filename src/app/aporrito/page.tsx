@@ -19,9 +19,9 @@ export default function PrivacyPage() {
         <p>Για οτιδήποτε αφορά τα δεδομένα σου, γράψε στο <a href={`mailto:${business.email}`}>{business.email}</a>.</p>
       </Section>
 
-      <Section title="Το Bill Score">
+      <Section title="Το Bill Score">
         <p>
-          Οι απαντήσεις σου στο Bill Score υπολογίζονται και αποθηκεύονται <strong>μόνο στη συσκευή σου</strong> (στη μνήμη
+          Οι απαντήσεις σου στο Bill Score υπολογίζονται και αποθηκεύονται <strong>μόνο στη συσκευή σου</strong> (στη μνήμη
           του φυλλομετρητή). Δεν φτάνουν σε εμάς, εκτός αν ζητήσεις να σου σταλεί το σκορ με email.
         </p>
         <p>Αν ζητήσεις να σου σταλεί το σκορ, αποθηκεύουμε:</p>

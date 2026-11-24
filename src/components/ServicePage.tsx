@@ -18,7 +18,7 @@ export function ContactActions({ subject }: { subject: string }) {
         </a>
       )}
       <ButtonLink href="/billscore" variant="line">
-        Κάνε πρώτα το Bill Score
+        Κάνε πρώτα το Bill Score
       </ButtonLink>
     </div>
   );

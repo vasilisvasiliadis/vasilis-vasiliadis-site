@@ -64,7 +64,7 @@ export default function PackagePage() {
               <BuyButton checkoutUrl={bundle.checkoutUrl} price={bundle.price} label="Αγόρασε το πακέτο" />
               {!bundle.checkoutUrl && (
                 <div>
-                  <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
+                  <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
                 </div>
               )}
             </div>

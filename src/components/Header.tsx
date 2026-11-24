@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-paper">
-      <Container className="flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+      <Container className="flex h-[4.5rem] items-center justify-between gap-6 lg:h-[4.5rem]">
         <Link href="/" className="shrink-0" aria-label="Βασίλης Βασιλειάδης, αρχική">
           <Image
             src="/brand/vasiliadis-logo.png"
@@ -30,7 +30,7 @@ export function Header() {
             width={1200}
             height={231}
             priority
-            className="h-8 w-auto lg:h-9"
+            className="h-10 w-auto sm:h-11 lg:h-12"
           />
         </Link>
 
@@ -58,7 +58,7 @@ export function Header() {
               href="/billscore"
               className={`${buttonBase} min-h-10 whitespace-nowrap bg-dot px-4 py-1.5 text-base text-white hover:bg-dot-dark`}
             >
-              Κάνε το Bill Score
+              Κάνε το Bill Score
             </Link>
           </span>
           <button
@@ -77,7 +77,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 overflow-y-auto bg-paper xl:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 top-[4.5rem] bottom-0 overflow-y-auto bg-paper xl:hidden">
           <Container className="py-6">
             <nav aria-label="Μενού κινητού" className="flex flex-col">
               {[...mainNav, { label: "Επικοινωνία", href: "/epikoinonia" }].map((item) => (
@@ -87,7 +87,7 @@ export function Header() {
               ))}
             </nav>
             <Link href="/billscore" className={`${buttonBase} mt-8 w-full bg-dot text-white`}>
-              Κάνε το Bill Score
+              Κάνε το Bill Score
             </Link>
           </Container>
         </div>

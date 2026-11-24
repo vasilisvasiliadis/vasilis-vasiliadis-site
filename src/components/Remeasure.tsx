@@ -51,7 +51,7 @@ export function Remeasure() {
     return (
       <Shell>
         <h1 className="text-5xl font-black sm:text-6xl">Ποιον πυλώνα ξαναμετράς;</h1>
-        <p className="mt-4 max-w-prose text-pencil">Αυτόν από τον οποίο ξεκίνησες στο Bill Score.</p>
+        <p className="mt-4 max-w-prose text-pencil">Αυτόν από τον οποίο ξεκίνησες στο Bill Score.</p>
         <div className="mt-8 flex flex-wrap gap-3">
           {pillars.map((p) => (
             <button
@@ -76,7 +76,7 @@ export function Remeasure() {
 
   return (
     <Shell>
-      <p className="font-display text-xl text-pencil">Επανάμετρηση, 30 μέρες μετά</p>
+      <p className="font-display text-xl text-pencil">Επανάμετρηση, 30 μέρες μετά</p>
       <h1 className="mt-2 text-5xl font-black sm:text-6xl">
         Πυλώνας <span className={s.text}>{meta.verb}</span>
       </h1>
@@ -116,13 +116,13 @@ export function Remeasure() {
         <section aria-live="polite" className={`mt-14 border-l-[6px] ${s.border} pl-6`}>
           <h2 className="text-4xl font-black">
             Σήμερα: {now}/25
-            {before !== null && <span className="text-pencil"> · πριν από 30 μέρες: {before}/25</span>}
+            {before !== null && <span className="text-pencil"> · πριν από 30 μέρες: {before}/25</span>}
           </h2>
           <p className="mt-3 max-w-prose text-lg">
             {before === null
               ? now < 15
                 ? "Κάτω από 15: ο πυλώνας θέλει ακόμα δουλειά. Μείνε σε αυτόν, ένα εργαλείο τη φορά."
-                : "15 και πάνω: πέρασες το όριο. Σε 60 μέρες ξανακάνεις όλο το Bill Score."
+                : "15 και πάνω: πέρασες το όριο. Σε 60 μέρες ξανακάνεις όλο το Bill Score."
               : now > before
                 ? `Ανέβηκες ${now - before} βαθμούς. Αυτό είναι πράξη, όχι θεωρία.`
                 : now === before

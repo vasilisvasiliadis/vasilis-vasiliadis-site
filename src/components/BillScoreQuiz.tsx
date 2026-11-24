@@ -157,7 +157,7 @@ export function BillScoreQuiz() {
     return (
       <Shell>
         <p className="font-display text-xl text-pencil">
-          Το Bill Score σου, {path === "starting" ? "διαδρομή «Ξεκινάω»" : "διαδρομή «Έχω ήδη επιχείρηση»"}
+          Το Bill Score σου, {path === "starting" ? "διαδρομή «Ξεκινάω»" : "διαδρομή «Έχω ήδη επιχείρηση»"}
         </p>
         <h1 ref={headingRef} tabIndex={-1} className="mt-2 outline-none">
           <span className="font-display text-[9rem] leading-[0.8] font-black sm:text-[12rem]">{r.total}</span>
@@ -219,7 +219,7 @@ export function BillScoreQuiz() {
         </div>
 
         <p className="mt-14 max-w-prose text-pencil">
-          Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.
+          Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.
         </p>
 
         <div className="no-print mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -325,7 +325,7 @@ function EmailResult({ path, answers, win }: { path: Path; answers: Answer[]; wi
         Πού να σου τη στείλω;
       </h2>
       <p className="mt-2">
-        Σου έρχεται αμέσως, μαζί με το σκορ, για να το έχεις όταν ξαναμετρήσεις σε 90 μέρες.
+        Σου έρχεται αμέσως, μαζί με το σκορ, για να το έχεις όταν ξαναμετρήσεις σε 90 μέρες.
       </p>
       <form onSubmit={submit} className="mt-5" noValidate>
         <label htmlFor="score-email" className="block font-display text-lg font-bold text-ink">

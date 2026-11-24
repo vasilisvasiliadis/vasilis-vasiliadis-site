@@ -6,7 +6,7 @@ export function BuyButton({ checkoutUrl, price, label = "Αγόρασε" }: { ch
   if (!checkoutUrl) {
     return (
       <p className="font-display text-xl font-bold text-pencil">
-        Διαθέσιμο σύντομα. Μέχρι τότε, ξεκίνα δωρεάν από το Bill Score.
+        Διαθέσιμο σύντομα. Μέχρι τότε, ξεκίνα δωρεάν από το Bill Score.
       </p>
     );
   }

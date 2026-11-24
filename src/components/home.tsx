@@ -5,14 +5,14 @@ import { formatPrice, pillars, pillarStyle, products, socials } from "@/lib/site
 import { HeroQuestion } from "./HeroQuestion";
 import { ButtonLink, Container, Dot, Struck, Underline, buttonBase } from "./ui";
 
-/* ───────── Hero: το Bill Score ξεκινά από εδώ ───────── */
+/* ───────── Hero: το Bill Score ξεκινά από εδώ ───────── */
 
 export function Hero() {
   return (
     <section className="grid-paper border-b border-rule">
-      <Container className="grid gap-12 py-12 sm:py-16 lg:grid-cols-[1.35fr_1fr] lg:gap-16 lg:py-20">
+      <Container className="grid gap-12 py-12 sm:py-16 lg:grid-cols-[1.7fr_1fr] lg:gap-14 lg:py-20">
         <div className="min-w-0">
-          <h1 className="text-[3.25rem] font-black sm:text-7xl lg:text-[5.5rem]">
+          <h1 className="text-[3.1rem] font-black sm:text-7xl lg:text-[4.6rem]">
             Στήσε μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα
             <Dot className="ml-1" />
           </h1>
@@ -31,7 +31,7 @@ export function Hero() {
           />
           <figcaption className="mt-3 text-[0.95rem] leading-snug text-pencil">
             <span className="font-display text-lg font-bold text-ink">Βασίλης «Bill» Βασιλειάδης.</span> Λογιστής-φοροτεχνικός
-            Α΄ τάξης, mentor, ομιλητής. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
+            Α΄ τάξης, mentor, ομιλητής. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
           </figcaption>
         </figure>
       </Container>
@@ -45,7 +45,7 @@ const pains = [
   "Αν λείψεις μία εβδομάδα, η δουλειά σταματάει. Οι διακοπές σου γίνονται τηλεφωνήματα.",
   "Το ταμείο σε εκπλήσσει αρνητικά. Κάθε μήνα, η ώρα των πληρωμών σού κόβει τον ύπνο.",
   "Δεν ξέρεις ακριβώς πού γυρνάει το κλειδί: πόσα πρέπει να βγάζεις τη μέρα για να βγει ο μήνας.",
-  "Δουλεύεις 12 ώρες, κερδίζεις τα ίδια και βλέπεις τα παιδιά σου μόνο όταν κοιμούνται.",
+  "Δουλεύεις 12 ώρες, κερδίζεις τα ίδια και βλέπεις τα παιδιά σου μόνο όταν κοιμούνται.",
 ];
 
 export function Problem() {
@@ -134,10 +134,10 @@ export function Pillars() {
 /* ───────── Ο κύκλος: πραγματική σειρά βημάτων ───────── */
 
 const cycle = [
-  { verb: "Μέτρα", text: "Το Bill Score σού δείχνει πού είσαι σήμερα, από 0 έως 100." },
+  { verb: "Μέτρα", text: "Το Bill Score σού δείχνει πού είσαι σήμερα, από 0 έως 100." },
   { verb: "Ξεκίνα", text: "Από τον πρώτο πυλώνα που είναι κάτω από 15 στα 25." },
   { verb: "Κάνε πράξη", text: "Ένα εργαλείο, σε χαρτί. Πρώτη νίκη: μία μικρή κίνηση σε post-it." },
-  { verb: "Ξαναμέτρα", text: "Σε 30 μέρες τον πυλώνα σου. Σε 90 μέρες όλο το Score." },
+  { verb: "Ξαναμέτρα", text: "Σε 30 μέρες τον πυλώνα σου. Σε 90 μέρες όλο το Score." },
 ];
 
 export function Cycle() {
@@ -157,7 +157,7 @@ export function Cycle() {
           ))}
         </ol>
         <div className="mt-12">
-          <ButtonLink href="/billscore">Κάνε το Bill Score δωρεάν</ButtonLink>
+          <ButtonLink href="/billscore">Κάνε το Bill Score δωρεάν</ButtonLink>
         </div>
       </Container>
     </section>
@@ -243,7 +243,7 @@ const services = [
     href: "/mentoring",
     title: "Mentoring",
     who: "Για επιχειρηματίες",
-    text: "Δουλεύουμε μαζί πάνω στα δικά σου νούμερα, έναν πυλώνα τη φορά, σε κύκλους 90 ημερών.",
+    text: "Δουλεύουμε μαζί πάνω στα δικά σου νούμερα, έναν πυλώνα τη φορά, σε κύκλους 90 ημερών.",
   },
   {
     href: "/strategy",
@@ -312,7 +312,7 @@ export function Story() {
           </p>
           <p className="mt-6 max-w-prose">
             Οικονομικές Επιστήμες στο Πανεπιστήμιο Μακεδονίας, με δουλειά παράλληλα. Τράπεζα, όπου ζήτησα μόνος μου να «κατέβω
-            στο δίκτυο». Σήμερα: λογιστής-φοροτεχνικός Α΄ τάξης, ιδρυτής της Count On Me και της Billow, τραγουδοποιός στη Song
+            στο δίκτυο». Σήμερα: λογιστής-φοροτεχνικός Α΄ τάξης, ιδρυτής της Count On Me και της Billow, τραγουδοποιός στη Song
             on me Records. Και πάνω από όλα, πατέρας τριών αγοριών.
           </p>
           <ButtonLink href="/poios-eimai" variant="ink" className="mt-8">
@@ -357,7 +357,7 @@ export function Social() {
 
 const homeCases = ["kommotirio", "logistiko-grafeio"].map((slug, i) => {
   const c = allCases.find((x) => x.slug === slug)!;
-  const keep = ["Bill Score", "Ρευστότητα"];
+  const keep = ["Bill Score", "Ρευστότητα"];
   return {
     who: c.who,
     what: c.kind,
@@ -372,10 +372,10 @@ export function Results() {
     <section className="py-20 lg:py-28" aria-labelledby="results-title">
       <Container>
         <h2 id="results-title" className="max-w-3xl text-5xl font-black sm:text-6xl">
-          Πριν και μετά τις 90 μέρες
+          Πριν και μετά τις 90 μέρες
         </h2>
         <p className="mt-4 max-w-prose text-pencil">
-          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
+          Τρεις αριθμοί μετράνε: το Bill Score, η ρευστότητα (το χαμηλότερο σημείο του ταμείου 4 εβδομάδων) και οι ώρες
           δουλειάς.
         </p>
         <div className="mt-12 grid gap-14 lg:grid-cols-2 lg:gap-16">
@@ -387,11 +387,11 @@ export function Results() {
                 {c.rows.map(([label, before, after]) => (
                   <div key={label} className="flex items-baseline gap-3 border-b border-dashed border-rule py-3">
                     <dt className="flex-1">{label}</dt>
-                    <dd className="w-24 text-right font-display text-xl tabular-nums">
+                    <dd className="shrink-0 text-right font-display text-lg tabular-nums sm:w-24 sm:text-xl">
                       <span className="sr-only">πριν </span>
                       <Struck>{before}</Struck>
                     </dd>
-                    <dd className={`w-28 text-right font-display text-2xl font-black tabular-nums ${c.color}`}>
+                    <dd className={`shrink-0 text-right font-display text-xl font-black tabular-nums sm:w-28 sm:text-2xl ${c.color}`}>
                       <span className="sr-only">μετά </span>
                       {after}
                     </dd>
@@ -464,7 +464,7 @@ export function FinalCta() {
           20 ερωτήσεις, δωρεάν. Στο τέλος ξέρεις από ποιον πυλώνα ξεκινάς και ποιο είναι το πρώτο σου βήμα.
         </p>
         <ButtonLink href="/billscore" className="mt-8">
-          Κάνε το Bill Score
+          Κάνε το Bill Score
         </ButtonLink>
       </Container>
     </section>

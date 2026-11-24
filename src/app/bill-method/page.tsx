@@ -10,13 +10,13 @@ import { pillars, pillarStyle } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Η μέθοδος Bill",
   description:
-    "The Bill Method™: τέσσερις πυλώνες με αυτή τη σειρά. Χτίσε, Βελτίωσε, Οδήγησε, Ανέβα. 12 κεφάλαια, 12 εργαλεία, κύκλοι 90 ημερών.",
+    "The Bill Method™: τέσσερις πυλώνες με αυτή τη σειρά. Χτίσε, Βελτίωσε, Οδήγησε, Ανέβα. 12 κεφάλαια, 12 εργαλεία, κύκλοι 90 ημερών.",
 };
 
 const ways = [
   { title: "Χαρτί", text: "Το Workbook, μαζί με το βιβλίο. Με μολύβι, γιατί το μολύβι κρατά την προσοχή σου.", href: "/paketo-bill/workbook" },
   { title: "Excel της μεθόδου", text: "Όλα τα εργαλεία, με τις πράξεις έτοιμες.", href: "/paketo-bill/excel" },
-  { title: "Bill Score online", text: "Δωρεάν. Το σκορ βγαίνει μόνο του.", href: "/billscore" },
+  { title: "Bill Score online", text: "Δωρεάν. Το σκορ βγαίνει μόνο του.", href: "/billscore" },
 ];
 
 export default function MethodPage() {
@@ -24,7 +24,7 @@ export default function MethodPage() {
     <>
       <PageHero kicker="The Bill Method™" title="Η μέθοδος Bill">
         <p>
-          Πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
+          Πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
           Το όνομα δεν το πήρα από κανέναν Αμερικανό γκουρού.
         </p>
       </PageHero>
@@ -109,7 +109,7 @@ export default function MethodPage() {
             ))}
           </ul>
           <div className="mt-12 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/billscore">Ξεκίνα από το Bill Score</ButtonLink>
+            <ButtonLink href="/billscore">Ξεκίνα από το Bill Score</ButtonLink>
             <ButtonLink href="/paketo-bill" variant="line">
               Δες το Πακέτο BILL
             </ButtonLink>
