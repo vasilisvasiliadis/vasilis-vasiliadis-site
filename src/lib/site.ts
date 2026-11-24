@@ -21,6 +21,12 @@ export const business = {
 /** Merchant of Record για τις αγορές. null μέχρι να επιλεγεί πάροχος. */
 export const merchantOfRecord: { name: string | null; url: string | null } = { name: null, url: null };
 
+/** Λογαριασμοί social (τα ίδια βίντεο ανεβαίνουν και στους δύο). */
+export const socials = [
+  { name: "Instagram", handle: "@vasiliadisvas", url: "https://www.instagram.com/vasiliadisvas/" },
+  { name: "TikTok", handle: "@vasiliadisvas", url: "https://www.tiktok.com/@vasiliadisvas" },
+];
+
 /** Σύνδεσμος κράτησης ραντεβού (Google Calendar / Cal.com). null μέχρι να οριστεί. */
 export const bookingUrl: string | null = null;
 

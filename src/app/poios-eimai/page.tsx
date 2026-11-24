@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container, Struck } from "@/components/ui";
+import { socials } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ποιος είμαι",
@@ -129,6 +130,16 @@ export default function AboutPage() {
             <p className="mt-6 text-[0.95rem] text-pencil">
               Διαλέγουμε τους πελάτες μας και δουλεύουμε κυρίως με συστάσεις.
             </p>
+            <h2 className="mt-8 text-3xl font-black">Βίντεο</h2>
+            <ul className="mt-2 space-y-1">
+              {socials.map((x) => (
+                <li key={x.name}>
+                  <a href={x.url} rel="noopener" className="text-ink underline underline-offset-4">
+                    {x.name} {x.handle}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </aside>
         </Container>
       </article>

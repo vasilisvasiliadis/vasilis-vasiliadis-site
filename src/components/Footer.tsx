@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { footerNav, legalNav } from "@/lib/site";
+import { footerNav, legalNav, socials } from "@/lib/site";
 import { Container } from "./ui";
 
 export function Footer() {
@@ -19,6 +19,15 @@ export function Footer() {
             <p className="mt-6 max-w-sm font-display text-2xl leading-tight font-bold">
               Αλλού ακούς θεωρίες. Εδώ εφαρμόζεις και μετράς.
             </p>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              {socials.map((s) => (
+                <li key={s.name}>
+                  <a href={s.url} rel="noopener" className="font-display text-lg text-white underline-offset-4 hover:underline">
+                    {s.name} <span className="text-white/60">{s.handle}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {footerNav.map((col) => (

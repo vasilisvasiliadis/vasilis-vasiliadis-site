@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cases as allCases } from "@/lib/content";
-import { formatPrice, pillars, pillarStyle, products } from "@/lib/site";
+import { formatPrice, pillars, pillarStyle, products, socials } from "@/lib/site";
 import { HeroQuestion } from "./HeroQuestion";
-import { ButtonLink, Container, Dot, Struck, Underline } from "./ui";
+import { ButtonLink, Container, Dot, Struck, Underline, buttonBase } from "./ui";
 
 /* ───────── Hero: το Bill Score ξεκινά από εδώ ───────── */
 
@@ -319,6 +319,35 @@ export function Story() {
             Διάβασε όλη την ιστορία
           </ButtonLink>
         </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ───────── Social ───────── */
+
+export function Social() {
+  return (
+    <section className="border-t border-rule py-16 lg:py-20" aria-labelledby="social-title">
+      <Container className="grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+        <div>
+          <h2 id="social-title" className="text-5xl font-black sm:text-6xl">
+            Τα λέμε και στα βίντεο
+          </h2>
+          <p className="mt-4 max-w-prose text-lg">
+            Εργοδότες και υπάλληλοι, πελάτες που πρέπει να φύγουν, λογιστικά χωρίς μπλα μπλα, mindset και ηγεσία. Σύντομα
+            βίντεο, κάθε εβδομάδα.
+          </p>
+        </div>
+        <ul className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+          {socials.map((s) => (
+            <li key={s.name}>
+              <a href={s.url} rel="noopener" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
+                {s.name} {s.handle}
+              </a>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
