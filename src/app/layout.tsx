@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Commissioner, Inter } from "next/font/google";
+import { Fira_Sans_Extra_Condensed, Literata } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const commissioner = Commissioner({
+const firaXC = Fira_Sans_Extra_Condensed({
+  weight: ["500", "700", "900"],
   subsets: ["greek", "latin"],
-  variable: "--font-commissioner",
+  variable: "--font-fira-xc",
   display: "swap",
 });
 
-const inter = Inter({
+const literata = Literata({
   subsets: ["greek", "latin"],
-  variable: "--font-inter",
+  variable: "--font-literata",
   display: "swap",
 });
 
@@ -41,11 +42,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="el" className={`${commissioner.variable} ${inter.variable}`}>
+    <html lang="el" className={`${firaXC.variable} ${literata.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
         >
           Μετάβαση στο περιεχόμενο
         </a>

@@ -1,4 +1,4 @@
-import { BillScore, FinalCta, Hero, Package, Pillars, Problem, Results, Speaking, Story, WorkWithMe } from "@/components/home";
+import { Cycle, FinalCta, Hero, Package, Pillars, Problem, Results, Speaking, Story, WorkWithMe } from "@/components/home";
 
 export default function HomePage() {
   return (
@@ -6,7 +6,7 @@ export default function HomePage() {
       <Hero />
       <Problem />
       <Pillars />
-      <BillScore />
+      <Cycle />
       <Package />
       <WorkWithMe />
       <Story />
