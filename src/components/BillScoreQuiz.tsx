@@ -163,7 +163,8 @@ export function BillScoreQuiz() {
           <span className="font-display text-[9rem] leading-[0.8] font-black sm:text-[12rem]">{r.total}</span>
           <span className="font-display text-4xl font-bold text-pencil">/100</span>
         </h1>
-        <p className={`mt-6 border-l-[6px] ${s.border} pl-5 font-display text-4xl font-black text-ink`}>
+        <p className="mt-6 font-display text-4xl font-black text-ink">Βαθμός {r.grade}</p>
+        <p className={`mt-3 border-l-[6px] ${s.border} pl-5 font-display text-4xl font-black text-ink`}>
           Ξεκινάς από: <span className={s.text}>{start.verb}</span>
         </p>
 
@@ -173,7 +174,7 @@ export function BillScoreQuiz() {
               Η εξήγηση έρχεται στο email σου
             </h2>
             <ul className="mt-3 list-disc space-y-1 pl-5">
-              <li>Τι σημαίνει ο βαθμός σου</li>
+              <li>Τι σημαίνει ο βαθμός {r.grade} για την επιχείρησή σου</li>
               <li>Πού είσαι σε κάθε έναν από τους 4 πυλώνες</li>
               <li>Γιατί ξεκινάς από εκεί και ποιο είναι το πρώτο σου βήμα</li>
             </ul>
