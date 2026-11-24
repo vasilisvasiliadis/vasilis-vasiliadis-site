@@ -24,6 +24,9 @@ export const merchantOfRecord: { name: string | null; url: string | null } = { n
 /** Σύνδεσμος κράτησης ραντεβού (Google Calendar / Cal.com). null μέχρι να οριστεί. */
 export const bookingUrl: string | null = null;
 
+/** Σύνδεσμος προς τις κριτικές Google της Count On Me. null μέχρι να δοθεί. */
+export const countOnMeReviewsUrl: string | null = null;
+
 export const legalUpdated = "24 Νοεμβρίου 2026";
 
 export type NavItem = { label: string; href: string };

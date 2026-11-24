@@ -3,14 +3,15 @@ import { CaseLedger } from "@/components/CaseLedger";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container } from "@/components/ui";
 import { cases } from "@/lib/content";
+import { countOnMeReviewsUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Αποτελέσματα",
   description:
-    "6 παραδείγματα πριν και μετά τις 90 μέρες: κομμωτήριο, σύμβουλος υπηρεσιών, σύμβουλος ενέργειας, e-shop τεχνολογίας, λογιστικό γραφείο, λογοθεραπεία.",
+    "10 παραδείγματα από πελάτες της Count On Me: κομμωτήριο, mini market, λογιστικό γραφείο, υδραυλικός, ηλεκτρολόγος, συνεργείο, σύμβουλοι, e-shop, λογοθεραπεία.",
 };
 
-const colors = ["text-build", "text-improve", "text-lead", "text-levelup", "text-dot", "text-improve"];
+const colors = ["text-build", "text-improve", "text-lead", "text-levelup"];
 
 export default function ResultsPage() {
   return (
@@ -21,9 +22,17 @@ export default function ResultsPage() {
           δουλειάς την εβδομάδα.
         </p>
         <p className="mt-3 text-base text-pencil">
-          Ενδεικτικά παραδείγματα, βασισμένα σε πραγματικά μοτίβα μικρών επιχειρήσεων. Δεν είναι συγκεκριμένοι πελάτες, οι αριθμοί
-          είναι στρογγυλεμένοι και δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
+          Τα παραδείγματα βασίζονται σε πελάτες του λογιστικού μας γραφείου, της Count On Me, με τους οποίους δουλέψαμε αυτές τις
+          αλλαγές. Ονόματα και στοιχεία έχουν αλλάξει για λόγους απορρήτου. Οι αριθμοί είναι στρογγυλεμένοι και ενδεικτικοί, και το
+          Bill Score είναι εκτίμηση εκ των υστέρων. Δεν αποτελούν υπόσχεση για το δικό σου αποτέλεσμα.
         </p>
+        {countOnMeReviewsUrl && (
+          <p className="mt-3 text-base">
+            <a href={countOnMeReviewsUrl} className="text-ink underline underline-offset-4">
+              Δες τι γράφουν οι πελάτες της Count On Me στο Google
+            </a>
+          </p>
+        )}
       </PageHero>
 
       <nav aria-label="Case studies" className="border-b border-rule">
@@ -50,7 +59,7 @@ export default function ResultsPage() {
               <p className="mt-2">{c.time}</p>
             </div>
             <div>
-              <CaseLedger rows={c.rows} color={colors[i]} />
+              <CaseLedger rows={c.rows} color={colors[i % colors.length]} />
               <p className="mt-2 text-sm text-pencil">Πυλώνες: Χτίσε / Βελτίωσε / Οδήγησε / Ανέβα, ο καθένας στα 25.</p>
               <h3 className="mt-10 font-display text-2xl font-bold">Οι 3 στόχοι του κύκλου</h3>
               <ol className="mt-3 space-y-4">
