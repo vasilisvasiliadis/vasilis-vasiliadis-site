@@ -33,7 +33,7 @@ export default function MethodPage() {
       <section className="py-20 lg:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>
-            <Image src="/brand/bill-logo.png" alt="The Bill Method" width={700} height={517} className="h-28 w-auto" />
+            <Image src="/brand/bill-logo.webp" alt="The Bill Method" width={350} height={259} className="h-28 w-auto" />
             <p className="mt-6 max-w-sm text-pencil">
               Το «i» του λογότυπου είναι μολύβι. Η μέθοδος δουλεύεται με χαρτί και μολύβι, πριν από κάθε οθόνη.
             </p>
@@ -110,7 +110,7 @@ export default function MethodPage() {
             ))}
           </ul>
           <div className="mt-12 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/billscore">Ξεκίνα από το Bill Score</ButtonLink>
+            <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
             <ButtonLink href="/paketo-bill" variant="line">
               Δες το Πακέτο BILL
             </ButtonLink>

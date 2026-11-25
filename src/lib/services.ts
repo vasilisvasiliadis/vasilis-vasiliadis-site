@@ -8,6 +8,8 @@ export type Service = {
   slug: "mentoring" | "strategy" | "education";
   title: string;
   kicker: string;
+  /** Μία γραμμή με το αποτέλεσμα, πάνω από την εισαγωγή */
+  promise: string;
   intro: string;
   forWhom: string[];
   offers: Offer[];
@@ -22,6 +24,7 @@ export const services: Record<Service["slug"], Service> = {
     slug: "mentoring",
     title: "Mentoring",
     kicker: "Για επιχειρηματίες",
+    promise: "90 ημέρες, ένας πυλώνας, τρεις στόχοι και νέα μέτρηση του Bill Score στο τέλος.",
     intro:
       "Δουλεύουμε μαζί πάνω στα δικά σου νούμερα, έναν πυλώνα τη φορά, σε κύκλους 90 ημερών. Δεν ήρθα να σε χαϊδέψω. Ήρθα να γίνω ο καθρέφτης σου.",
     forWhom: [
@@ -64,6 +67,7 @@ export const services: Record<Service["slug"], Service> = {
     slug: "strategy",
     title: "Strategy",
     kicker: "Για επιχειρήσεις",
+    promise: "Γραπτή διάγνωση με τρεις προτεραιότητες και σχέδιο 90 ημερών για την ομάδα σου.",
     intro:
       "Στρατηγική με βάση το ταμείο, την τιμολόγηση και την ομάδα. Αποφάσεις που μετριούνται, όχι παρουσιάσεις που μπαίνουν στο συρτάρι.",
     forWhom: [
@@ -108,6 +112,7 @@ export const services: Record<Service["slug"], Service> = {
     slug: "education",
     title: "Education",
     kicker: "Για ομάδες και οργανισμούς",
+    promise: "Κάθε συμμετέχων φεύγει με το Bill Score του και ένα πρώτο βήμα.",
     intro:
       "Σεμινάρια και workshops όπου δεν διαβάζεις, γράφεις. Με μολύβι, σε χαρτί. Κάθε συμμετέχων φεύγει με το σκορ του και ένα πρώτο βήμα.",
     forWhom: [

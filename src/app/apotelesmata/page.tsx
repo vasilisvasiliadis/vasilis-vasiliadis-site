@@ -149,7 +149,7 @@ export default function ResultsPage() {
           <h2 className="max-w-3xl text-5xl font-black">Οι δικοί σου τρεις αριθμοί</h2>
           <p className="mt-4 max-w-prose text-lg">Ξεκίνα από το Bill Score. Σε 90 μέρες ξαναμετράς και βλέπεις τη διαφορά.</p>
           <ButtonLink href="/billscore" className="mt-8">
-            Κάνε το Bill Score
+            Κάνε το Bill Score
           </ButtonLink>
         </Container>
       </section>

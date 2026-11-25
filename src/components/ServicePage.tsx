@@ -21,7 +21,7 @@ export function ContactActions({ subject }: { subject: string }) {
         </a>
       )}
       <ButtonLink href="/billscore" variant="line">
-        Κάνε πρώτα το Bill Score
+        Κάνε το Bill Score
       </ButtonLink>
     </div>
   );
@@ -32,6 +32,7 @@ export function ServicePage({ s }: { s: Service }) {
   return (
     <>
       <PageHero kicker={s.kicker} title={s.title}>
+        <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl">{s.promise}</p>
         <p>{s.intro}</p>
       </PageHero>
 

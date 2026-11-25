@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { buttonBase } from "./ui";
 import { formatPrice, tierOffer, tiers } from "@/lib/site";
 
+const wish: Record<string, string> = {
+  vivlio: "Θέλω το Βιβλίο",
+  "vivlio-workbook": "Θέλω Βιβλίο + Workbook",
+  pliris: "Θέλω το Πλήρες πακέτο",
+};
+
 const dateFmt = new Intl.DateTimeFormat("el-GR", { day: "numeric", month: "long" });
 
 /** Τα τρία επίπεδα με την τιμή της ημέρας. Οι τιμές ανεβαίνουν, ποτέ δεν γράφουμε «αντί για». */
@@ -46,8 +52,8 @@ export function TierCards() {
                   Αγόρασε
                 </a>
               ) : (
-                <a href="#lista" className={`${buttonBase} w-full ${top ? "bg-dot text-white hover:bg-dot-dark" : "border-2 border-ink text-ink hover:bg-ink hover:text-white"}`}>
-                  Γράψου στη λίστα αναμονής
+                <a href={`/paketo-bill?epipedo=${t.slug}#lista`} className={`${buttonBase} w-full ${top ? "bg-dot text-white hover:bg-dot-dark" : "border-2 border-ink text-ink hover:bg-ink hover:text-white"}`}>
+                  {wish[t.slug]}
                 </a>
               )}
             </div>
