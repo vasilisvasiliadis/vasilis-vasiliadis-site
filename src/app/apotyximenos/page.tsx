@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apotyximenos" },
   title: "Αποτυχημένος · δωρεάν e-book",
   description:
-    "Δωρεάν e-book του Βασίλη Βασιλειάδη: η ιστορία μιας αποτυχίας και πώς τελικά τα κατάφερε. 12 κεφάλαια, ασκήσεις και η Πρόκληση 7 ημερών «Ξεκόλλα τη ρόδα».",
+    "Δωρεάν e-book του Βασίλη Βασιλειάδη: από την τράπεζα στο Γκέτεμποργκ, την επιστροφή του 2017 και το ξεκίνημα από το μηδέν. Η ιστορία μιας αποτυχίας και πώς τελικά τα κατάφερε.",
   openGraph: {
     title: "Αποτυχημένος · δωρεάν e-book",
     description: "Όλοι αποτυγχάνουμε. Το θέμα είναι αν θα σηκωθείς. Κατέβασε δωρεάν το e-book.",
@@ -18,11 +18,13 @@ export const metadata: Metadata = {
 };
 
 const inside = [
-  { n: "12", t: "κεφάλαια αληθινής ιστορίας: από τα 4 χιλιόμετρα με τα πόδια ως το «Κατεβάστε με στο δίκτυο» και την επιστροφή από το εξωτερικό." },
-  { n: "12", t: "ασκήσεις «Η σειρά σου» για να γράψεις τη δική σου ιστορία, όχι μόνο να διαβάσεις τη δική μου." },
+  { n: "16", t: "σελίδες. Διαβάζεται σε μία ώρα: Επτάλοφος, τράπεζα, Γκέτεμποργκ, η επιστροφή του 2017 και το ξεκίνημα από το μηδέν." },
+  { n: "4", t: "ερωτήσεις στο τέλος. Μία γραμμή η καθεμία. Για να γράψεις και τη δική σου ιστορία." },
   { n: "1", t: "εξίσωση: Επιτυχία = Αποτυχία + Πίστη + Επιμονή + Σκληρή δουλειά. Με ένα εργαλείο για κάθε συνθετικό." },
-  { n: "7", t: "μέρες πρόκληση «Ξεκόλλα τη ρόδα». Επτά κινήσεις, καμία πάνω από 20 λεπτά." },
+  { n: "7", t: "μέρες πρόκληση «Ξεκόλλα τη ρόδα». Επτά κινήσεις, 20 λεπτά τη μέρα." },
 ];
+
+const cards = [1, 2, 3, 4, 5, 6].map((n) => `/ebooks/kartes/karta-${n}.png`);
 
 export default function EbookPage() {
   return (
@@ -88,6 +90,22 @@ export default function EbookPage() {
       </section>
 
       <section className="py-16">
+        <Container>
+          <h2 className="text-4xl font-black">Κάρτες για story</h2>
+          <p className="mt-3 max-w-2xl text-lg">Πάτα σε όποια σε εκφράζει, κατέβασέ την και ανέβασέ την. Κάνε tag στο @vasiliadisvas.</p>
+          <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {cards.map((src, i) => (
+              <li key={src}>
+                <a href={src} download className="block border border-rule hover:border-ink">
+                  <Image src={src} alt={`Κάρτα για story ${i + 1}`} width={1080} height={1920} sizes="(min-width: 1024px) 12vw, 45vw" className="h-auto w-full" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <section className="pb-16">
         <Container className="max-w-3xl">
           <h2 className="text-4xl font-black">Μην το διαβάσεις μόνος</h2>
           <ul className="mt-6 list-disc space-y-3 pl-6 text-lg">
