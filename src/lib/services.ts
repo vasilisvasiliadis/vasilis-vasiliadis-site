@@ -64,7 +64,6 @@ export const services: Record<Service["slug"], Service> = {
     ],
     subject: "Mentoring",
     caseSlug: "kommotirio",
-    image: { src: "/images/photos/mentoring.webp", width: 840, height: 1176, alt: "Ο Βασίλης Βασιλειάδης μιλά σε σεμινάριο, σε κοντινό πλάνο" },
   },
   strategy: {
     slug: "strategy",
@@ -110,7 +109,6 @@ export const services: Record<Service["slug"], Service> = {
     ],
     subject: "Strategy",
     caseSlug: "logistiko-grafeio",
-    image: { src: "/images/photos/strategy.webp", width: 1000, height: 909, alt: "Ο Βασίλης Βασιλειάδης δίπλα σε πίνακα με χειρόγραφους αριθμούς και ΦΠΑ 24%" },
   },
   education: {
     slug: "education",
@@ -160,7 +158,7 @@ export const services: Record<Service["slug"], Service> = {
       { verb: "Μέρα", text: "Γράφουμε, μετράμε, φεύγουν με ένα πρώτο βήμα." },
     ],
     subject: "Σεμινάριο / workshop",
-    image: { src: "/images/photos/education.webp", width: 800, height: 1200, alt: "Ο Βασίλης Βασιλειάδης εξηγεί με τα χέρια ψηλά σε workshop" },
+    image: { src: "/images/photos/education.webp", width: 900, height: 860, alt: "Ο Βασίλης Βασιλειάδης εξηγεί με τα χέρια ψηλά σε workshop" },
   },
 };
 
