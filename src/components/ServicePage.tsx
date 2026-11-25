@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cases } from "@/lib/content";
 import { business, bookingUrl } from "@/lib/site";
@@ -31,7 +32,23 @@ export function ServicePage({ s }: { s: Service }) {
   const example = s.caseSlug ? cases.find((c) => c.slug === s.caseSlug) : undefined;
   return (
     <>
-      <PageHero kicker={s.kicker} title={s.title}>
+      <PageHero
+        kicker={s.kicker}
+        title={s.title}
+        aside={
+          s.image && (
+            <Image
+              src={s.image.src}
+              alt={s.image.alt}
+              width={s.image.width}
+              height={s.image.height}
+              priority
+              sizes="(min-width: 1024px) 352px, 90vw"
+              className="w-full max-w-sm justify-self-end border border-rule bg-white lg:max-w-none"
+            />
+          )
+        }
+      >
         <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl">{s.promise}</p>
         <p>{s.intro}</p>
       </PageHero>

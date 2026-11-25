@@ -444,10 +444,10 @@ export function Speaking() {
           </div>
         </div>
         <Image
-          src="/images/photos/stage.webp"
-          alt="Ο Βασίλης Βασιλειάδης μιλά σε σεμινάριο μπροστά σε κοινό"
-          width={630}
-          height={900}
+          src="/images/photos/speaking-home.webp"
+          alt="Ο Βασίλης Βασιλειάδης στη σκηνή, σε ομιλία για μικρές επιχειρήσεις"
+          width={840}
+          height={1187}
           sizes="(min-width: 1024px) 340px, 70vw"
           className="mx-auto w-full max-w-[19rem]"
         />
