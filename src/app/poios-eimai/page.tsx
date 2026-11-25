@@ -150,6 +150,9 @@ export default function AboutPage() {
           <h2 className="max-w-3xl text-5xl font-black">Ξεκίνα από ένα νούμερο</h2>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
+            <ButtonLink href="/apotyximenos" variant="line">
+              Όλη η ιστορία: δωρεάν e-book
+            </ButtonLink>
             <ButtonLink href="/mentoring" variant="line">
               Δούλεψε μαζί μου
             </ButtonLink>

@@ -15,6 +15,7 @@ const paths = [
   "/education",
   "/omilies",
   "/poios-eimai",
+  "/apotyximenos",
   "/apotelesmata",
   "/epikoinonia",
   "/oroi",

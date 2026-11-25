@@ -76,6 +76,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: "Γνωριμία",
     items: [
       { label: "Ποιος είμαι", href: "/poios-eimai" },
+      { label: "«Αποτυχημένος» (δωρεάν e-book)", href: "/apotyximenos" },
       { label: "Επικοινωνία", href: "/epikoinonia" },
     ],
   },
