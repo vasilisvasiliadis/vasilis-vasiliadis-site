@@ -1,0 +1,23 @@
+# E-book «Αποτυχημένος»
+
+Πηγή: `apotyximenos.html` (A5, γραμματοσειρές Google Fonts όπως στο site).
+
+## Νέο PDF μετά από αλλαγή στο HTML
+```bash
+node ebook/render.js "$PWD/ebook/apotyximenos.html" "$PWD/public/ebooks/apotyximenos-vasilis-vasiliadis.pdf"
+```
+
+## Νέες κάρτες για stories (1080×1920)
+Οι φράσεις είναι στην αρχή του `cards.js`.
+```bash
+node ebook/cards.js "$PWD/public/ebooks/kartes"
+```
+
+## Κανόνες
+- Μόνο πραγματικά στοιχεία της ιστορίας. Ό,τι δεν έχει επιβεβαιώσει ο Βασίλης, δεν μπαίνει.
+- Όχι περιγραφή τρόπου αυτοτραυματισμού (οδηγίες ΠΟΥ). Ο αριθμός 1018 μένει στην τελευταία σελίδα.
+- Όχι προσωπικά δεδομένα τρίτων (GDPR).
+- Μετά από κάθε αλλαγή: έλεγχος ότι κανένα κεφάλαιο δεν αφήνει 2–3 γραμμές μόνες σε νέα σελίδα.
+- Επιμέλεια κειμένου: skill `/ebook-editor`.
+
+Χρειάζεται Playwright με Chromium (`require('playwright')`) και πρόσβαση στο fonts.googleapis.com.
