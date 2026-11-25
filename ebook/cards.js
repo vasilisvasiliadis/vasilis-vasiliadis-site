@@ -22,7 +22,7 @@ const cards = [
       .who{margin-top:70px;font-size:46px;font-weight:700;color:#000}
       .who small{display:block;font-weight:500;color:#5d5f66;font-size:38px;margin-top:10px}
       .tag{position:absolute;bottom:120px;left:96px;font-size:40px;font-weight:700;color:#5d5f66}
-    </style></head><body><p class="k">Αποτυχημένος · ${i+1}/6</p><q>${a} <em>${c}</em></q><p class="who">Βασίλης Βασιλειάδης<small>@vasiliadisvas</small></p><p class="tag">#ΞεκόλλαΤηΡόδα · vasilisvasiliadis.gr/apotyximenos</p></body></html>`, { waitUntil: 'networkidle' });
+    </style></head><body><p class="k">Αποτυχημένος · ${i+1}/6</p><q>${a.split(/(?<=[.;]) (?=[«Α-ΩΆ-Ώ])/).join("<br>")}<br><em>${c}</em></q><p class="who">Βασίλης Βασιλειάδης<small>@vasiliadisvas</small></p><p class="tag">#ΞεκόλλαΤηΡόδα · vasilisvasiliadis.gr/apotyximenos</p></body></html>`, { waitUntil: 'networkidle' });
     await p.evaluate(() => document.fonts.ready);
     await p.screenshot({ path: `${out}/karta-${i+1}.png` });
   }

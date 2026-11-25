@@ -84,7 +84,11 @@ export default function EbookPage() {
       <section className="border-y-2 border-ink">
         <Container className="py-12">
           <p className="max-w-4xl font-display text-4xl leading-tight font-black text-ink sm:text-5xl">
-            «Το “απέτυχα” είναι γεγονός. Το “είμαι αποτυχημένος” είναι ταυτότητα. Διάλεξε ποιο θα κρατήσεις.»
+            «Το “απέτυχα” είναι γεγονός.
+            <br />
+            Το “είμαι αποτυχημένος” είναι ταυτότητα.
+            <br />
+            <span className="text-dot">Διάλεξε ποιο θα κρατήσεις.»</span>
           </p>
         </Container>
       </section>
