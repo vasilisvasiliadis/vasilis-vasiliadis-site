@@ -25,10 +25,10 @@ export function Header() {
       <Container className="flex h-[4.5rem] items-center justify-between gap-6 lg:h-[4.5rem]">
         <Link href="/" className="shrink-0" aria-label="Βασίλης Βασιλειάδης, αρχική">
           <Image
-            src="/brand/vasiliadis-logo.png"
+            src="/brand/vasiliadis-logo.webp"
             alt="Βασιλειάδης: Mentoring, Strategy, Education"
-            width={1200}
-            height={231}
+            width={750}
+            height={144}
             priority
             className="h-10 w-auto sm:h-11 lg:h-12"
           />

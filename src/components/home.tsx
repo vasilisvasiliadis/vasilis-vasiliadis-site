@@ -85,7 +85,7 @@ export function Pillars() {
     <section className="border-y border-rule py-20 lg:py-28" aria-labelledby="pillars-title">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-end lg:gap-16">
-          <Image src="/brand/bill-logo.png" alt="The Bill Method" width={700} height={517} className="h-24 w-auto sm:h-28" />
+          <Image src="/brand/bill-logo.webp" alt="The Bill Method" width={350} height={259} className="h-24 w-auto sm:h-28" />
           <div className="max-w-2xl">
             <h2 id="pillars-title" className="text-5xl font-black sm:text-6xl">
               Τέσσερις πυλώνες. Με αυτή τη σειρά.
@@ -157,7 +157,7 @@ export function Cycle() {
           ))}
         </ol>
         <div className="mt-12">
-          <ButtonLink href="/billscore">Κάνε το Bill Score δωρεάν</ButtonLink>
+          <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
         </div>
       </Container>
     </section>
@@ -444,10 +444,10 @@ export function Speaking() {
           </div>
         </div>
         <Image
-          src="/images/photos/fullbody.webp"
-          alt="Ο Βασίλης Βασιλειάδης όρθιος, σε ουδέτερο φόντο"
-          width={382}
-          height={512}
+          src="/images/photos/speaking-home.webp"
+          alt="Ο Βασίλης Βασιλειάδης στη σκηνή, σε ομιλία για μικρές επιχειρήσεις"
+          width={840}
+          height={1187}
           sizes="(min-width: 1024px) 340px, 70vw"
           className="mx-auto w-full max-w-[19rem]"
         />

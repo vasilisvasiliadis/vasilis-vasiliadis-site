@@ -10,10 +10,10 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
           <div>
             <Image
-              src="/brand/vasiliadis-logo-white.png"
+              src="/brand/vasiliadis-logo-white.webp"
               alt="Βασιλειάδης: Mentoring, Strategy, Education"
-              width={1200}
-              height={231}
+              width={750}
+              height={144}
               className="h-12 w-auto"
             />
             <p className="mt-6 max-w-sm font-display text-2xl leading-tight font-bold">
@@ -59,7 +59,7 @@ export function Footer() {
             ))}
           </ul>
         </div>
-        <p className="mt-4 text-xs text-white/45">
+        <p className="mt-4 text-sm text-white/70">
           Το περιεχόμενο είναι γενική πληροφόρηση, όχι φορολογική ή νομική συμβουλή.
         </p>
       </Container>

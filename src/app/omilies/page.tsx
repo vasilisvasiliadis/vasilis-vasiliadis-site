@@ -41,7 +41,7 @@ export default function TalksPage() {
             </ul>
           </div>
           <aside>
-            <Image src="/images/photos/fullbody.webp" alt="Ο Βασίλης Βασιλειάδης όρθιος" width={382} height={512} sizes="320px" className="w-full max-w-xs" />
+            <Image src="/images/photos/speaking.webp" alt="Ο Βασίλης Βασιλειάδης μιλά σε σεμινάριο, σε κοντινό πλάνο" width={840} height={1203} sizes="320px" className="w-full max-w-xs" />
             <h2 className="mt-8 text-3xl font-black">Μορφές</h2>
             <ul className="mt-4 space-y-4">
               {formats.map((f) => (

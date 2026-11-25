@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
+import { tiers } from "@/lib/site";
 import { buttonBase } from "./ui";
 
 /** Λίστα αναμονής: email + ρητή συγκατάθεση. Στέλνει στο /api/waitlist (Worker → MailerLite). */
@@ -17,16 +18,26 @@ export function WaitlistForm({
   interest,
   label = "Ειδοποίησέ με",
   askPrice = false,
+  tierChoice = false,
 }: {
   interest: string;
   label?: string;
   /** Προαιρετική ερώτηση: ποια τιμή θεωρεί δίκαιη για το πακέτο */
   askPrice?: boolean;
+  /** Επιλογή επιπέδου (προεπιλογή από το ?epipedo= της διεύθυνσης) */
+  tierChoice?: boolean;
 }) {
   const id = useId();
   const [email, setEmail] = useState("");
   const [agree, setAgree] = useState(false);
   const [fairPrice, setFairPrice] = useState("");
+  const [chosen, setChosen] = useState(interest);
+
+  useEffect(() => {
+    if (!tierChoice) return;
+    const t = new URLSearchParams(window.location.search).get("epipedo");
+    if (t && tiers.some((x) => x.slug === t)) setChosen(t);
+  }, [tierChoice]);
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -44,7 +55,7 @@ export function WaitlistForm({
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, interest, website, fairPrice }),
+        body: JSON.stringify({ email, interest: chosen, website, fairPrice }),
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (res.ok && data.ok) {
@@ -91,6 +102,26 @@ export function WaitlistForm({
           {state === "sending" ? "Στέλνεται…" : label}
         </button>
       </div>
+      {tierChoice && (
+        <div className="mt-3">
+          <label htmlFor={`${id}-tier`} className="block text-[0.95rem] font-bold text-ink">
+            Ποιο επίπεδο σε ενδιαφέρει;
+          </label>
+          <select
+            id={`${id}-tier`}
+            value={chosen}
+            onChange={(e) => setChosen(e.target.value)}
+            className="mt-1 min-h-12 w-full border-2 border-ink bg-white px-3 text-lg text-ink outline-none focus:border-dot"
+          >
+            <option value={interest}>Δεν ξέρω ακόμα</option>
+            {tiers.map((t) => (
+              <option key={t.slug} value={t.slug}>
+                {t.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
       {askPrice && (
         <div className="mt-3">
           <label htmlFor={`${id}-price`} className="block text-[0.95rem] font-bold text-ink">

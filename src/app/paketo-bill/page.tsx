@@ -95,11 +95,11 @@ export default function PackagePage() {
               </p>
               <div className="mt-6">
                 <ButtonLink href="/billscore" variant="line">
-                  Κάνε το Bill Score
+                  Κάνε το Bill Score
                 </ButtonLink>
               </div>
             </div>
-            <WaitlistForm interest="paketo-bill" askPrice />
+            <WaitlistForm interest="paketo-bill" askPrice tierChoice />
           </Container>
         </section>
       )}

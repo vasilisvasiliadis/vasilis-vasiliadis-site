@@ -24,24 +24,20 @@ export function HeroQuestion() {
 
   return (
     <fieldset className="mt-10 max-w-xl">
-      <legend className="font-display text-lg font-medium text-pencil">Bill Score: η ερώτηση-φίλτρο</legend>
+      <legend className="font-display text-lg font-medium text-pencil">Μία ερώτηση για να ξεκινήσεις</legend>
       <p className="mt-1 text-2xl leading-snug text-ink sm:text-[1.75rem]">Έχεις ήδη πελάτες που σε πληρώνουν;</p>
-      <div className="mt-5 flex gap-10">
+      <div className="mt-5 flex flex-wrap gap-4">
         {options.map((o) => (
           <button
             key={o.path}
             type="button"
             onClick={() => choose(o.path)}
             aria-pressed={picked === o.path}
-            className="group relative px-6 py-2 text-left"
+            className="group relative min-w-40 border-2 border-ink bg-paper px-6 py-3 text-left transition-colors hover:border-dot focus-visible:border-dot"
           >
             <span className="block font-display text-5xl leading-none font-black text-ink">{o.label}</span>
             <span className="mt-1 block text-sm text-pencil">{o.hint}</span>
-            {picked === o.path && <PencilCircle className="-inset-x-3 -inset-y-2 h-[calc(100%+1rem)] w-[calc(100%+1.5rem)]" />}
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-6 bottom-0 h-0.5 origin-left scale-x-0 bg-dot transition-transform duration-200 group-hover:scale-x-100 group-focus-visible:scale-x-100"
-            />
+            {picked === o.path && <PencilCircle className="-inset-x-2 -inset-y-1.5 h-[calc(100%+0.75rem)] w-[calc(100%+1rem)]" />}
           </button>
         ))}
       </div>
