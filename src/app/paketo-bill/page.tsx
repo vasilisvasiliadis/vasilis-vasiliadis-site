@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 const availability: Record<string, string> = {
   vivlio: "Σε όλα τα επίπεδα",
   workbook: "Από το 2ο επίπεδο",
-  excel: "Στο πλήρες πακέτο",
-  prompts: "Δώρο στο πλήρες πακέτο",
+  excel: "Στο επίπεδο «Ολόκληρη η μέθοδος»",
+  prompts: "Δώρο στο επίπεδο «Ολόκληρη η μέθοδος»",
 };
 
 export default function PackagePage() {
@@ -73,7 +73,7 @@ export default function PackagePage() {
             Διάλεξε πόσο μακριά θα πας
           </h2>
           <p className="mt-4 max-w-prose text-lg">
-            Ξεκίνα από το βιβλίο, πρόσθεσε το Workbook για να γράφεις, ή πάρε το πλήρες πακέτο με το Excel και τα AI Prompts
+            Ξεκίνα από το βιβλίο, πρόσθεσε το Workbook για να γράφεις, ή πάρε ολόκληρη τη μέθοδο με το Excel και τα AI Prompts
             δώρο.
           </p>
           <div className="mt-10">

@@ -1,6 +1,6 @@
 # vasilis-vasiliadis-site
 
-Επίσημο site του Βασίλη Βασιλειάδη: Mentoring, Strategy, Education και The Bill Method™.
+Επίσημο site του Βασίλη Βασιλειάδη: Mentoring, Strategy, Education και η μέθοδος Bill.
 
 ## Stack
 Next.js 16 (στατικό export) · TypeScript · Tailwind CSS v4 · Cloudflare Workers (static assets + API)

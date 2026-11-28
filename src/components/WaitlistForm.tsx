@@ -22,7 +22,7 @@ export function WaitlistForm({
 }: {
   interest: string;
   label?: string;
-  /** Προαιρετική ερώτηση: ποια τιμή θεωρεί δίκαιη για το πακέτο */
+  /** Προαιρετική ερώτηση: ποια τιμή θεωρεί δίκαιη για ολόκληρη τη μέθοδο */
   askPrice?: boolean;
   /** Επιλογή επιπέδου (προεπιλογή από το ?epipedo= της διεύθυνσης) */
   tierChoice?: boolean;
@@ -125,7 +125,7 @@ export function WaitlistForm({
       {askPrice && (
         <div className="mt-3">
           <label htmlFor={`${id}-price`} className="block text-[0.95rem] font-bold text-ink">
-            Προαιρετικά: πόσο θα ήταν δίκαιο για όλο το πακέτο;
+            Προαιρετικά: πόσο θα ήταν δίκαιο για ολόκληρη τη μέθοδο;
           </label>
           <select
             id={`${id}-price`}

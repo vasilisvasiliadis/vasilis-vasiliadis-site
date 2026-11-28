@@ -147,7 +147,7 @@ export const services: Record<Service["slug"], Service> = {
       {
         name: "E-course",
         format: "Online, με τον δικό σου ρυθμό",
-        includes: ["Η μέθοδος Bill σε βίντεο, με τα εργαλεία του πακέτου", "Ετοιμάζεται"],
+        includes: ["Η μέθοδος Bill σε βίντεο, με τα εργαλεία της μεθόδου", "Ετοιμάζεται"],
         price: "Σύντομα",
         waitlist: "e-course",
       },

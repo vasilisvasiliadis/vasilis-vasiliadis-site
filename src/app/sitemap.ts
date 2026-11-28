@@ -10,6 +10,7 @@ const paths = [
   "/billscore",
   "/paketo-bill",
   ...products.map((p) => `/paketo-bill/${p.slug}`),
+  "/mentoring",
   "/poios-eimai",
   "/epikoinonia",
   "/oroi",

@@ -15,8 +15,8 @@ export const dynamicParams = false;
 const availability: Record<string, string> = {
   vivlio: "Περιλαμβάνεται σε όλα τα επίπεδα",
   workbook: "Περιλαμβάνεται από το 2ο επίπεδο",
-  excel: "Περιλαμβάνεται στο πλήρες πακέτο",
-  prompts: "Δώρο μόνο στο πλήρες πακέτο",
+  excel: "Περιλαμβάνεται στο επίπεδο «Ολόκληρη η μέθοδος»",
+  prompts: "Δώρο μόνο στο επίπεδο «Ολόκληρη η μέθοδος»",
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <section className="border-t border-rule bg-[#f3f5f8] py-16" aria-labelledby="others-title">
         <Container>
           <h2 id="others-title" className="text-4xl font-black">
-            Τα άλλα μέρη του πακέτου
+            Τα άλλα μέρη της μεθόδου
           </h2>
           <ul className="mt-8 grid gap-8 sm:grid-cols-3">
             {others.map((o) => (
@@ -123,7 +123,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             ))}
           </ul>
           <ButtonLink href="/paketo-bill" variant="ink" className="mt-10">
-            Ολόκληρο το πακέτο
+            Δες τα επίπεδα
           </ButtonLink>
         </Container>
       </section>
