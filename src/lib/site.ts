@@ -36,7 +36,7 @@ export const bookingUrl: string | null = null;
 /** Token του Cloudflare Web Analytics (χωρίς cookies). null = χωρίς μέτρηση. */
 export const cfAnalyticsToken: string | null = null;
 
-/** Σύνδεσμος προς τις κριτικές Google της Count On Me. null μέχρι να δοθεί. */
+/** Σύνδεσμος προς τις κριτικές Google της Count OnMe. null μέχρι να δοθεί. */
 export const countOnMeReviewsUrl: string | null = null;
 
 export const legalUpdated = "24 Νοεμβρίου 2026";

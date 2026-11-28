@@ -7,6 +7,7 @@ import { productDetails } from "@/lib/content";
 import { TierCards } from "@/components/TierCards";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { products, site, tiers } from "@/lib/site";
+import { Lines } from "@/components/Lines";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/paketo-bill" },
@@ -34,10 +35,7 @@ export default function PackagePage() {
   return (
     <>
       <PageHero kicker="Η μέθοδος Bill" title="Ένα σύστημα, τέσσερα εργαλεία">
-        <p>
-          Αν έχεις μόνο το βιβλίο, παίρνεις μια πρώτη γεύση της μεθόδου. Χωρίς την πράξη όμως δεν γίνεται τίποτα. Το Workbook,
-          το Excel και τα Prompts είναι η πράξη.
-        </p>
+        <p><Lines>{`Αν έχεις μόνο το βιβλίο, παίρνεις μια πρώτη γεύση της μεθόδου. Χωρίς την πράξη όμως δεν γίνεται τίποτα. Το Workbook, το Excel και τα Prompts είναι η πράξη.`}</Lines></p>
       </PageHero>
 
       <section className="py-16 lg:py-24">
@@ -89,17 +87,14 @@ export default function PackagePage() {
               <h2 id="lista-title" className="text-5xl font-black">
                 Άνοιγμα σύντομα
               </h2>
-              <p className="mt-4 max-w-prose text-lg">
-                Άφησε το email σου και θα σε ειδοποιήσω μία φορά, μόλις ανοίξουν οι πωλήσεις. Μέχρι τότε, ξεκίνα δωρεάν από το Bill
-                Score.
-              </p>
+              <p className="mt-4 max-w-prose text-lg"><Lines>{`Άφησε το email σου και θα σε ειδοποιήσω μία φορά, μόλις ανοίξουν οι πωλήσεις. Μέχρι τότε, ξεκίνα δωρεάν από το Bill Score.`}</Lines></p>
               <div className="mt-6">
                 <ButtonLink href="/billscore" variant="line">
                   Κάνε το Bill Score
                 </ButtonLink>
               </div>
             </div>
-            <WaitlistForm interest="paketo-bill" askPrice tierChoice />
+            <WaitlistForm interest="paketo-bill" />
           </Container>
         </section>
       )}

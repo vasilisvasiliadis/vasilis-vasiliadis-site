@@ -3,6 +3,7 @@ import { MentoringForm } from "@/components/MentoringForm";
 import { PageHero } from "@/components/PageHero";
 import { ButtonLink, Container, Dot } from "@/components/ui";
 import { services } from "@/lib/services";
+import { Lines } from "@/components/Lines";
 
 const s = services.mentoring;
 const cycle = s.offers[0];
@@ -27,10 +28,7 @@ export default function MentoringPage() {
         <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl">
           90 ημέρες, ένας πυλώνας, τρεις στόχοι και νέα μέτρηση του Bill{" "}Score στο τέλος.
         </p>
-        <p>
-          Δουλεύω με λίγους επιχειρηματίες κάθε φορά, γιατί δουλεύουμε πάνω στα δικά σου νούμερα. Δεν ήρθα να σε χαϊδέψω. Ήρθα
-          να γίνω ο καθρέφτης σου.
-        </p>
+        <p><Lines>{`Δουλεύω με λίγους επιχειρηματίες κάθε φορά, γιατί δουλεύουμε πάνω στα δικά σου νούμερα. Δεν ήρθα να σε χαϊδέψω. Ήρθα να γίνω ο καθρέφτης σου.`}</Lines></p>
       </PageHero>
 
       <section className="py-16 lg:py-24">
@@ -57,9 +55,7 @@ export default function MentoringPage() {
                 <li key={i}>{i}</li>
               ))}
             </ul>
-            <p className="mt-6 font-display text-2xl leading-tight font-bold text-ink">
-              Για το κόστος μιλάμε στη γνωριμία. Το mentoring είναι επένδυση, όχι έξοδο.
-            </p>
+            <p className="mt-6 font-display text-2xl leading-tight font-bold text-ink"><Lines>{`Για το κόστος μιλάμε στη γνωριμία. Το mentoring είναι επένδυση, όχι έξοδο.`}</Lines></p>
           </article>
         </Container>
       </section>
@@ -91,7 +87,7 @@ export default function MentoringPage() {
           <h2 id="form-title" className="text-5xl font-black">
             Πες μου για την επιχείρησή σου
           </h2>
-          <p className="mt-4 mb-10 max-w-prose text-lg">Πέντε ερωτήσεις. Γράψε όπως μιλάς, χωρίς να στολίσεις τίποτα.</p>
+          <p className="mt-4 mb-10 max-w-prose text-lg"><Lines>{`Πέντε ερωτήσεις. Γράψε όπως μιλάς, χωρίς να στολίσεις τίποτα.`}</Lines></p>
           <MentoringForm />
         </Container>
       </section>

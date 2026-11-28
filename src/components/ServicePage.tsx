@@ -8,6 +8,7 @@ import { WaitlistForm } from "./WaitlistForm";
 import type { Service } from "@/lib/services";
 import { PageHero } from "./PageHero";
 import { ButtonLink, Container, Dot, buttonBase } from "./ui";
+import { Lines } from "./Lines";
 
 export function ContactActions({ subject }: { subject: string }) {
   const mail = `mailto:${business.email}?subject=${encodeURIComponent(subject)}`;
@@ -50,8 +51,10 @@ export function ServicePage({ s, extra, extraAfter }: { s: Service; extra?: Reac
           )
         }
       >
-        <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl">{s.promise}</p>
-        <p>{s.intro}</p>
+        <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl"><Lines>{s.promise}</Lines></p>
+        <p>
+          <Lines>{s.intro}</Lines>
+        </p>
       </PageHero>
 
       <section className="py-16 lg:py-24">
