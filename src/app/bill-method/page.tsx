@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/bill-method" },
   title: "Η μέθοδος Bill",
   description:
-    "The Bill Method™: τέσσερις πυλώνες με αυτή τη σειρά. Χτίσε, Βελτίωσε, Οδήγησε, Ανέβα. 12 κεφάλαια, 12 εργαλεία, κύκλοι 90 ημερών.",
+    "Η μέθοδος Bill: τέσσερις πυλώνες με αυτή τη σειρά. Χτίσε, Βελτίωσε, Οδήγησε, Ανέβα. 12 κεφάλαια, 12 εργαλεία, κύκλοι 90 ημερών.",
 };
 
 const ways = [
@@ -112,7 +112,7 @@ export default function MethodPage() {
           <div className="mt-12 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
             <ButtonLink href="/paketo-bill" variant="line">
-              Δες το Πακέτο BILL
+              Δες το βιβλίο και τα εργαλεία
             </ButtonLink>
           </div>
         </Container>

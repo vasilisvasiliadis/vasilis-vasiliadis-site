@@ -12,7 +12,8 @@
   },
   "vars": {
     "MAIN_HOST": "vasilisvasiliadis.gr",
-    "MAILERLITE_GROUP_ID": "204833612720244014"
+    "MAILERLITE_GROUP_ID": "204833612720244014",
+    "MAILERLITE_MENTORING_GROUP_ID": "205375312897246921"
   },
   "observability": { "enabled": true }
   // Μυστικό (δεν μπαίνει εδώ): MAILERLITE_API_KEY

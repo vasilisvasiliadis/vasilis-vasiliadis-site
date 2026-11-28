@@ -1,6 +1,6 @@
 /**
  * Cloudflare Worker μπροστά από τις στατικές σελίδες (φάκελος out/).
- * 1. thebillmethod.gr → vasilisvasiliadis.gr (αρχική → /billscore, όπως γράφει το βιβλίο· τα υπόλοιπα 1:1)
+ * 1. thebillmethod.gr → vasilisvasiliadis.gr (αρχική → /bill-method· τα υπόλοιπα 1:1)
  * 2. POST /api/billscore → ξαναϋπολογίζει το σκορ και γράφει τον συνδρομητή στο MailerLite
  * 3. Όλα τα άλλα → στατικά αρχεία
  */
@@ -12,11 +12,13 @@ import {
   questions,
   scoreResult,
 } from "../src/lib/billscore";
+import { limits, turnoverOptions } from "../src/lib/mentoring";
 
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   MAILERLITE_API_KEY: string;
   MAILERLITE_GROUP_ID: string;
+  MAILERLITE_MENTORING_GROUP_ID: string;
   MAIN_HOST: string;
 }
 
@@ -153,12 +155,77 @@ async function handleWaitlist(request: Request, env: Env): Promise<Response> {
   return json({ ok: true });
 }
 
+/** Αίτηση Mentoring 1 προς 1: γράφεται στο group «Mentoring αιτήσεις» του MailerLite. */
+async function handleMentoring(request: Request, env: Env): Promise<Response> {
+  const origin = request.headers.get("origin");
+  if (origin && new URL(origin).hostname !== new URL(request.url).hostname) {
+    return json({ ok: false, error: "origin" }, 403);
+  }
+  let body: Record<string, unknown>;
+  try {
+    body = (await request.json()) as Record<string, unknown>;
+  } catch {
+    return json({ ok: false, error: "body" }, 400);
+  }
+  if (typeof body.website === "string" && body.website !== "") return json({ ok: true }); // bot
+
+  const str = (k: string) => (typeof body[k] === "string" ? (body[k] as string).trim() : "");
+  const email = str("email").toLowerCase();
+  const name = str("name").slice(0, 120);
+  const business = str("business");
+  const pain = str("pain");
+  const change = str("change");
+  const why = str("why");
+  const turnover = turnoverOptions.find((o) => o.value === str("turnover"));
+
+  if (!emailRe.test(email)) return json({ ok: false, error: "email" }, 400);
+  if (name.length < 2) return json({ ok: false, error: "name" }, 400);
+  if (body.consent !== true) return json({ ok: false, error: "consent" }, 400);
+  if (!turnover) return json({ ok: false, error: "turnover" }, 400);
+  const tooShort = (v: string, l: { min: number }) => v.length < l.min;
+  if (tooShort(business, limits.business) || tooShort(pain, limits.pain) || tooShort(change, limits.change) || tooShort(why, limits.why)) {
+    return json({ ok: false, error: "answers" }, 400);
+  }
+
+  try {
+    const res = await fetch("https://connect.mailerlite.com/api/subscribers", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.MAILERLITE_API_KEY}`,
+        "content-type": "application/json",
+        accept: "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        fields: {
+          name,
+          mentoring_epixeirisi: business.slice(0, limits.business.max),
+          mentoring_tziros: turnover.label,
+          mentoring_pnigei: pain.slice(0, limits.pain.max),
+          mentoring_allagi: change.slice(0, limits.change.max),
+          mentoring_giati_tora: why.slice(0, limits.why.max),
+        },
+        groups: [env.MAILERLITE_MENTORING_GROUP_ID],
+      }),
+    });
+    // Δεν «σιωπούμε» αποτυχία: μια χαμένη αίτηση είναι χειρότερη από ένα μήνυμα σφάλματος.
+    if (!res.ok) {
+      console.error("mailerlite mentoring", res.status, await res.text());
+      return json({ ok: false, error: "provider" }, 502);
+    }
+  } catch (err) {
+    console.error("mailerlite unreachable", err);
+    return json({ ok: false, error: "provider" }, 502);
+  }
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
     if (/^(www\.)?thebillmethod\.gr$/.test(url.hostname)) {
-      const target = url.pathname === "/" ? "/billscore" : url.pathname;
+      const target = url.pathname === "/" ? "/bill-method" : url.pathname;
       return Response.redirect(`https://${env.MAIN_HOST}${target}${url.search}`, 301);
     }
     if (url.hostname === `www.${env.MAIN_HOST}`) {
@@ -168,6 +235,11 @@ export default {
     if (url.pathname === "/api/billscore") {
       if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
       return handleBillScore(request, env);
+    }
+
+    if (url.pathname === "/api/mentoring") {
+      if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
+      return handleMentoring(request, env);
     }
 
     if (url.pathname === "/api/waitlist") {

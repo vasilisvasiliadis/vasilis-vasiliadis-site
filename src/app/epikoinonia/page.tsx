@@ -12,10 +12,9 @@ export const metadata: Metadata = {
 
 const topics = [
   { label: "Mentoring", text: "Κύκλος 90 ημερών ή μία συνεδρία στρατηγικής." },
-  { label: "Strategy", text: "Διάγνωση και συνοδεία για επιχειρήσεις με ομάδα." },
   { label: "Σεμινάριο / workshop", text: "Για επιμελητήρια, συλλόγους, εταιρείες." },
   { label: "Ομιλία", text: "Ημερομηνία, πόλη, κοινό, πόσοι θα είστε." },
-  { label: "Πακέτο BILL", text: "Ερώτηση για αγορά, αρχείο ή επιστροφή." },
+  { label: "Η μέθοδος Bill", text: "Ερώτηση για αγορά, αρχείο ή επιστροφή." },
 ];
 
 export default function ContactPage() {

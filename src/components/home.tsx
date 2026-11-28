@@ -164,7 +164,7 @@ export function Cycle() {
   );
 }
 
-/* ───────── Πακέτο BILL: εξώφυλλα στο γραφείο + βιβλίο εσόδων ───────── */
+/* ───────── Η μέθοδος Bill: εξώφυλλα στο γραφείο + βιβλίο εσόδων ───────── */
 
 const coverPose = [
   "rotate-[-4deg] lg:translate-y-4",
@@ -182,7 +182,7 @@ export function Package() {
       <Container>
         <div className="max-w-3xl">
           <h2 id="package-title" className="text-5xl font-black sm:text-6xl">
-            Το Πακέτο BILL
+            Η μέθοδος Bill: βιβλίο και εργαλεία
           </h2>
           <p className="mt-4 text-pencil">
             Το βιβλίο σου δίνει μια πρώτη γεύση. Το Workbook, το Excel και τα Prompts τη μετατρέπουν σε πράξη.
@@ -205,7 +205,7 @@ export function Package() {
         </div>
 
         <table className="mt-16 w-full border-collapse text-left">
-          <caption className="sr-only">Τα τέσσερα μέρη του Πακέτου BILL</caption>
+          <caption className="sr-only">Τα τέσσερα μέρη της μεθόδου Bill</caption>
           <thead>
             <tr className="border-b-2 border-ink font-display text-lg">
               <th scope="col" className="py-3 pr-4 font-bold text-ink">Τι παίρνεις</th>
@@ -233,7 +233,7 @@ export function Package() {
 
         <div className="mt-10">
           <ButtonLink href="/paketo-bill" variant="ink">
-            Δες το Πακέτο BILL
+            Δες το βιβλίο και τα εργαλεία
           </ButtonLink>
         </div>
       </Container>
@@ -247,20 +247,14 @@ const services = [
   {
     href: "/mentoring",
     title: "Mentoring",
-    who: "Για επιχειρηματίες",
-    text: "Δουλεύουμε μαζί πάνω στα δικά σου νούμερα, έναν πυλώνα τη φορά, σε κύκλους 90 ημερών.",
-  },
-  {
-    href: "/strategy",
-    title: "Strategy",
-    who: "Για επιχειρήσεις",
-    text: "Στρατηγική με βάση το ταμείο, την τιμολόγηση και την ομάδα. Αποφάσεις που μετριούνται.",
+    who: "1 προς 1, για επιχειρηματίες",
+    text: "Ένας προς έναν, πάνω στα δικά σου νούμερα, έναν πυλώνα τη φορά, σε κύκλους 90 ημερών.",
   },
   {
     href: "/education",
     title: "Education",
-    who: "Για ομάδες και οργανισμούς",
-    text: "Σεμινάρια, workshops και e-courses. Μαθαίνεις κάνοντας, με μολύβι και χαρτί.",
+    who: "Για ομάδες, επιχειρήσεις και οργανισμούς",
+    text: "Σεμινάρια και workshops για επιχειρήσεις, επιμελητήρια και συλλόγους. Μαθαίνεις κάνοντας, με μολύβι και χαρτί.",
   },
 ];
 
@@ -444,10 +438,10 @@ export function Speaking() {
           </div>
         </div>
         <Image
-          src="/images/photos/speaking-home.webp"
-          alt="Ο Βασίλης Βασιλειάδης στη σκηνή, σε ομιλία για μικρές επιχειρήσεις"
-          width={840}
-          height={1187}
+          src="/images/photos/fullbody.webp"
+          alt="Ο Βασίλης Βασιλειάδης όρθιος, σε ουδέτερο φόντο"
+          width={382}
+          height={512}
           sizes="(min-width: 1024px) 340px, 70vw"
           className="mx-auto w-full max-w-[19rem]"
         />
@@ -466,7 +460,7 @@ export function FinalCta() {
           Ξεκίνα απλά. Με ένα νούμερο τη φορά<Dot className="ml-1" />
         </h2>
         <p className="mt-6 max-w-prose text-lg">
-          20 ερωτήσεις, δωρεάν. Στο τέλος ξέρεις από ποιον πυλώνα ξεκινάς και ποιο είναι το πρώτο σου βήμα.
+          20 ερωτήσεις, δωρεάν, σε λιγότερο από 5 λεπτά. Στο τέλος ξέρεις από ποιον πυλώνα ξεκινάς και ποιο είναι το πρώτο σου βήμα.
         </p>
         <ButtonLink href="/billscore" className="mt-8">
           Κάνε το Bill Score
