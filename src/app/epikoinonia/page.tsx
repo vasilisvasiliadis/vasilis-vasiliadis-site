@@ -3,6 +3,7 @@ import { BusinessDetails } from "@/components/BusinessDetails";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui";
 import { bookingUrl, business } from "@/lib/site";
+import { Lines } from "@/components/Lines";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/epikoinonia" },
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const topics = [
-  { label: "Mentoring", text: "Κύκλος 90 ημερών ή μία συνεδρία στρατηγικής." },
+  { label: "Mentoring", text: "Ένας προς έναν, κύκλος 90 ημερών." },
   { label: "Σεμινάριο / workshop", text: "Για επιμελητήρια, συλλόγους, εταιρείες." },
   { label: "Ομιλία", text: "Ημερομηνία, πόλη, κοινό, πόσοι θα είστε." },
   { label: "Η μέθοδος Bill", text: "Ερώτηση για αγορά, αρχείο ή επιστροφή." },
@@ -21,7 +22,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHero kicker="Επικοινωνία" title="Ας μιλήσουμε">
-        <p>Γράψε μου με λίγα λόγια τι θέλεις να αλλάξει. Απαντάω μέσα σε 3 εργάσιμες.</p>
+        <p>
+          <Lines>Γράψε μου με λίγα λόγια τι θέλεις να αλλάξει. Απαντάω μέσα σε 3 εργάσιμες. Εγώ και η ομάδα μου, όχι το AI.</Lines>
+        </p>
       </PageHero>
 
       <section className="py-16 lg:py-24">

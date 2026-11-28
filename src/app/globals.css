@@ -17,6 +17,7 @@
 
   --font-display: var(--font-fira-xc), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-serif: var(--font-literata), Georgia, serif;
+  --font-hand: var(--font-hand), "Comic Sans MS", cursive;
 }
 
 @layer base {

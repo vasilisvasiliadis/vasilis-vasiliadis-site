@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cases as allCases } from "@/lib/content";
 import { formatPrice, pillars, pillarStyle, products, socials } from "@/lib/site";
 import { HeroQuestion } from "./HeroQuestion";
+import { Lines } from "./Lines";
 import { ButtonLink, Container, Dot, Struck, Underline, buttonBase } from "./ui";
 
 /* ───────── Hero: το Bill Score ξεκινά από εδώ ───────── */
@@ -30,8 +31,9 @@ export function Hero() {
             className="aspect-[4/5] w-full object-cover object-[50%_30%] grayscale-[15%]"
           />
           <figcaption className="mt-3 text-[0.95rem] leading-snug text-pencil">
-            <span className="font-display text-lg font-bold text-ink">Βασίλης «Bill» Βασιλειάδης.</span> Λογιστής-φοροτεχνικός
-            Α΄ τάξης, mentor, ομιλητής. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
+            <span className="block font-display text-lg font-bold text-ink">Βασίλης Βασιλειάδης.</span>
+            <span className="block">Σύμβουλος επιχειρήσεων, λογιστής-φοροτεχνικός Α΄ τάξης, οικονομολόγος.</span>
+            <span className="block">Οι φίλοι με φωνάζουν Bill, γι’ αυτό η μέθοδος λέγεται έτσι.</span>
           </figcaption>
         </figure>
       </Container>
@@ -43,9 +45,9 @@ export function Hero() {
 
 const pains = [
   "Αν λείψεις μία εβδομάδα, η δουλειά σταματάει. Οι διακοπές σου γίνονται τηλεφωνήματα.",
-  "Το ταμείο σε εκπλήσσει αρνητικά. Κάθε μήνα, η ώρα των πληρωμών σού κόβει τον ύπνο.",
-  "Δεν ξέρεις ακριβώς πού γυρνάει το κλειδί: πόσα πρέπει να βγάζεις τη μέρα για να βγει ο μήνας.",
-  "Δουλεύεις 12 ώρες, κερδίζεις τα ίδια και βλέπεις τα παιδιά σου μόνο όταν κοιμούνται.",
+  "Κάθε μήνα, η ώρα των πληρωμών σού κόβει τον ύπνο. Το ταμείο σε εκπλήσσει, και όχι ευχάριστα.",
+  "Δεν ξέρεις πού γυρνάει το κλειδί. Πόσα πρέπει να βγάζεις τη μέρα, για να βγει ο μήνας;",
+  "Δουλεύεις 12 ώρες και κερδίζεις τα ίδια. Τα παιδιά σου τα βλέπεις μόνο όταν κοιμούνται.",
 ];
 
 export function Problem() {
@@ -60,13 +62,16 @@ export function Problem() {
             {pains.map((p) => (
               <li key={p} className="flex gap-4">
                 <Dot className="mt-2.5 shrink-0 text-[1.6rem]" />
-                {p}
+                <span>
+                  <Lines>{p}</Lines>
+                </span>
               </li>
             ))}
           </ul>
           <p className="mt-8 max-w-prose text-pencil">
-            Οι περισσότερες μικρές επιχειρήσεις δεν κλείνουν από έλλειψη δουλειάς. Κλείνουν επειδή ο ιδιοκτήτης κοιτάει τα
-            λάθος αριθμούς, ή κανέναν.
+            <Lines>
+              Οι περισσότερες μικρές επιχειρήσεις δεν κλείνουν από έλλειψη δουλειάς. Κλείνουν επειδή ο ιδιοκτήτης κοιτάζει τους λάθος αριθμούς. Ή κανέναν.
+            </Lines>
           </p>
         </div>
       </Container>
@@ -91,8 +96,9 @@ export function Pillars() {
               Τέσσερις πυλώνες. Με αυτή τη σειρά.
             </h2>
             <p className="mt-4 text-pencil">
-              Αν δεν ρίξεις πρώτα τα μπετά, δεν φτιάχνεις ρετιρέ. Χωρίς Θεμέλιο δεν βγαίνει το Χρήμα, χωρίς Χρήμα δεν
-              αγοράζεις Χρόνο, χωρίς Χρόνο δεν φτάνεις στην Ελευθερία.
+              <Lines>
+                Αν δεν ρίξεις πρώτα τα μπετά, δεν φτιάχνεις ρετιρέ. Χωρίς Θεμέλιο δεν βγαίνει Χρήμα. Χωρίς Χρήμα δεν αγοράζεις Χρόνο. Χωρίς Χρόνο δεν φτάνεις στην Ελευθερία.
+              </Lines>
             </p>
           </div>
         </div>
@@ -135,7 +141,7 @@ export function Pillars() {
 
 const cycle = [
   { verb: "Μέτρα", text: "Το Bill Score σού δείχνει πού είσαι σήμερα, από 0 έως 100." },
-  { verb: "Ξεκίνα", text: "Από τον πρώτο πυλώνα που είναι κάτω από 15 στα 25." },
+  { verb: "Ξεκίνα", text: "Από τον πρώτο πυλώνα που βγήκε κάτω από 15 στα 25." },
   { verb: "Κάνε πράξη", text: "Ένα εργαλείο, σε χαρτί. Πρώτη νίκη: μία μικρή κίνηση σε post-it." },
   { verb: "Ξαναμέτρα", text: "Σε 30 μέρες τον πυλώνα σου. Σε 90 μέρες όλο το Score." },
 ];
@@ -152,7 +158,9 @@ export function Cycle() {
             <li key={c.verb}>
               <p className="font-display text-xl font-bold text-dot">{i + 1}</p>
               <h3 className="mt-1 text-4xl font-black">{c.verb}</h3>
-              <p className="mt-3 text-pencil">{c.text}</p>
+              <p className="mt-3 text-pencil">
+                <Lines>{c.text}</Lines>
+              </p>
             </li>
           ))}
         </ol>
@@ -185,7 +193,7 @@ export function Package() {
             Η μέθοδος Bill: βιβλίο και εργαλεία
           </h2>
           <p className="mt-4 text-pencil">
-            Το βιβλίο σου δίνει μια πρώτη γεύση. Το Workbook, το Excel και τα Prompts τη μετατρέπουν σε πράξη.
+            <Lines>Το βιβλίο σου δίνει μια πρώτη γεύση. Το Workbook, το Excel και τα Prompts τη μετατρέπουν σε πράξη.</Lines>
           </p>
         </div>
 
@@ -291,28 +299,45 @@ export function Story() {
   return (
     <section className="border-t border-rule bg-[#f3f5f8] py-20 lg:py-28" aria-labelledby="story-title">
       <Container className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
-        <Image
-          src="/images/photos/coffee.webp"
-          alt="Ο Βασίλης Βασιλειάδης με ένα φλιτζάνι καφέ"
-          width={512}
-          height={286}
-          sizes="(min-width: 1024px) 512px, 100vw"
-          className="w-full object-cover"
-        />
+        <div className="relative w-full [container-type:inline-size]">
+          <Image
+            src="/images/photos/coffee.webp"
+            alt="Ο Βασίλης Βασιλειάδης με ένα φλιτζάνι καφέ"
+            width={512}
+            height={286}
+            sizes="(min-width: 1024px) 512px, 100vw"
+            className="w-full object-cover"
+          />
+          <p className="absolute top-[6%] left-[5%] w-[56%] -rotate-2 font-[family-name:var(--font-hand)] text-[3.3cqw] leading-[1.3] text-graphite">
+            <span className="block">Το AI είναι εργαλείο.</span>
+            <span className="block">Το θέλουμε.</span>
+            <span className="block">Το χρειαζόμαστε.</span>
+            <span className="block">Μου κάνει τη δουλειά πιο γρήγορα.</span>
+            <span className="block text-ink">Αν όμως δεν ξέρω πού</span>
+            <span className="block text-ink">να παρέμβω, δεν ξέρω</span>
+            <span className="block text-ink">τι να του ζητήσω.</span>
+            <span className="block">Γι’ αυτό υπάρχει η μέθοδος:</span>
+            <span className="block">να βλέπω πού είναι</span>
+            <span className="block">το πρόβλημα.</span>
+          </p>
+        </div>
         <div>
           <h2 id="story-title" className="text-6xl font-black sm:text-7xl">
-            Αποτυχημένος.
+            Αποτυχημένος
+            <Dot className="ml-1" />
           </h2>
-          <p className="mt-6 flex flex-wrap gap-x-5 gap-y-1 font-display text-2xl">
+          <p className="mt-6 font-display text-2xl text-pencil">
             {jobs.map((j) => (
-              <Struck key={j}>{j}</Struck>
+              <span key={j} className="block">
+                {j}
+              </span>
             ))}
-            <span className="font-bold text-ink">Σύμβουλος επιχειρηματιών.</span>
+            <span className="block font-bold text-ink">Σύμβουλος επιχειρήσεων</span>
           </p>
           <p className="mt-6 max-w-prose">
-            Οικονομικές Επιστήμες στο Πανεπιστήμιο Μακεδονίας, με δουλειά παράλληλα. Τράπεζα, όπου ζήτησα μόνος μου να «κατέβω
-            στο δίκτυο». Σήμερα: λογιστής-φοροτεχνικός Α΄ τάξης, ιδρυτής της Count On Me και της Billow, τραγουδοποιός στη Song
-            on me Records. Και πάνω από όλα, πατέρας τριών αγοριών.
+            <Lines>
+              Οικονομικές Επιστήμες στο Πανεπιστήμιο Μακεδονίας, με δουλειά παράλληλα. Τράπεζα, όπου ζήτησα μόνος μου να «κατέβω στο δίκτυο». Σήμερα: λογιστής-φοροτεχνικός Α΄ τάξης, ιδρυτής της Count OnMe και της Billow, τραγουδοποιός στη Song on me Records. Και πάνω από όλα, πατέρας τριών αγοριών.
+            </Lines>
           </p>
           <ButtonLink href="/poios-eimai" variant="ink" className="mt-8">
             Διάβασε όλη την ιστορία
@@ -334,8 +359,9 @@ export function Social() {
             Τα λέμε και στα βίντεο
           </h2>
           <p className="mt-4 max-w-prose text-lg">
-            Εργοδότες και υπάλληλοι, πελάτες που πρέπει να φύγουν, λογιστικά χωρίς μπλα μπλα, mindset και ηγεσία. Σύντομα
-            βίντεο, κάθε εβδομάδα.
+            <Lines>
+              Εργοδότες και υπάλληλοι, πελάτες που πρέπει να φύγουν, λογιστικά χωρίς μπλα μπλα, mindset και ηγεσία. Σύντομα βίντεο, κάθε εβδομάδα.
+            </Lines>
           </p>
         </div>
         <ul className="flex flex-col gap-3 sm:flex-row lg:justify-end">
@@ -460,7 +486,9 @@ export function FinalCta() {
           Ξεκίνα απλά. Με ένα νούμερο τη φορά<Dot className="ml-1" />
         </h2>
         <p className="mt-6 max-w-prose text-lg">
-          20 ερωτήσεις, δωρεάν, σε λιγότερο από 5 λεπτά. Στο τέλος ξέρεις από ποιον πυλώνα ξεκινάς και ποιο είναι το πρώτο σου βήμα.
+          <Lines>
+            20 ερωτήσεις, δωρεάν, σε λιγότερο από 5 λεπτά. Στο τέλος ξέρεις από ποιον πυλώνα ξεκινάς και ποιο είναι το πρώτο σου βήμα.
+          </Lines>
         </p>
         <ButtonLink href="/billscore" className="mt-8">
           Κάνε το Bill Score

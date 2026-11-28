@@ -15,6 +15,7 @@ import {
 } from "@/lib/billscore";
 import { pillars, pillarStyle } from "@/lib/site";
 import { Container, PencilCircle, buttonBase } from "./ui";
+import { Lines } from "@/components/Lines";
 
 type Step = "filter" | number | "result";
 type Saved = { path: Path | null; answers: (Answer | null)[]; step: Step; win?: string; winDate?: string };
@@ -118,10 +119,7 @@ export function BillScoreQuiz() {
         <h1 ref={headingRef} tabIndex={-1} className="mt-2 text-5xl font-black outline-none sm:text-7xl">
           Έχεις ήδη πελάτες που σε πληρώνουν;
         </h1>
-        <p className="mt-4 max-w-prose text-pencil">
-          20 ερωτήσεις, σε λιγότερο από 5 λεπτά. Από την απάντηση εξαρτάται ποιες ερωτήσεις θα δεις. Απάντησε όπως είναι σήμερα,
-          όχι όπως θα ήθελες να είναι.
-        </p>
+        <p className="mt-4 max-w-prose text-pencil"><Lines>{`20 ερωτήσεις, σε λιγότερο από 5 λεπτά. Από την απάντηση εξαρτάται ποιες ερωτήσεις θα δεις. Απάντησε όπως είναι σήμερα, όχι όπως θα ήθελες να είναι.`}</Lines></p>
         <Options
           items={[
             { id: "running", label: "Ναι", hint: "Έχω ήδη επιχείρηση" },
@@ -200,10 +198,7 @@ export function BillScoreQuiz() {
               <h2 id="win-h" className="text-3xl font-black">
                 Η πρώτη μου νίκη
               </h2>
-              <p className="mt-1 text-sm text-graphite">
-                Προαιρετικό. Ένα πράγμα από τον πυλώνα σου που κλείνεις σήμερα. Αν το γράψεις πριν πατήσεις «Στείλε μου το
-                σκορ», θα σου έρθει μαζί.
-              </p>
+              <p className="mt-1 text-sm text-graphite"><Lines>{`Προαιρετικό. Ένα πράγμα από τον πυλώνα σου που κλείνεις σήμερα. Αν το γράψεις πριν πατήσεις «Στείλε μου το σκορ», θα σου έρθει μαζί.`}</Lines></p>
               <label htmlFor="win" className="sr-only">
                 Η πρώτη μου νίκη
               </label>
@@ -219,9 +214,7 @@ export function BillScoreQuiz() {
           </div>
         </div>
 
-        <p className="mt-14 max-w-prose text-pencil">
-          Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.
-        </p>
+        <p className="mt-14 max-w-prose text-pencil"><Lines>{`Σε 30 μέρες ξανακάνεις μόνο τις 5 ερωτήσεις του πυλώνα σου. Σε 90 μέρες όλο το Score.`}</Lines></p>
 
         <div className="no-print mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link href="/paketo-bill" className={`${buttonBase} bg-ink text-white hover:bg-graphite`}>

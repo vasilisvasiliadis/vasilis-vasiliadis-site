@@ -41,7 +41,7 @@ export default function ResultsPage() {
               {countOnMeReviewsUrl && (
                 <p className="mt-3 text-base">
                   <a href={countOnMeReviewsUrl} className="text-ink underline underline-offset-4">
-                    Δες τι γράφουν οι πελάτες της Count On Me στο Google
+                    Δες τι γράφουν οι πελάτες της Count OnMe στο Google
                   </a>
                 </p>
               )}

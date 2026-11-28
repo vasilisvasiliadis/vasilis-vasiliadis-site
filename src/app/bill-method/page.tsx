@@ -6,6 +6,7 @@ import { Cycle } from "@/components/home";
 import { ButtonLink, Container } from "@/components/ui";
 import { chapters } from "@/lib/content";
 import { pillars, pillarStyle } from "@/lib/site";
+import { Lines } from "@/components/Lines";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/bill-method" },
@@ -24,33 +25,24 @@ export default function MethodPage() {
   return (
     <>
       <PageHero kicker="The Bill Method™" title="Η μέθοδος Bill">
-        <p>
-          Πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα. Οι φίλοι μου με φωνάζουνε Bill, γι’ αυτό και η μέθοδος λέγεται έτσι.
-          Το όνομα δεν το πήρα από κανέναν Αμερικανό γκουρού.
-        </p>
+        <p><Lines>{`Πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα. Οι φίλοι μου με φωνάζουν Bill, γι’ αυτό η μέθοδος λέγεται έτσι. Το όνομα δεν το πήρα από κανέναν Αμερικανό γκουρού.`}</Lines></p>
       </PageHero>
 
       <section className="py-20 lg:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>
             <Image src="/brand/bill-logo.webp" alt="The Bill Method" width={350} height={259} className="h-28 w-auto" />
-            <p className="mt-6 max-w-sm text-pencil">
-              Το «i» του λογότυπου είναι μολύβι. Η μέθοδος δουλεύεται με χαρτί και μολύβι, πριν από κάθε οθόνη.
-            </p>
+            <p className="mt-6 max-w-sm text-pencil"><Lines>{`Το «i» του λογότυπου είναι μολύβι. Η μέθοδος δουλεύεται με χαρτί και μολύβι, πριν από κάθε οθόνη.`}</Lines></p>
           </div>
           <div>
             <h2 className="text-5xl font-black sm:text-6xl">Η σειρά δεν είναι τυχαία</h2>
-            <p className="mt-5 text-lg">
-              Αν δεν ρίξεις πρώτα τα μπετά, δεν φτιάχνεις ρετιρέ. Στην άμμο δεν χτίζονται παλάτια.
-            </p>
+            <p className="mt-5 text-lg"><Lines>{`Αν δεν ρίξεις πρώτα τα μπετά, δεν φτιάχνεις ρετιρέ. Στην άμμο δεν χτίζονται παλάτια.`}</Lines></p>
             <ul className="mt-6 space-y-2 font-display text-2xl leading-tight font-bold text-ink">
-              <li>Χωρίς Θεμέλιο δεν βγαίνει το Χρήμα.</li>
+              <li>Χωρίς Θεμέλιο δεν βγαίνει Χρήμα.</li>
               <li>Χωρίς Χρήμα δεν αγοράζεις Χρόνο.</li>
               <li>Χωρίς Χρόνο δεν φτάνεις στην Ελευθερία.</li>
             </ul>
-            <p className="mt-6 text-pencil">
-              Το βιβλίο το διαβάζεις όλο, με τη σειρά. Στον αδύναμο πυλώνα σου όμως κάνεις όλες τις ασκήσεις, χωρίς έκπτωση.
-            </p>
+            <p className="mt-6 text-pencil"><Lines>{`Το βιβλίο το διαβάζεις όλο, με τη σειρά. Στον αδύναμο πυλώνα σου όμως κάνεις όλες τις ασκήσεις, χωρίς έκπτωση.`}</Lines></p>
           </div>
         </Container>
       </section>

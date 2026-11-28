@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Path } from "@/lib/billscore";
 import { PencilCircle } from "./ui";
+import { Lines } from "@/components/Lines";
 
 const options: { label: string; path: Path; hint: string }[] = [
   { label: "Ναι", path: "running", hint: "Έχω ήδη επιχείρηση" },
@@ -41,9 +42,7 @@ export function HeroQuestion() {
           </button>
         ))}
       </div>
-      <p className="mt-6 text-sm text-pencil">
-        Το σκορ το βλέπεις μόνο εσύ. Οι απαντήσεις μένουν στη συσκευή σου.
-      </p>
+      <p className="mt-6 text-sm text-pencil"><Lines>{`Το σκορ το βλέπεις μόνο εσύ. Οι απαντήσεις μένουν στη συσκευή σου.`}</Lines></p>
     </fieldset>
   );
 }

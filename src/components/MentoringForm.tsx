@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { limits, turnoverOptions } from "@/lib/mentoring";
+import { Lines } from "./Lines";
 import { buttonBase } from "./ui";
 
 const input = "mt-1 w-full border-2 border-ink bg-white px-4 py-3 text-lg text-ink outline-none focus:border-dot";
@@ -67,7 +68,9 @@ export function MentoringForm() {
       <div role="status" className="max-w-xl border-l-[6px] border-dot pl-6">
         <h3 className="text-3xl font-black">Το έλαβα</h3>
         <p className="mt-2">
-          Θα το διαβάσω. Αν ταιριάζουμε, θα σου γράψω για μια γνωριμία 20 λεπτών. Αν δεν ταιριάζουμε, θα στο πω ευθέως.
+          <Lines>
+            {`Απαντάω μέσα σε 3 εργάσιμες. Εγώ και η ομάδα μου, όχι το AI. Αν ταιριάζουμε, θα σου γράψω για μια γνωριμία 20 λεπτών. Αν δεν ταιριάζουμε, θα στο πω ευθέως.`}
+          </Lines>
         </p>
       </div>
     );

@@ -64,7 +64,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 text-pencil">{d.format}</p>
             <p className="mt-8 font-display text-2xl font-bold text-ink">{availability[p.slug]}</p>
             <div className="mt-4">
-              <ButtonLink href="/paketo-bill#epipeda">Δες τα επίπεδα και τις τιμές</ButtonLink>
+              <ButtonLink href="/paketo-bill#epipeda">Δες τα επίπεδα</ButtonLink>
             </div>
           </div>
           <Image

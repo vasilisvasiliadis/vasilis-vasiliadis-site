@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fira_Sans_Extra_Condensed, Literata } from "next/font/google";
+import { Fira_Sans_Extra_Condensed, Literata, Mynerve } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { cfAnalyticsToken, site, socials } from "@/lib/site";
@@ -15,6 +15,14 @@ const firaXC = Fira_Sans_Extra_Condensed({
 const literata = Literata({
   subsets: ["greek", "latin"],
   variable: "--font-literata",
+  display: "swap",
+});
+
+/** Χειρόγραφη γραμματοσειρά (με ελληνικά) για σημειώσεις πάνω σε φωτογραφίες. */
+const mynerve = Mynerve({
+  weight: "400",
+  subsets: ["greek", "latin"],
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -45,14 +53,14 @@ const personJsonLd = {
   name: site.name,
   url: site.url,
   image: `${site.url}/images/photos/portrait.webp`,
-  jobTitle: "Λογιστής-φοροτεχνικός Α΄ τάξης, mentor, ομιλητής",
+  jobTitle: "Σύμβουλος επιχειρήσεων, λογιστής-φοροτεχνικός Α΄ τάξης, οικονομολόγος",
   description: site.description,
   sameAs: socials.map((x) => x.url),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="el" className={`${firaXC.variable} ${literata.variable}`}>
+    <html lang="el" className={`${firaXC.variable} ${literata.variable} ${mynerve.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <a

@@ -17,7 +17,8 @@ export function Footer() {
               className="h-12 w-auto"
             />
             <p className="mt-6 max-w-sm font-display text-2xl leading-tight font-bold">
-              Αλλού ακούς θεωρίες. Εδώ εφαρμόζεις και μετράς.
+              <span className="block">Αλλού ακούς θεωρίες.</span>
+              <span className="block">Εδώ εφαρμόζεις και μετράς.</span>
             </p>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
               {socials.map((s) => (
