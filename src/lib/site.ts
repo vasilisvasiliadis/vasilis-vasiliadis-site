@@ -1,10 +1,10 @@
 export const site = {
   name: "Βασίλης Βασιλειάδης",
-  tagline: "Mentoring | Strategy | Education",
+  tagline: "Mentoring | Education",
   url: "https://vasilisvasiliadis.gr",
   methodUrl: "https://vasilisvasiliadis.gr/bill-method",
   description:
-    "Mentoring, στρατηγική και εκπαίδευση για επιχειρηματίες. Η μέθοδος Bill: πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.",
+    "Mentoring και εκπαίδευση για επιχειρηματίες. Η μέθοδος Bill: πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.",
 };
 
 /** Στοιχεία επιχείρησης (υποχρεωτικά για ηλεκτρονικό εμπόριο, π.δ. 131/2003). */
@@ -48,7 +48,6 @@ export const mainNav: NavItem[] = [
   { label: "Bill Score", href: "/billscore" },
   { label: "Βιβλίο & εργαλεία", href: "/paketo-bill" },
   { label: "Mentoring", href: "/mentoring" },
-  { label: "Strategy", href: "/strategy" },
   { label: "Education", href: "/education" },
   { label: "Ποιος είμαι", href: "/poios-eimai" },
 ];
@@ -66,7 +65,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: "Συνεργασία",
     items: [
       { label: "Mentoring 1 προς 1", href: "/mentoring" },
-      { label: "Strategy", href: "/strategy" },
       { label: "Education", href: "/education" },
     ],
   },

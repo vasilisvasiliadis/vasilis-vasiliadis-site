@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { cases } from "@/lib/content";
 import { business, bookingUrl } from "@/lib/site";
@@ -28,7 +29,7 @@ export function ContactActions({ subject }: { subject: string }) {
   );
 }
 
-export function ServicePage({ s }: { s: Service }) {
+export function ServicePage({ s, extra }: { s: Service; extra?: ReactNode }) {
   const example = s.caseSlug ? cases.find((c) => c.slug === s.caseSlug) : undefined;
   return (
     <>
@@ -113,6 +114,8 @@ export function ServicePage({ s }: { s: Service }) {
           </Container>
         </section>
       )}
+
+      {extra}
 
       <section className="grid-paper border-t border-rule py-16 lg:py-24" aria-labelledby="steps-title">
         <Container>
