@@ -8,7 +8,7 @@ import { buttonBase } from "./ui";
 const input = "mt-1 w-full border-2 border-ink bg-white px-4 py-3 text-lg text-ink outline-none focus:border-dot";
 const label = "block font-display text-lg font-bold text-ink";
 
-/** Αίτηση Mentoring 1 προς 1: 5 ερωτήσεις. Στέλνεται στο /api/mentoring (Worker → MailerLite). */
+/** Φόρμα γνωριμίας Mentoring 1 προς 1: 5 ερωτήσεις. Στέλνεται στο /api/mentoring (Worker → MailerLite). */
 export function MentoringForm() {
   const id = useId();
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -19,7 +19,7 @@ export function MentoringForm() {
     e.preventDefault();
     const form = e.currentTarget;
     if (!consent) {
-      setError("Τσέκαρε το κουτάκι συγκατάθεσης για να σταλεί η αίτηση.");
+      setError("Τσέκαρε το κουτάκι συγκατάθεσης για να σταλεί η φόρμα.");
       setState("error");
       return;
     }
@@ -53,7 +53,7 @@ export function MentoringForm() {
           ? "Το email δεν φαίνεται σωστό. Έλεγξέ το και στείλε ξανά."
           : data.error === "answers"
             ? "Μία από τις απαντήσεις είναι πολύ σύντομη. Γράψε τουλάχιστον μία ολόκληρη πρόταση σε κάθε ερώτηση."
-            : "Η αίτηση δεν στάλθηκε. Δεν χάθηκε τίποτα από όσα έγραψες: δοκίμασε ξανά σε λίγο.",
+            : "Δεν στάλθηκε. Δεν χάθηκε τίποτα από όσα έγραψες: δοκίμασε ξανά σε λίγο.",
       );
       setState("error");
     } catch {
@@ -65,10 +65,9 @@ export function MentoringForm() {
   if (state === "sent") {
     return (
       <div role="status" className="max-w-xl border-l-[6px] border-dot pl-6">
-        <h3 className="text-3xl font-black">Η αίτηση στάλθηκε</h3>
+        <h3 className="text-3xl font-black">Το έλαβα</h3>
         <p className="mt-2">
-          Την διαβάζω η ίδια. Αν ταιριάζουμε, θα σου γράψω για μια γνωριμία 20 λεπτών. Αν δεν ταιριάζουμε, θα το ακούσεις κι
-          αυτό ευθέως.
+          Θα το διαβάσω. Αν ταιριάζουμε, θα σου γράψω για μια γνωριμία 20 λεπτών. Αν δεν ταιριάζουμε, θα στο πω ευθέως.
         </p>
       </div>
     );
@@ -154,7 +153,7 @@ export function MentoringForm() {
 
       <div>
         <button type="submit" disabled={state === "sending"} className={`${buttonBase} bg-dot text-white hover:bg-dot-dark disabled:opacity-60`}>
-          {state === "sending" ? "Στέλνεται…" : "Στείλε αίτηση"}
+          {state === "sending" ? "Στέλνεται…" : "Στείλε"}
         </button>
         <p className="mt-3 text-sm text-pencil">
           Τα στοιχεία αποθηκεύονται στο MailerLite. Δες την{" "}

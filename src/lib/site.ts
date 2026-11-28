@@ -48,6 +48,8 @@ export const mainNav: NavItem[] = [
   { label: "Bill Score", href: "/billscore" },
   { label: "Βιβλίο & εργαλεία", href: "/paketo-bill" },
   { label: "Mentoring", href: "/mentoring" },
+  { label: "Strategy", href: "/strategy" },
+  { label: "Education", href: "/education" },
   { label: "Ποιος είμαι", href: "/poios-eimai" },
 ];
 
@@ -58,7 +60,14 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: "Η μέθοδος", href: "/bill-method" },
       { label: "Bill Score (δωρεάν)", href: "/billscore" },
       { label: "Βιβλίο & εργαλεία", href: "/paketo-bill" },
-      { label: "Mentoring", href: "/mentoring" },
+    ],
+  },
+  {
+    title: "Συνεργασία",
+    items: [
+      { label: "Mentoring 1 προς 1", href: "/mentoring" },
+      { label: "Strategy", href: "/strategy" },
+      { label: "Education", href: "/education" },
     ],
   },
   {

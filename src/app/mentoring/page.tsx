@@ -8,24 +8,28 @@ const s = services.mentoring;
 const cycle = s.offers[0];
 
 export const metadata: Metadata = {
-  title: "Mentoring 1 προς 1, με αίτηση",
+  title: "Mentoring 1 προς 1",
   description:
-    "Κύκλος 90 ημερών, 1 προς 1, πάνω στα δικά σου νούμερα. Λίγες θέσεις, με αίτηση και γνωριμία 20 λεπτών.",
+    "Κύκλος 90 ημερών, ένας προς έναν, πάνω στα δικά σου νούμερα. Δουλεύω με λίγους επιχειρηματίες κάθε φορά.",
   alternates: { canonical: "/mentoring" },
 };
 
 const steps = [
   { verb: "Μέτρα", text: "Κάνεις το Bill Score." },
-  { verb: "Αίτηση", text: "Στέλνεις αίτηση με 5 ερωτήσεις." },
-  { verb: "Γνωριμία", text: "Αν ταιριάζουμε, γνωριμία 20 λεπτών." },
+  { verb: "Γράψε μου", text: "Μου λες για την επιχείρησή σου, με πέντε ερωτήσεις." },
+  { verb: "Γνωριμία", text: "Αν ταιριάζουμε, μιλάμε 20 λεπτά." },
 ];
 
 export default function MentoringPage() {
   return (
     <>
-      <PageHero kicker="Για επιχειρηματίες" title={"Mentoring 1\u00a0προς\u00a01\u00a0· Με\u00a0αίτηση"}>
+      <PageHero kicker="Για επιχειρηματίες" title="Mentoring 1 προς 1">
+        <p className="mb-5 font-display text-3xl leading-tight font-black text-ink sm:text-4xl">
+          90 ημέρες, ένας πυλώνας, τρεις στόχοι και νέα μέτρηση του Bill{" "}Score στο τέλος.
+        </p>
         <p>
-          Δουλεύω με λίγους επιχειρηματίες κάθε φορά, γιατί δουλεύουμε πάνω στα δικά σου νούμερα. Λίγες θέσεις.
+          Δουλεύω με λίγους επιχειρηματίες κάθε φορά, γιατί δουλεύουμε πάνω στα δικά σου νούμερα. Δεν ήρθα να σε χαϊδέψω. Ήρθα
+          να γίνω ο καθρέφτης σου.
         </p>
       </PageHero>
 
@@ -82,10 +86,10 @@ export default function MentoringPage() {
         </Container>
       </section>
 
-      <section id="aitisi" className="scroll-mt-20 border-t border-rule py-16 lg:py-24" aria-labelledby="aitisi-title">
+      <section id="gnorimia" className="scroll-mt-20 border-t border-rule py-16 lg:py-24" aria-labelledby="form-title">
         <Container>
-          <h2 id="aitisi-title" className="text-5xl font-black">
-            Αίτηση
+          <h2 id="form-title" className="text-5xl font-black">
+            Πες μου για την επιχείρησή σου
           </h2>
           <p className="mt-4 mb-10 max-w-prose text-lg">Πέντε ερωτήσεις. Γράψε όπως μιλάς, χωρίς να στολίσεις τίποτα.</p>
           <MentoringForm />

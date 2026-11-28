@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Cycle, FinalCta, Hero, Package, Pillars, Problem, Social, Story } from "@/components/home";
+import { Cycle, FinalCta, Hero, Package, Pillars, Problem, Social, Story, WorkWithMe } from "@/components/home";
 
-// Εκτός πρώτης εκκίνησης (επιστρέφουν αργότερα): WorkWithMe, Results, Speaking
+// Εκτός πρώτης εκκίνησης (επιστρέφουν αργότερα): Results, Speaking
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -13,6 +13,7 @@ export default function HomePage() {
       <Pillars />
       <Cycle />
       <Package />
+      <WorkWithMe />
       <Story />
       <Social />
       <FinalCta />
