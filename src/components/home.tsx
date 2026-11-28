@@ -308,15 +308,17 @@ export function Story() {
             sizes="(min-width: 1024px) 512px, 100vw"
             className="w-full object-cover"
           />
-          <p className="absolute top-[7%] left-[5%] w-[56%] -rotate-2 font-[family-name:var(--font-hand)] text-[3.4cqw] leading-[1.32] text-graphite">
-            <span className="block">Το AI είναι καλός βοηθός.</span>
-            <span className="block text-ink">Εσύ όμως πρέπει να ξέρεις</span>
-            <span className="block text-ink">πού πονάει η επιχείρηση.</span>
-            <span className="block">Όπως ο γιατρός, πρώτα</span>
-            <span className="block">κοιτάς τα συμπτώματα,</span>
-            <span className="block">μετά δίνεις τη θεραπεία.</span>
-            <span className="block">Έτσι ξέρεις τι να ζητήσεις</span>
-            <span className="block">από το AI.</span>
+          <p className="absolute top-[6%] left-[5%] w-[56%] -rotate-2 font-[family-name:var(--font-hand)] text-[3.3cqw] leading-[1.3] text-graphite">
+            <span className="block">Το AI είναι εργαλείο.</span>
+            <span className="block">Το θέλουμε.</span>
+            <span className="block">Το χρειαζόμαστε.</span>
+            <span className="block">Μου κάνει τη δουλειά πιο γρήγορα.</span>
+            <span className="block text-ink">Αν όμως δεν ξέρω πού</span>
+            <span className="block text-ink">να παρέμβω, δεν ξέρω</span>
+            <span className="block text-ink">τι να του ζητήσω.</span>
+            <span className="block">Γι’ αυτό υπάρχει η μέθοδος:</span>
+            <span className="block">να βλέπω πού είναι</span>
+            <span className="block">το πρόβλημα.</span>
           </p>
         </div>
         <div>
