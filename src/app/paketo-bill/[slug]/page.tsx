@@ -52,7 +52,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div>
             <p className="font-display text-xl font-medium text-pencil">
               <Link href="/paketo-bill" className="underline-offset-4 hover:underline">
-                Πακέτο BILL
+                Η μέθοδος Bill
               </Link>
               , {p.kind.toLowerCase()}
             </p>

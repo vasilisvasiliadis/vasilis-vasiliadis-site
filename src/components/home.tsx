@@ -164,7 +164,7 @@ export function Cycle() {
   );
 }
 
-/* ───────── Πακέτο BILL: εξώφυλλα στο γραφείο + βιβλίο εσόδων ───────── */
+/* ───────── Η μέθοδος Bill: εξώφυλλα στο γραφείο + βιβλίο εσόδων ───────── */
 
 const coverPose = [
   "rotate-[-4deg] lg:translate-y-4",
@@ -182,7 +182,7 @@ export function Package() {
       <Container>
         <div className="max-w-3xl">
           <h2 id="package-title" className="text-5xl font-black sm:text-6xl">
-            Το Πακέτο BILL
+            Η μέθοδος Bill: βιβλίο και εργαλεία
           </h2>
           <p className="mt-4 text-pencil">
             Το βιβλίο σου δίνει μια πρώτη γεύση. Το Workbook, το Excel και τα Prompts τη μετατρέπουν σε πράξη.
@@ -205,7 +205,7 @@ export function Package() {
         </div>
 
         <table className="mt-16 w-full border-collapse text-left">
-          <caption className="sr-only">Τα τέσσερα μέρη του Πακέτου BILL</caption>
+          <caption className="sr-only">Τα τέσσερα μέρη της μεθόδου Bill</caption>
           <thead>
             <tr className="border-b-2 border-ink font-display text-lg">
               <th scope="col" className="py-3 pr-4 font-bold text-ink">Τι παίρνεις</th>
@@ -233,7 +233,7 @@ export function Package() {
 
         <div className="mt-10">
           <ButtonLink href="/paketo-bill" variant="ink">
-            Δες το Πακέτο BILL
+            Δες το βιβλίο και τα εργαλεία
           </ButtonLink>
         </div>
       </Container>

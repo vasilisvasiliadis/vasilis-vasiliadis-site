@@ -226,7 +226,7 @@ export function BillScoreQuiz() {
           <Link href="/paketo-bill" className={`${buttonBase} bg-ink text-white hover:bg-graphite`}>
             Δες τα εργαλεία της μεθόδου
           </Link>
-          <Link href="/mentoring" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
+          <Link href="/epikoinonia" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
             Δούλεψέ το μαζί μου
           </Link>
           <button type="button" onClick={restart} className="px-2 py-3 text-pencil underline underline-offset-4 hover:text-ink">

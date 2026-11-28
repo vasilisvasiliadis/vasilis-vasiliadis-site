@@ -133,7 +133,7 @@ export function Remeasure() {
             <Link href="/paketo-bill" className={`${buttonBase} bg-dot text-white hover:bg-dot-dark`}>
               Τα εργαλεία της μεθόδου
             </Link>
-            <Link href="/mentoring" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
+            <Link href="/epikoinonia" className={`${buttonBase} border-2 border-ink text-ink hover:bg-ink hover:text-white`}>
               Δούλεψέ το μαζί μου
             </Link>
           </div>

@@ -112,7 +112,7 @@ export default function MethodPage() {
           <div className="mt-12 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/billscore">Κάνε το Bill Score</ButtonLink>
             <ButtonLink href="/paketo-bill" variant="line">
-              Δες το Πακέτο BILL
+              Δες το βιβλίο και τα εργαλεία
             </ButtonLink>
           </div>
         </Container>

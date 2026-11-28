@@ -10,13 +10,13 @@ import { products, site, tiers } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/paketo-bill" },
-  title: "Πακέτο BILL",
+  title: "Η μέθοδος Bill · βιβλίο και εργαλεία",
   description: "Βιβλίο, Workbook, Excel και AI Prompts της μεθόδου Bill. Ένα σύστημα, τέσσερα εργαλεία.",
   openGraph: {
     type: "website",
     locale: "el_GR",
     siteName: site.name,
-    title: `Πακέτο BILL · ${site.name}`,
+    title: `Η μέθοδος Bill · ${site.name}`,
     description: "Βιβλίο, Workbook, Excel και AI Prompts της μεθόδου Bill. Ένα σύστημα, τέσσερα εργαλεία.",
     images: [{ url: products[0].cover, width: products[0].coverW, height: products[0].coverH, alt: "Η μέθοδος Bill" }],
   },
@@ -33,7 +33,7 @@ export default function PackagePage() {
   const open = tiers.some((t) => t.checkoutUrl);
   return (
     <>
-      <PageHero kicker="Το Πακέτο BILL" title="Ένα σύστημα, τέσσερα εργαλεία">
+      <PageHero kicker="Η μέθοδος Bill" title="Ένα σύστημα, τέσσερα εργαλεία">
         <p>
           Αν έχεις μόνο το βιβλίο, παίρνεις μια πρώτη γεύση της μεθόδου. Χωρίς την πράξη όμως δεν γίνεται τίποτα. Το Workbook,
           το Excel και τα Prompts είναι η πράξη.
