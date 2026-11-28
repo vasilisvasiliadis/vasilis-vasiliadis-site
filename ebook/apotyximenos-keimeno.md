@@ -455,9 +455,9 @@ vasilisvasiliadis.gr/billscore
 
 #### The Bill Method™
 
-Βιβλίο, workbook και εργαλεία για επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.
+Η μέθοδος για να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.
 
-vasilisvasiliadis.gr/paketo-bill
+vasilisvasiliadis.gr/bill-method
 
 Θες να το κάνουμε μαζί, ένας προς έναν; vasilisvasiliadis.gr/mentoring
 
