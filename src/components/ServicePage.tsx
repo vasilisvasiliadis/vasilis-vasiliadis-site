@@ -29,7 +29,7 @@ export function ContactActions({ subject }: { subject: string }) {
   );
 }
 
-export function ServicePage({ s, extra }: { s: Service; extra?: ReactNode }) {
+export function ServicePage({ s, extra, extraAfter }: { s: Service; extra?: ReactNode; extraAfter?: ReactNode }) {
   const example = s.caseSlug ? cases.find((c) => c.slug === s.caseSlug) : undefined;
   return (
     <>
@@ -116,6 +116,7 @@ export function ServicePage({ s, extra }: { s: Service; extra?: ReactNode }) {
       )}
 
       {extra}
+      {extraAfter}
 
       <section className="grid-paper border-t border-rule py-16 lg:py-24" aria-labelledby="steps-title">
         <Container>

@@ -179,3 +179,11 @@ export const talks = [
   { title: "Μια επιχείρηση που δουλεύει χωρίς εσένα", text: "Το τεστ των 10€, οι γραμμένες διαδικασίες και τα 3 νούμερα της Δευτέρας." },
   { title: "Πρώτα το μολύβι. Μετά το AI.", text: "Η AI ως βοηθός σκέψης για μικρές επιχειρήσεις, με όρια και με GDPR." },
 ];
+
+/**
+ * Βίντεο από ομιλίες. Βάλε είτε `youtubeId` (π.χ. "dQw4w9WgXcQ", από ανέβασμα στο YouTube)
+ * είτε `src` (δικό σου mp4 στο `public/videos/`, έως 25 MB ανά αρχείο λόγω ορίου του Cloudflare).
+ * Άδειος πίνακας = η ενότητα δεν εμφανίζεται.
+ */
+export type TalkVideo = { title: string; youtubeId?: string; src?: string };
+export const talkVideos: TalkVideo[] = [];

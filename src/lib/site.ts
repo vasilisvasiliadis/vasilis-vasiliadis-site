@@ -1,10 +1,10 @@
 export const site = {
   name: "Βασίλης Βασιλειάδης",
-  tagline: "Mentoring | Education",
+  tagline: "Mentoring | Strategy | Education",
   url: "https://vasilisvasiliadis.gr",
   methodUrl: "https://vasilisvasiliadis.gr/bill-method",
   description:
-    "Mentoring και εκπαίδευση για επιχειρηματίες. Η μέθοδος Bill: πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.",
+    "Mentoring, στρατηγική και εκπαίδευση για επιχειρηματίες. Η μέθοδος Bill: πώς να στήσεις μια επιχείρηση που κερδίζει και δουλεύει χωρίς εσένα.",
 };
 
 /** Στοιχεία επιχείρησης (υποχρεωτικά για ηλεκτρονικό εμπόριο, π.δ. 131/2003). */
